@@ -8,22 +8,24 @@ import LineStyleIcon from "@material-ui/icons/LineStyle";
 import GroupIcon from "@material-ui/icons/Group";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 
-import Menu from "@material-ui/core/Menu";
-import MenuItem from "@material-ui/core/MenuItem";
-import Fade from "@material-ui/core/Fade";
-
 import { useState } from "react";
 
 const MenuSide = () => {
-  const [anchorEl, setAnchorEl] = useState(null);
-  const open = Boolean(anchorEl);
+  const [appear, setAppear] = useState("notAppear");
+  const [showDiv, setShowDiv] = useState("notShow");
 
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
+  const ShowGroups = () => {
+    if (showDiv === "notShow") {
+      setShowDiv("showDiv");
+      if (appear === "notAppear") {
+        setAppear("Appear");
+      } else {
+        setAppear("notAppear");
+      }
+    } else {
+      setShowDiv("notShow");
+      setAppear("notAppear");
+    }
   };
 
   return (
@@ -45,30 +47,21 @@ const MenuSide = () => {
             <LineStyleIcon />
             <div className="text">hábitos</div>
           </div>
-          <div className="option group-option">
+          <div className="group">
             <GroupIcon />
-            <div>
-              <div
-                className="event-group"
-                aria-controls="fade-menu"
-                aria-haspopup="true"
-                onClick={handleClick}
-              >
-                Grupos
-              </div>
-              <Menu
-                id="fade-menu"
-                anchorEl={anchorEl}
-                keepMounted
-                open={open}
-                onClose={handleClose}
-                TransitionComponent={Fade}
-              >
-                <MenuItem onClick={handleClose}>meus grupos</MenuItem>
-                <MenuItem onClick={handleClose}>encontrar grupos</MenuItem>
-                <MenuItem onClick={handleClose}>criar novo grupo</MenuItem>
-              </Menu>
+            <div
+              className="main-groups"
+              onClick={() => {
+                ShowGroups();
+              }}
+            >
+              Grupos
             </div>
+          </div>
+          <div className={showDiv}>
+            <div className={appear}>meus grupos</div>
+            <div className={appear}>encontrar grupos</div>
+            <div className={appear}>criar novo grupo</div>
           </div>
         </div>
         <div className="logout">
