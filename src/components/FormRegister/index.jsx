@@ -110,7 +110,7 @@ const FormRegister = () => {
               type="submit"
               variant="contained"
               color="primary"
-              endIcon={<SendIcon></SendIcon>}
+              // endIcon={<SendIcon></SendIcon>}
             >
               Criar conta
             </ButtonStyled>
