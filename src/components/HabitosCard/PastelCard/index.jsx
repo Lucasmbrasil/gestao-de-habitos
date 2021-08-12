@@ -3,7 +3,6 @@ import { HabitCard } from "./styles";
 import Rating from "@material-ui/lab/Rating";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
-import Box from "@material-ui/core/Box";
 
 import CreateOutlinedIcon from "@material-ui/icons/CreateOutlined";
 import { useState } from "react";
