@@ -2,13 +2,6 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import api from "../../services/api";
-import {
-  Button,
-  FormControl,
-  InputLabel,
-  makeStyles,
-  TextField,
-} from "@material-ui/core";
 import SendIcon from "@material-ui/icons/Send";
 import { useState } from "react";
 import {
@@ -18,39 +11,29 @@ import {
   FormContainer,
   InputStyled,
 } from "./styles";
-import { Input } from "@material-ui/core";
+// import { Input } from "@material-ui/core";
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    display: "flex",
-    flexWrap: "wrap",
-  },
-  margin: {
-    margin: theme.spacing(1),
-  },
-  withoutLabel: {
-    marginTop: theme.spacing(3),
-  },
-  textField: {
-    width: "25ch",
-  },
-}));
 const FormRegister = () => {
   const [welcome, setWelcome] = useState(false);
   const [message, setMessage] = useState("");
-  const [values, setValues] = useState({ amount: "" });
 
   const schema = yup.object().shape({
-    username: yup.string(),
-    email: yup.string().email("Email inválido"),
+    username: yup
+      .string()
+      .required("Campo obrigatório")
+      .min(6, "Mínimo de 6 caractéres"),
+    email: yup.string().required("Campo obrigatório").email("Email inválido"),
     password: yup
       .string()
+      .required("Campo obrigatório")
+      .min(8, "Mínimo de 8 caracteres")
       .matches(
         /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{0,}$/,
         "Deve conter Pelo menos uma letra e um número"
       ),
     confirmPassword: yup
       .string()
+      .required("Campo obrigatório")
       .oneOf([yup.ref("password"), null], "As senhas devem ser iguais"),
   });
   const {
@@ -74,10 +57,6 @@ const FormRegister = () => {
       })
       .catch((e) => setMessage(`Usuário já cadastrado`));
   };
-  const handleChange = (prop) => (event) => {
-    setValues({ ...values, [prop]: event.target.value });
-  };
-  const classes = useStyles();
   return (
     <form onSubmit={handleSubmit(handleForm)}>
       <ContainerLeft>
@@ -88,52 +67,50 @@ const FormRegister = () => {
               <InputStyled
                 fullWidth
                 placeholder="Nome de usuário *"
-                required
-                inputProps={{ minLength: 6 }}
+                // inputProps={{ minLength: 6 }}
                 {...register("username")}
-                error={!!errors.username}
-                helperText={errors.username?.message}
+                // error={!!errors.username}
+                // helperText={errors.username?.message}
               />
+              <p>{errors.username?.message}</p>
             </div>
             <div>
               <InputStyled
                 fullWidth
-                placeholder="E-mail"
-                required
+                placeholder="E-mail *"
                 {...register("email")}
-                error={!!errors.email}
-                helperText={errors.email?.message}
+                // error={!!errors.email}
+                // helperText={errors.email?.message}
               />
+              <p>{errors.email?.message}</p>
             </div>
             <div>
               <InputStyled
                 fullWidth
-                placeholder="Senha"
-                required
+                placeholder="Senha *"
                 inputProps={{ minLength: 8, type: "password" }}
                 {...register("password")}
-                error={!!errors.password}
-                helperText={errors.password?.message}
               />
+              <p>{errors.password?.message}</p>
             </div>
 
             <div>
               <InputStyled
                 fullWidth
-                placeholder="Confirme a senha"
+                placeholder="Confirme a senha *"
                 {...register("confirmPassword")}
                 type="password"
-                error={!!errors.confirmPassword}
-                helperText={errors.confirmPassword?.message}
+                // error={!!errors.confirmPassword}
+                // helpertext={errors.confirmPassword?.message}
               />
+              <p>{errors.confirmPassword?.message}</p>
             </div>
             <ButtonStyled
               fullWidth
-              disableElevation="true"
               type="submit"
               variant="contained"
               color="primary"
-              // endIcon={<SendIcon></SendIcon>}
+              endIcon={<SendIcon></SendIcon>}
             >
               Criar conta
             </ButtonStyled>

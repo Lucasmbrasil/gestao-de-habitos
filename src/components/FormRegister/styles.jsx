@@ -9,6 +9,15 @@ export const ContainerLeft = styled.div`
   justify-content: center;
   align-items: center;
   background-color: #e0f2f1;
+  && h2 {
+    font-family: "Arvo", sans-serif;
+    font-weight: normal;
+  }
+  p {
+    font-size: 0.9rem;
+    color: #fbc02d;
+    text-align: initial;
+  }
 `;
 export const FormContainer = styled.div`
   width: 400px;
@@ -20,15 +29,18 @@ export const FormContainer = styled.div`
   background-color: #006064;
   border-radius: 15px;
 `;
-export const Form = styled.form`
+export const Form = styled.div`
   width: 70%;
   text-align: center;
 `;
 export const InputStyled = styled(Input)`
-  background-color: rgb(255, 255, 255);
-  padding: 5px 10px;
-  border-radius: 5px;
-  margin-top: 20px;
+  && {
+    background-color: rgb(255, 255, 255);
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin-top: 20px;
+    font-family: "Karla", sans-serif;
+  }
 `;
 export const ButtonStyled = styled(Button)`
   && {
