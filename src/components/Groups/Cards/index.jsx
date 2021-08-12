@@ -1,7 +1,5 @@
 import { CardRed, CardBlue, CardGreen, Image, Image2, Image3 } from "./styles";
 
-import ControlPointIcon from "@material-ui/icons/ControlPoint";
-
 const Cards = () => {
   return (
     <>

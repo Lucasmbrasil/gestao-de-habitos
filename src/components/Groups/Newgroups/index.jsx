@@ -1,4 +1,4 @@
-import { CardGroup, Image, ImagePlus } from "./styles";
+import { CardGroup, Image } from "./styles";
 
 import ControlPointIcon from "@material-ui/icons/ControlPoint";
 
