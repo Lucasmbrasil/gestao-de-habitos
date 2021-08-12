@@ -27,7 +27,7 @@ const PastelCard = () => {
         <div className="text">
           <div>titulo</div>
           <div>Descrição</div>
-          <Box
+          <div
             className={classes.box1}
             component="fieldset"
             mb={3}
@@ -41,7 +41,7 @@ const PastelCard = () => {
                 setValue(newValue);
               }}
             />
-          </Box>
+          </div>
         </div>
         <div className="text2">
           <div className="pen">

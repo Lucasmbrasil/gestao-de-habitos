@@ -27,7 +27,7 @@ const RedCard = () => {
         <div className="text">
           <div>titulo</div>
           <div>Descrição</div>
-          <Box
+          <div
             className={classes.box}
             component="fieldset"
             mb={3}
@@ -41,7 +41,7 @@ const RedCard = () => {
                 setValue(newValue);
               }}
             />
-          </Box>
+          </div>
         </div>
         <div className="text2">
           <div className="pen">
@@ -53,7 +53,7 @@ const RedCard = () => {
 
         <div className="filled2">
           <button className="plus">+</button>
-          <button class="minus">-</button>
+          <button className="minus">-</button>
         </div>
       </HabitCard>
     </>

@@ -27,7 +27,7 @@ const BlueCard = () => {
         <div className="text">
           <div>titulo</div>
           <div>Descrição</div>
-          <Box
+          <div
             className={classes.box}
             component="fieldset"
             mb={3}
@@ -41,7 +41,7 @@ const BlueCard = () => {
                 setValue(newValue);
               }}
             />
-          </Box>
+          </div>
         </div>
         <div className="text2">
           <div className="pen">
