@@ -1,9 +1,21 @@
 import { HabitCard } from "./styles";
 
-import SettingsOutlinedIcon from "@material-ui/icons/SettingsOutlined";
+import Rating from "@material-ui/lab/Rating";
+import Typography from "@material-ui/core/Typography";
+import { makeStyles } from "@material-ui/core/styles";
+
 import CreateOutlinedIcon from "@material-ui/icons/CreateOutlined";
+import { useState } from "react";
+
+const useStyles = makeStyles({
+  box: {
+    display: "flex",
+  },
+});
 
 const PurpleCard = () => {
+  const [value, setValue] = useState(2);
+  const classes = useStyles();
   return (
     <>
       <HabitCard>
@@ -13,10 +25,15 @@ const PurpleCard = () => {
         <div className="text">
           <div>titulo</div>
           <div>Descrição</div>
-          <div>
-            Nivel:
-            <SettingsOutlinedIcon />
-            <SettingsOutlinedIcon />
+          <div className={classes.box} borderColor="transparent">
+            <Typography component="legend">Nivel</Typography>
+            <Rating
+              name="purple"
+              value={value}
+              onChange={(event, newValue) => {
+                setValue(newValue);
+              }}
+            />
           </div>
         </div>
         <div className="text2">
@@ -28,8 +45,8 @@ const PurpleCard = () => {
         </div>
 
         <div className="filled2">
-          <button class="plus">+</button>
-          <button class="minus">-</button>
+          <button className="plus">+</button>
+          <button className="minus">-</button>
         </div>
       </HabitCard>
     </>

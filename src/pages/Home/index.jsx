@@ -7,8 +7,9 @@ const Home = () => {
     <>
       <BlueCard />
       <RedCard />
-      <PastelCard />
       <PurpleCard />
+      <PastelCard />
+
       <div>Olá</div>
     </>
   );
