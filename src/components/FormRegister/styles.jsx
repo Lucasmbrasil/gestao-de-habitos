@@ -2,7 +2,6 @@ import { Button, Input } from "@material-ui/core";
 import styled from "styled-components";
 
 export const ContainerLeft = styled.div`
-  width: 50vw;
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -18,9 +17,14 @@ export const ContainerLeft = styled.div`
     color: #fbc02d;
     text-align: initial;
   }
+
+  width: 100vw;
+  @media (min-width: 768px) {
+    width: 50vw;
+  }
 `;
 export const FormContainer = styled.div`
-  width: 400px;
+  width: 300px;
   height: 450px;
   display: flex;
   flex-direction: column;
@@ -28,6 +32,27 @@ export const FormContainer = styled.div`
   align-items: center;
   background-color: #006064;
   border-radius: 15px;
+
+  @media (min-width: 992px) {
+    width: 400px;
+  }
+  @media (max-width: 768px) {
+    width: 400px;
+    background: #006064; /* fallback for old browsers */
+    background: -webkit-linear-gradient(
+      to right,
+      #006064,
+      #159957
+    ); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(
+      to right,
+      #006064,
+      #159957
+    ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  }
+  @media (max-width: 576px) {
+    width: 320px;
+  }
 `;
 export const Form = styled.div`
   width: 70%;
