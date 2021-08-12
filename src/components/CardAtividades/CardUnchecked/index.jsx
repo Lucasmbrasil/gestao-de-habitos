@@ -1,6 +1,6 @@
 import { CardUnMarked } from "./styles";
 
-import CheckBoxIcon from "@material-ui/icons/CheckBox";
+import CheckBoxOutlineBlankOutlinedIcon from "@material-ui/icons/CheckBoxOutlineBlankOutlined";
 import CreateOutlinedIcon from "@material-ui/icons/CreateOutlined";
 import CancelOutlinedIcon from "@material-ui/icons/CancelOutlined";
 
@@ -9,7 +9,7 @@ const CardUnChecked = () => {
     <>
       <CardUnMarked>
         <div className="check">
-          <CheckBoxIcon className="check-icon" />
+          <CheckBoxOutlineBlankOutlinedIcon className="check-icon" />
         </div>
         <div className="text">
           titulo<span>data: 11 de agosto de 2021</span>
