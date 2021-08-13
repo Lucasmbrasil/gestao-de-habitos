@@ -1,8 +1,15 @@
+import { useContext } from "react";
+import { createContext } from "react";
 import { useState } from "react";
 import api from "../../services/api.jsx";
-const HabitsList = () => {
+
+const HabitsListContext = createContext();
+
+export const HabitsListProvider = ({ children }) => {
   const [token, setToken] = useState("");
+
   const [habits, setHabits] = useState([]);
+
   const handleLog = () => {
     const data = {
       username: "asdf995",
@@ -28,20 +35,12 @@ const HabitsList = () => {
   };
 
   return (
-    <div>
-      <button onClick={handleLog}>Log</button>
-      <button onClick={handleList}>List</button>
-      <div>
-        {habits.map((habit) => (
-          <ul key={habit.id}>
-            <li>{habit.title}</li>
-            <li>{habit.category}</li>
-            <li>{habit.difficulty}</li>
-            <li>{habit.frequency}</li>
-          </ul>
-        ))}
-      </div>
-    </div>
+    <HabitsListContext.Provider
+      value={{ handleLog, handleList, habits, setHabits }}
+    >
+      {children}
+    </HabitsListContext.Provider>
   );
 };
-export default HabitsList;
+
+export const useHabitList = () => useContext(HabitsListContext);
