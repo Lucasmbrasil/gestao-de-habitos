@@ -9,6 +9,8 @@ import {
   FormContainer,
   InputStyled,
 } from "./styles";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const FormRegister = () => {
   const schema = yup.object().shape({
@@ -46,7 +48,10 @@ const FormRegister = () => {
       .then((response) => {
         console.log(response);
       })
-      .catch((e) => console.log(e));
+      .catch((err) => {
+        toast.error("Ops, houve um erro ao tentar se logar!");
+        console.log(err);
+      });
   };
   return (
     <form onSubmit={handleSubmit(handleForm)}>
@@ -100,6 +105,7 @@ const FormRegister = () => {
           </Form>
         </FormContainer>
       </ContainerLeft>
+      <ToastContainer />
     </form>
   );
 };
