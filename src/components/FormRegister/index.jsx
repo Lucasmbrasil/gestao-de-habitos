@@ -74,7 +74,7 @@ const FormRegister = () => {
               <InputStyled
                 fullWidth
                 placeholder="Senha *"
-                inputProps={{ minLength: 8, type: "password" }}
+                type="password"
                 {...register("password")}
               />
               <p>{errors.password?.message}</p>
@@ -89,12 +89,7 @@ const FormRegister = () => {
               />
               <p>{errors.confirmPassword?.message}</p>
             </div>
-            <ButtonStyled
-              fullWidth
-              type="submit"
-              variant="contained"
-              color="primary"
-            >
+            <ButtonStyled fullWidth type="submit" variant="contained">
               Criar conta
             </ButtonStyled>
           </Form>

@@ -47,8 +47,7 @@ const RedCard = ({ habit }) => {
         </div>
 
         <div className="filled2">
-          <button>+</button>
-          <button>-</button>
+          {habit.category === "Saúde" ? <button>+</button> : <button>-</button>}
         </div>
       </HabitCardRed>
     </>

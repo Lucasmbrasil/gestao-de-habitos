@@ -51,8 +51,11 @@ const PastelCard = ({ habit }) => {
         </div>
 
         <div className="filled2">
-          <button>+</button>
-          <button>-</button>
+          {habit.category === "Alimentação" ? (
+            <button>+</button>
+          ) : (
+            <button>-</button>
+          )}
         </div>
       </HabitCardYellow>
     </>
