@@ -8,6 +8,8 @@ import LineStyleIcon from "@material-ui/icons/LineStyle";
 import GroupIcon from "@material-ui/icons/Group";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+
 import { useState } from "react";
 
 const MenuSide = () => {
@@ -57,6 +59,12 @@ const MenuSide = () => {
             >
               Grupos
             </div>
+            <ExpandMoreIcon
+              className="down-arrow"
+              onClick={() => {
+                ShowGroups();
+              }}
+            />
           </div>
           <div className={showDiv}>
             <div className={appear}>meus grupos</div>

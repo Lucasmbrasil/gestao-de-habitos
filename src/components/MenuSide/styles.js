@@ -46,6 +46,11 @@ export const MenuBar = styled.div`
     display: flex;
     font-family: "Karla", sans-serif;
     color: #ffffff;
+
+    .down-arrow {
+      margin-left: 1rem;
+      cursor: pointer;
+    }
   }
   .main-groups {
     margin-left: 1rem;
