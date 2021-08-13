@@ -1,10 +1,9 @@
-import { HabitCardRed, StyledFitnessIcon } from "./styles";
+import { HabitCardRed } from "./styles";
 import Rating from "@material-ui/lab/Rating";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import CreateOutlinedIcon from "@material-ui/icons/CreateOutlined";
 import FitnessCenterIcon from "@material-ui/icons/FitnessCenter";
-import DirectionsRunIcon from "@material-ui/icons/DirectionsRun";
 import HealingIcon from "@material-ui/icons/Healing";
 import { useState } from "react";
 
