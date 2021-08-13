@@ -32,6 +32,10 @@ export const FormContainer = styled.div`
   align-items: center;
   background-color: #006064;
   border-radius: 15px;
+  a {
+    color: #fdd835;
+    text-decoration: underline;
+  }
 
   @media (min-width: 992px) {
     width: 400px;

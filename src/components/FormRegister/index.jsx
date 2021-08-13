@@ -2,8 +2,6 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import api from "../../services/api";
-import SendIcon from "@material-ui/icons/Send";
-import { useState } from "react";
 import {
   ButtonStyled,
   ContainerLeft,
@@ -11,12 +9,8 @@ import {
   FormContainer,
   InputStyled,
 } from "./styles";
-// import { Input } from "@material-ui/core";
 
 const FormRegister = () => {
-  const [welcome, setWelcome] = useState(false);
-  const [message, setMessage] = useState("");
-
   const schema = yup.object().shape({
     username: yup
       .string()
@@ -50,12 +44,9 @@ const FormRegister = () => {
     api
       .post("/users/", newData)
       .then((response) => {
-        setWelcome(true);
-        setMessage(
-          `Bem-vindo ${data.username}! Acesse a nossa página de login e crie novos hábitos!`
-        );
+        console.log(response);
       })
-      .catch((e) => setMessage(`Usuário já cadastrado`));
+      .catch((e) => console.log(e));
   };
   return (
     <form onSubmit={handleSubmit(handleForm)}>
@@ -67,10 +58,7 @@ const FormRegister = () => {
               <InputStyled
                 fullWidth
                 placeholder="Nome de usuário *"
-                // inputProps={{ minLength: 6 }}
                 {...register("username")}
-                // error={!!errors.username}
-                // helperText={errors.username?.message}
               />
               <p>{errors.username?.message}</p>
             </div>
@@ -79,8 +67,6 @@ const FormRegister = () => {
                 fullWidth
                 placeholder="E-mail *"
                 {...register("email")}
-                // error={!!errors.email}
-                // helperText={errors.email?.message}
               />
               <p>{errors.email?.message}</p>
             </div>
@@ -100,8 +86,6 @@ const FormRegister = () => {
                 placeholder="Confirme a senha *"
                 {...register("confirmPassword")}
                 type="password"
-                // error={!!errors.confirmPassword}
-                // helpertext={errors.confirmPassword?.message}
               />
               <p>{errors.confirmPassword?.message}</p>
             </div>
@@ -110,11 +94,9 @@ const FormRegister = () => {
               type="submit"
               variant="contained"
               color="primary"
-              // endIcon={<SendIcon></SendIcon>}
             >
               Criar conta
             </ButtonStyled>
-            <div>{welcome && message}</div>
           </Form>
         </FormContainer>
       </ContainerLeft>
