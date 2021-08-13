@@ -1,9 +1,8 @@
-import { HabitCard } from "./styles";
+import { HabitCardBlue } from "./styles";
 
 import Rating from "@material-ui/lab/Rating";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
-
 import CreateOutlinedIcon from "@material-ui/icons/CreateOutlined";
 import { useState } from "react";
 
@@ -14,25 +13,20 @@ const useStyles = makeStyles({
   },
 });
 
-const BlueCard = () => {
+const BlueCard = ({ habit }) => {
   const [value, setValue] = useState(2);
   const classes = useStyles();
   return (
     <>
-      <HabitCard>
+      <HabitCardBlue>
         <div className="filled">
           <div />
         </div>
         <div className="text">
-          <div>titulo</div>
-          <div>Descrição</div>
-          <div
-            className={classes.box}
-            component="fieldset"
-            mb={3}
-            borderColor="transparent"
-          >
-            <Typography component="legend">Nivel</Typography>
+          <div className="title">{habit.title}</div>
+          <div>descrição</div>
+          <div className={classes.box} component="fieldset" mb={3}>
+            <Typography component="legend">nivel</Typography>
             <Rating
               name="blue"
               value={value}
@@ -46,15 +40,15 @@ const BlueCard = () => {
           <div className="pen">
             <CreateOutlinedIcon />
           </div>
-          <button className="btn">Categoria</button>
-          <div>Frenquencia:</div>
+          <div className="category">categoria: {habit.category}</div>
+          <div>frenquencia: {habit.frequency}</div>
         </div>
 
         <div className="filled2">
-          <button className="plus">+</button>
-          <button className="minus">-</button>
+          <button>+</button>
+          <button>-</button>
         </div>
-      </HabitCard>
+      </HabitCardBlue>
     </>
   );
 };

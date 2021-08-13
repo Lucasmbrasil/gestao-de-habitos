@@ -1,4 +1,4 @@
-import { HabitCard } from "./styles";
+import { HabitCardYellow } from "./styles";
 
 import Rating from "@material-ui/lab/Rating";
 import Typography from "@material-ui/core/Typography";
@@ -14,25 +14,20 @@ const useStyles = makeStyles({
   },
 });
 
-const PastelCard = () => {
+const PastelCard = ({ habit }) => {
   const [value, setValue] = useState(2);
   const classes = useStyles();
   return (
     <>
-      <HabitCard>
+      <HabitCardYellow>
         <div className="filled">
           <div />
         </div>
         <div className="text">
-          <div>titulo</div>
-          <div>Descrição</div>
-          <div
-            className={classes.box1}
-            component="fieldset"
-            mb={3}
-            borderColor="transparent"
-          >
-            <Typography component="legend">Nivel</Typography>
+          <div className="title">{habit.title}</div>
+          <div>descrição</div>
+          <div className={classes.box1} component="fieldset" mb={3}>
+            <Typography component="legend">nivel</Typography>
             <Rating
               name="pastel"
               value={value}
@@ -46,15 +41,15 @@ const PastelCard = () => {
           <div className="pen">
             <CreateOutlinedIcon />
           </div>
-          <button className="btn">Categoria</button>
-          <div>Frenquencia:</div>
+          <div className="category">categoria: {habit.category}</div>
+          <div>frenquencia: {habit.frequency}</div>
         </div>
 
         <div className="filled2">
-          <button className="plus">+</button>
-          <button className="minus">-</button>
+          <button>+</button>
+          <button>-</button>
         </div>
-      </HabitCard>
+      </HabitCardYellow>
     </>
   );
 };

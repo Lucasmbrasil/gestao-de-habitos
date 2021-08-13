@@ -40,7 +40,7 @@ const PurpleCard = () => {
           <div className="pen">
             <CreateOutlinedIcon />
           </div>
-          <button className="btn">Categoria</button>
+          <button className="category">Categoria</button>
           <div>Frenquencia:</div>
         </div>
 

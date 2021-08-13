@@ -1,4 +1,6 @@
+import { HabitsListProvider } from "./HabitsList";
+
 const Providers = ({ children }) => {
-  return <></>;
+  return <HabitsListProvider>{children}</HabitsListProvider>;
 };
 export default Providers;

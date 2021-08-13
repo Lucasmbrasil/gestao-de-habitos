@@ -1,71 +1,80 @@
 import styled from "styled-components";
 
-export const HabitCard = styled.div`
+export const HabitCardBlue = styled.div`
   border: 1px solid black;
   display: flex;
   height: 100px;
-  width: 45%;
+  width: 450px;
   justify-content: space-between;
+  margin-bottom: 10px;
+  font-family: "Karla", sans-serif;
   .filled {
-    background-color: #f8bbd0;
+    background-color: #bbdefb;
     width: 16%;
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     div {
-      border: 3px solid #00b8d4;
-      background-color: #f8bbd0;
+      border: 2px solid #000000;
       border-radius: 100%;
       padding: 31px;
     }
   }
 
   .filled2 {
-    background-color: #f8bbd0;
-    width: 16%;
+    background-color: #bbdefb;
+    width: 50px;
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-
-    .plus {
-      order: 1px solid #000000;
-      width: 30%;
-      height: 33%;
-      border-radius: 88%;
-    }
-
-    .minus {
-      border: 1px solid #000000;
-
-      width: 30%;
-      height: 33%;
-      border-radius: 88%;
-    }
   }
-
+  .title {
+    font-family: "Arvo", sans-serif;
+    font-weight: bold;
+  }
   .text {
     display: flex;
     justify-content: space-evenly;
-
+    font-size: 0.875rem;
     flex-direction: column;
-    width: 46%;
+    width: 50%;
   }
-
+  .text div {
+    margin-left: 10px;
+  }
   .text2 {
     display: flex;
     flex-direction: column;
+    font-size: 0.875rem;
+
     justify-content: space-evenly;
     .pen {
       text-align: end;
     }
-    .btn {
-      background-color: #f8bbd0;
-      border-radius: 5px;
-      border: none;
-      opacity: 50%;
-    }
+  }
+  .text2 div {
+    margin-right: 10px;
+  }
+  .category {
+    background-color: #bbdefb;
+    border-radius: 5px;
+    border: none;
+    opacity: 50%;
+    text-align: center;
+    font-size: 12px;
+  }
+  button {
+    border-radius: 50%;
+    border: 1px solid black;
+    width: 18px;
+    box-shadow: 0 1px 2px #000000;
+  }
+  button:active {
+    position: relative;
+    top: 1px;
+    box-shadow: none;
   }
 `;
