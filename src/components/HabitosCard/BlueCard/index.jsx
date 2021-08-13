@@ -1,5 +1,6 @@
 import { HabitCardBlue } from "./styles";
-
+import MenuBookIcon from "@material-ui/icons/MenuBook";
+import SportsEsportsIcon from "@material-ui/icons/SportsEsports";
 import Rating from "@material-ui/lab/Rating";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
@@ -20,7 +21,11 @@ const BlueCard = ({ habit }) => {
     <>
       <HabitCardBlue>
         <div className="filled">
-          <div />
+          {habit.category === "Estudo" ? (
+            <MenuBookIcon />
+          ) : (
+            <SportsEsportsIcon />
+          )}
         </div>
         <div className="text">
           <div className="title">{habit.title}</div>
@@ -40,8 +45,8 @@ const BlueCard = ({ habit }) => {
           <div className="pen">
             <CreateOutlinedIcon />
           </div>
-          <div className="category">categoria: {habit.category}</div>
-          <div>frenquencia: {habit.frequency}</div>
+          <div className="category">categoria: Estudo </div>
+          <div>frenquência: {habit.frequency}</div>
         </div>
 
         <div className="filled2">

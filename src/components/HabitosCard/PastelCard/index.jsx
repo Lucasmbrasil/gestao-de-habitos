@@ -1,10 +1,11 @@
 import { HabitCardYellow } from "./styles";
+import RestaurantIcon from "@material-ui/icons/Restaurant";
 
 import Rating from "@material-ui/lab/Rating";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
-
 import CreateOutlinedIcon from "@material-ui/icons/CreateOutlined";
+import FastfoodIcon from "@material-ui/icons/Fastfood";
 import { useState } from "react";
 
 const useStyles = makeStyles({
@@ -21,7 +22,11 @@ const PastelCard = ({ habit }) => {
     <>
       <HabitCardYellow>
         <div className="filled">
-          <div />
+          {habit.category === "Alimentação" ? (
+            <RestaurantIcon />
+          ) : (
+            <FastfoodIcon />
+          )}
         </div>
         <div className="text">
           <div className="title">{habit.title}</div>
@@ -41,7 +46,7 @@ const PastelCard = ({ habit }) => {
           <div className="pen">
             <CreateOutlinedIcon />
           </div>
-          <div className="category">categoria: {habit.category}</div>
+          <div className="category">categoria: Alimentação</div>
           <div>frenquencia: {habit.frequency}</div>
         </div>
 

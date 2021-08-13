@@ -1,9 +1,16 @@
-import { Button } from "@material-ui/core";
 import BlueCard from "../../components/HabitosCard/BlueCard";
 import PastelCard from "../../components/HabitosCard/PastelCard";
 import RedCard from "../../components/HabitosCard/RedCard";
 import { useHabitList } from "../../Providers/HabitsList";
-import { Habits, HabitsContainer, MainContainer, TextHabits } from "./styles";
+import {
+  Habits,
+  HabitsContainer,
+  MainContainer,
+  StyledButton,
+  StyledPinkButton,
+  TextHabits,
+} from "./styles";
+import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
 
 const Dashboard = () => {
   const { handleLog, handleList, habits } = useHabitList();
@@ -17,7 +24,12 @@ const Dashboard = () => {
         <Habits>
           <TextHabits>
             <p>hábitos para praticar</p>{" "}
-            <Button variant="contained">criar novo</Button>
+            <StyledButton
+              variant="contained"
+              startIcon={<AddCircleOutlineIcon />}
+            >
+              criar novo
+            </StyledButton>
           </TextHabits>
           {habits.map((habit) =>
             habit.category === "Saúde" ? (
@@ -25,12 +37,33 @@ const Dashboard = () => {
             ) : habit.category === "Estudo" ? (
               <BlueCard habit={habit} key={habit.id} />
             ) : (
-              <PastelCard habit={habit} key={habit.id} />
+              habit.category === "Alimentação" && (
+                <PastelCard habit={habit} key={habit.id} />
+              )
             )
           )}
         </Habits>
         <Habits>
-          <h3>hábitos para eliminar</h3>
+          <TextHabits>
+            <p>hábitos para eliminar</p>
+            <StyledPinkButton
+              variant="contained"
+              startIcon={<AddCircleOutlineIcon />}
+            >
+              criar novo
+            </StyledPinkButton>
+          </TextHabits>
+          {habits.map((habit) =>
+            habit.category === "NãoSaúde" ? (
+              <RedCard habit={habit} key={habit.id} />
+            ) : habit.category === "NãoEstudo" ? (
+              <BlueCard habit={habit} key={habit.id} />
+            ) : (
+              habit.category === "NãoAlimentação" && (
+                <PastelCard habit={habit} key={habit.id} />
+              )
+            )
+          )}
         </Habits>
       </HabitsContainer>
     </MainContainer>

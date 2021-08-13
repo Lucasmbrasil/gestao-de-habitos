@@ -1,5 +1,4 @@
 import styled from "styled-components";
-
 export const HabitCardBlue = styled.div`
   border: 1px solid black;
   display: flex;
@@ -10,11 +9,15 @@ export const HabitCardBlue = styled.div`
   font-family: "Karla", sans-serif;
   .filled {
     background-color: #bbdefb;
-    width: 16%;
+    width: 50px;
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    svg {
+      font-size: 30px;
+    }
+
     div {
       border: 2px solid #000000;
       border-radius: 100%;
@@ -40,7 +43,7 @@ export const HabitCardBlue = styled.div`
     justify-content: space-evenly;
     font-size: 0.875rem;
     flex-direction: column;
-    width: 50%;
+    width: 170px;
   }
   .text div {
     margin-left: 10px;
