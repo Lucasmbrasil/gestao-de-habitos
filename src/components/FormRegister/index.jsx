@@ -8,11 +8,17 @@ import {
   Form,
   FormContainer,
   InputStyled,
+  StyledCircularProgress,
 } from "./styles";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useHistory } from "react-router-dom";
+import { useState } from "react";
 
 const FormRegister = () => {
+  const history = useHistory();
+  const [disable, setDisable] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const schema = yup.object().shape({
     username: yup
       .string()
@@ -38,6 +44,7 @@ const FormRegister = () => {
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) });
   const handleForm = (data) => {
+    setIsLoading(true);
     const newData = {
       username: data.username,
       password: data.password,
@@ -46,11 +53,16 @@ const FormRegister = () => {
     api
       .post("/users/", newData)
       .then((response) => {
-        console.log(response);
+        toast.success("Cadastro realizado! Pronto para criar novos hábitos?", {
+          onClose: () => history.push("/dashboard"),
+          onOpen: () => setDisable(true),
+        });
+        setIsLoading(false);
       })
       .catch((err) => {
-        toast.error("Ops, houve um erro ao tentar se logar!");
+        toast.error("Ops, houve um erro ao tentar se cadastrar!");
         console.log(err);
+        setIsLoading(false);
       });
   };
   return (
@@ -61,6 +73,7 @@ const FormRegister = () => {
             <h2>cadastro</h2>
             <div>
               <InputStyled
+                disabled={disable ? true : false}
                 fullWidth
                 placeholder="Nome de usuário *"
                 {...register("username")}
@@ -69,6 +82,7 @@ const FormRegister = () => {
             </div>
             <div>
               <InputStyled
+                disabled={disable ? true : false}
                 fullWidth
                 placeholder="E-mail *"
                 {...register("email")}
@@ -77,9 +91,10 @@ const FormRegister = () => {
             </div>
             <div>
               <InputStyled
+                disabled={disable ? true : false}
                 fullWidth
                 placeholder="Senha *"
-                inputProps={{ minLength: 8, type: "password" }}
+                type="password"
                 {...register("password")}
               />
               <p>{errors.password?.message}</p>
@@ -87,6 +102,7 @@ const FormRegister = () => {
 
             <div>
               <InputStyled
+                disabled={disable ? true : false}
                 fullWidth
                 placeholder="Confirme a senha *"
                 {...register("confirmPassword")}
@@ -95,6 +111,7 @@ const FormRegister = () => {
               <p>{errors.confirmPassword?.message}</p>
             </div>
             <ButtonStyled
+              disabled={disable ? true : false}
               fullWidth
               type="submit"
               variant="contained"
@@ -102,10 +119,11 @@ const FormRegister = () => {
             >
               Criar conta
             </ButtonStyled>
+            {isLoading && <StyledCircularProgress />}
+            <ToastContainer className="toast" />
           </Form>
         </FormContainer>
       </ContainerLeft>
-      <ToastContainer />
     </form>
   );
 };
