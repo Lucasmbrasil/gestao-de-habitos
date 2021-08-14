@@ -2,7 +2,6 @@ import styled from "styled-components";
 import { Button } from "@material-ui/core";
 
 export const HabitsContainer = styled.div`
-  /* border: 3px solid red; */
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;

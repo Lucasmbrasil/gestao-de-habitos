@@ -1,7 +1,6 @@
 import BlueCard from "../../components/HabitosCard/BlueCard";
 import PastelCard from "../../components/HabitosCard/PastelCard";
 import RedCard from "../../components/HabitosCard/RedCard";
-import { useHabitList } from "../../Providers/HabitsList";
 import {
   Habits,
   HabitsContainer,
@@ -11,20 +10,39 @@ import {
   TextHabits,
 } from "./styles";
 import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
+import { useCallback, useEffect, useState } from "react";
+import api from "../../services/api";
 
 const Dashboard = () => {
-  const { handleLog, handleList, habits } = useHabitList();
-  console.log(habits);
+  const [habits, setHabits] = useState([]);
+  const [addGoodHabit, setAddGoodHabit] = useState(false);
+
+  const handleList = useCallback(() => {
+    const token = window.localStorage.getItem("token");
+    api
+      .get(`/habits/personal/`, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((response) => setHabits(response.data))
+      .catch((e) => console.log(e));
+  }, []);
+
+  useEffect(() => {
+    handleList();
+  }, [handleList]);
+
+  const handleAddGoodHabit = () => {
+    setAddGoodHabit(true);
+  };
   return (
     <MainContainer>
-      <button onClick={() => handleLog()}>Log</button>
-      <button onClick={() => handleList()}>List</button>
       <HabitsContainer>
         <h2>meus hábitos</h2>
         <Habits>
           <TextHabits>
-            <p>hábitos para praticar</p>{" "}
+            <p>hábitos para praticar</p>
             <StyledButton
+              onClick={handleAddGoodHabit}
               variant="contained"
               startIcon={<AddCircleOutlineIcon />}
             >
