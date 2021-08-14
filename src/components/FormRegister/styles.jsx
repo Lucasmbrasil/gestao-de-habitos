@@ -1,4 +1,4 @@
-import { Button, Input } from "@material-ui/core";
+import { Button, Input, CircularProgress } from "@material-ui/core";
 import styled from "styled-components";
 
 export const ContainerLeft = styled.div`
@@ -61,6 +61,10 @@ export const FormContainer = styled.div`
 export const Form = styled.div`
   width: 70%;
   text-align: center;
+  .toast {
+    width: 430px;
+    font-family: "Karla", sans-serif;
+  }
 `;
 export const InputStyled = styled(Input)`
   && {
@@ -82,5 +86,15 @@ export const ButtonStyled = styled(Button)`
   }
   &&:hover {
     background-color: #fbc02d;
+  }
+  &&:disabled {
+    background-color: #b4b4b4;
+  }
+`;
+
+export const StyledCircularProgress = styled(CircularProgress)`
+  && {
+    color: #fbc02d;
+    margin-top: 20px;
   }
 `;
