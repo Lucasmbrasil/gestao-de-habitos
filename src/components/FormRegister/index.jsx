@@ -110,13 +110,7 @@ const FormRegister = () => {
               />
               <p>{errors.confirmPassword?.message}</p>
             </div>
-            <ButtonStyled
-              disabled={disable ? true : false}
-              fullWidth
-              type="submit"
-              variant="contained"
-              color="primary"
-            >
+            <ButtonStyled fullWidth type="submit" variant="contained">
               Criar conta
             </ButtonStyled>
             {isLoading && <StyledCircularProgress />}
