@@ -1,27 +1,30 @@
 import TodayRoundedIcon from "@material-ui/icons/TodayRounded";
 import ModalContainer from "..";
+import { Title } from "../styles";
+import { InputContainer } from "../styles";
+import { Container } from "./styles";
 
 const ModalAtividade = () => {
   return (
     <ModalContainer color="#8BC34A">
-      <div className="modalAtividade">
-        <div className="titulo">nova atividade:</div>
-        <div className="input">
+      <Container>
+        <Title>nova atividade:</Title>
+        <InputContainer>
           <div className="legenda">
             <label>título</label>
           </div>
-          <input className="Atividade" placeholder="nome da atividade" />
-        </div>
-        <div className="date">
+          <input placeholder="nome da atividade" />
+        </InputContainer>
+        <InputContainer>
           <div className="legenda">
-            <label>Data limite</label>
+            <label>data limite</label>
           </div>
           <div className="campo-data">
-            <input placeholder="20/10/2021" style={{ border: "none" }} />
+            <input placeholder="20/10/2021"/>
             <TodayRoundedIcon style={{ color: "#424242", opacity: "42%" }} />
           </div>
-        </div>
-      </div>
+        </InputContainer>
+      </Container>
     </ModalContainer>
   );
 };

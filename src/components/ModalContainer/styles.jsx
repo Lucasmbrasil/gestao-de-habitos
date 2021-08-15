@@ -1,4 +1,32 @@
 import styled from "styled-components";
+
+export const Title = styled.h3`
+  font-family: "Arvo", serif;
+  margin: 0.5rem 0 0 0;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: #212121;
+`
+export const InputContainer = styled.div`
+  font-size: 1rem;
+  color: #424242;
+  font-family: "Karla", sans-serif;
+  display: flex;
+  flex-direction: column;
+  margin: 0.5rem 0;
+  width: 90%;
+
+  input {
+    height: 35px;
+    border: 1px solid #424242;
+    border-radius: 0.5rem;
+    width: 100%;
+    opacity: 87%;
+    padding-left: 1rem;
+  }
+`
+
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -213,7 +241,7 @@ export const Container = styled.div`
     }
   }
 
-  .modalAtividade {
+  /* .modalAtividade {
     height: 23vh;
     width: 100%;
     .titulo {
@@ -262,7 +290,7 @@ export const Container = styled.div`
         border-radius: 5px;
       }
     }
-  }
+  } */
 
   .EditUsername {
     height: 23vh;
