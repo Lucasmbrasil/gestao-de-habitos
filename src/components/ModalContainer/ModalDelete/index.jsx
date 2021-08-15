@@ -1,15 +1,14 @@
 import Button from "@material-ui/core/Button";
-
-
-
-
+import { Container } from "./styles";
+import { Title } from "../styles";
 
 const ModalDelete = () => {
 
   return (
-    <>
-      <div className="modalDelete">
-        <h1>Tem certeza que deseja apagar ?</h1>
+    <Container>
+      <div className="div colored_part superior"></div>
+      <div className="div middle">
+        <Title>tem certeza que deseja apagar?</Title>
         <div>
           <Button variant="contained">Cancelar</Button>
           <Button variant="contained" color="secondary">
@@ -17,7 +16,8 @@ const ModalDelete = () => {
           </Button>
         </div>
       </div>
-    </>
+      <div className="div colored_part inferior"></div>
+    </Container>
   );
 };
 

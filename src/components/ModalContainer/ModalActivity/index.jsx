@@ -10,7 +10,7 @@ const ModalAtividade = () => {
       <Container>
         <Title>nova atividade:</Title>
         <InputContainer>
-          <div className="legenda">
+          <div>
             <label>título</label>
           </div>
           <input placeholder="nome da atividade" />

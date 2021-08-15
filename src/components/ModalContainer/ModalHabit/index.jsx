@@ -40,9 +40,8 @@ const ModalHabito = () => {
             </select>
           </div>
         </InputContainer>
-          <div className="frequency-container">
-              <label>frequência:</label>
-
+        <div className="frequency-container">
+            <label>frequência:</label>
               <Radio
                 checked={selectedValue === "a"}
                 onChange={handleChange}
@@ -60,8 +59,8 @@ const ModalHabito = () => {
                 inputProps={{ "aria-label": "B" }}
               />
               <label>semanal</label>
-          </div>
-          <InputContainer>
+        </div>
+        <InputContainer>
             <div className="rating">
               <label>nível de dificuldade:</label>
               <Rating
@@ -72,7 +71,7 @@ const ModalHabito = () => {
                 }}
               />
             </div>
-          </InputContainer>     
+        </InputContainer>     
       </Container>
     </ModalContainer>
   );

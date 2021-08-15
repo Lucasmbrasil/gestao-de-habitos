@@ -9,7 +9,7 @@ const EditUsername = () => {
       <Container>
         <Title>editar username:</Title>
         <InputContainer>
-          <div className="legenda">
+          <div>
             <label>novo nome</label>
           </div>
           <input placeholder="nome de usuário"/>

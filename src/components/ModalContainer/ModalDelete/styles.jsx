@@ -1,11 +1,13 @@
+import styled from "styled-components";
+
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
   width: 90vw;
   max-width: 350px;
-  border: 2px solid ${(props) => props.color};
+  border: 2px solid #E57373;
   border-radius: 16px;
-  background-color: ${(props) => props.color};
+  background-color: #E57373;
 
   .div {
     width: 100%;
@@ -14,39 +16,29 @@ export const Container = styled.div`
   .middle {
     background-color: #fafafa;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    height: 140px;
+
+    div {
+        margin: 1rem 0;
+        display: flex;
+        justify-content: space-evenly;
+
+    }
   }
 
   .colored_part {
-    background-color: ${(props) => props.color};
+    background-color: #E57373;
     height: 38px;
   }
 
   .superior {
     border-top-left-radius: 16px;
     border-top-right-radius: 16px;
-    span {
-      position: relative;
-      float: right;
-      font-family: "Karla", sans-serif;
-      font-style: normal;
-      font-weight: bold;
-      font-size: 32px;
-      line-height: 37px;
-      color: #ffffff;
-      text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-      margin-right: 0.5rem;
-      cursor: pointer;
-    }
   }
 
   .inferior {
     border-bottom-left-radius: 16px;
     border-bottom-right-radius: 16px;
-    button {
-      position: relative;
-      left: 250px;
-      bottom: 1rem;
-    }
   }
 `;

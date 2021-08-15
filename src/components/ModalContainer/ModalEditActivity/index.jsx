@@ -9,7 +9,7 @@ const EditAtividade = () => {
       <Container>
         <Title>editar atividade:</Title>
         <InputContainer>
-          <div className="legenda">
+          <div>
             <label>novo título</label>
           </div>
           <input placeholder="nome da atividade" />

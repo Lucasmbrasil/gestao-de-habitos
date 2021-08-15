@@ -15,7 +15,7 @@ const ModalObjetivo = () => {
       <Container>
         <Title>novo objetivo:</Title>
         <InputContainer>
-          <div className="legenda">
+          <div>
             <label>título</label>
           </div>
           <input type="text" placeholder="título do ojetivo" />

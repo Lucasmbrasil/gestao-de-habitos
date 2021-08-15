@@ -22,7 +22,5 @@ export const Container = styled.div`
                 color: #424242;
             }
         }
-    
     }
-
 `

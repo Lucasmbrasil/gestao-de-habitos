@@ -9,27 +9,25 @@ const ModalGrupo = () => {
       <Container>
         <Title>novo grupo:</Title>
         <InputContainer>
-          <div className="legenda">
+          <div>
             <label>título</label>
           </div>
-          <input className="GrupoTexto" placeholder="nome do grupo" />
+          <input placeholder="nome do grupo" />
         </InputContainer>
         <InputContainer>
-          <div className="legenda">
+          <div>
             <label>descrição</label>
           </div>
-          <input
-            className="desc"
-            placeholder="descreva um pouco sobre o grupo aqui"
+          <input placeholder="descreva um pouco sobre o grupo aqui"
           />
         </InputContainer>
         <InputContainer>
-          <div className="legenda">
+          <div>
             <label>categoria</label>
           </div>
           <div className="select">
             <select>
-              <option className="option">selecione uma categoria</option>
+              <option>selecione uma categoria</option>
             </select>
           </div>
         </InputContainer>
