@@ -241,88 +241,8 @@ export const Container = styled.div`
     }
   }
 
-  /* .modalAtividade {
-    height: 23vh;
-    width: 100%;
-    .titulo {
-      font-family: "Arvo", serif;
-      margin: 0.5rem 0 0 0;
-      text-align: center;
-    }
 
-    .input {
-      display: flex;
-      flex-direction: column;
 
-      width: 94%;
-      align-items: center;
-      .legenda {
-        font-family: "Karla", sans-serif;
-        width: 87%;
-      }
-
-      .Atividade {
-        border: 1px solid #424242;
-        opacity: 87%;
-        height: 29px;
-        padding-left: 1rem;
-        width: 87%;
-        border-radius: 5px;
-      }
-    }
-    .date {
-      display: flex;
-      flex-direction: column;
-
-      width: 94%;
-      align-items: center;
-      .legenda {
-        font-family: "Karla", sans-serif;
-        width: 87%;
-      }
-
-      .campo-data {
-        border: 1px solid black;
-        width: 88%;
-        display: flex;
-        align-items: center;
-        justify-content: space-around;
-        border-radius: 5px;
-      }
-    }
-  } */
-
-  .EditUsername {
-    height: 23vh;
-    width: 100%;
-
-    .titulo {
-      font-family: "Arvo", serif;
-      margin: 0.5rem 0 0 0;
-      text-align: center;
-    }
-
-    .input {
-      display: flex;
-      flex-direction: column;
-
-      width: 94%;
-      align-items: center;
-      .legenda {
-        font-family: "Karla", sans-serif;
-        width: 87%;
-      }
-
-      .usuario {
-        border: 1px solid #424242;
-        opacity: 87%;
-        height: 29px;
-        padding-left: 1rem;
-        width: 87%;
-        border-radius: 5px;
-      }
-    }
-  }
 
   .colored_part {
     background-color: ${(props) => props.color};

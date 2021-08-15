@@ -12,7 +12,7 @@ const EditUsername = () => {
           <div className="legenda">
             <label>novo nome</label>
           </div>
-          <input className="usuario" placeholder="nome de usuario" />
+          <input placeholder="nome de usuario" />
         </InputContainer>
         </Container>
     </ModalContainer>

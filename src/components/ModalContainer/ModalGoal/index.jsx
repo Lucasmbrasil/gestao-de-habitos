@@ -4,28 +4,32 @@ import Typography from "@material-ui/core/Typography";
 import ModalContainer from "..";
 import { Title } from "../styles";
 import { useState } from "react";
+import { InputContainer } from "../styles";
+import { Container } from "./styles";
 
-const useStyles = makeStyles({
-  box: {
-    display: "flex",
-    margin: "1rem",
-  },
-});
+// const useStyles = makeStyles({
+//   box: {
+//     display: "flex",
+//     margin: "1rem",
+//   },
+// });
+
 const ModalObjetivo = () => {
   const [value, setValue] = useState(2);
-  const classes = useStyles();
+  
   return (
     <ModalContainer color="#7986CB">
-      <div className="modalObjetivo">
+      <Container>
         <Title>novo objetivo:</Title>
-        <div className="divLegenda">
+        <InputContainer>
           <div className="legenda">
             <label>título</label>
           </div>
-          <input className="objetivo-texto" placeholder="titulo do ojetivo" />
-        </div>
-        <div className={classes.box} component="fieldset" mb={3}>
-          <Typography component="legend">nivel de dificuldade:</Typography>
+          <input type="text" placeholder="título do ojetivo" />
+        </InputContainer>
+        <InputContainer>
+        <div className="rating">
+          <label>nível de dificuldade:</label>
           <Rating
             name="objetivo"
             value={value}
@@ -34,7 +38,8 @@ const ModalObjetivo = () => {
             }}
           />
         </div>
-      </div>
+        </InputContainer>
+      </Container>
     </ModalContainer>
   );
 };
