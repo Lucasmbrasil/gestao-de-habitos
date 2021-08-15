@@ -24,6 +24,7 @@ export const InputContainer = styled.div`
     width: 100%;
     opacity: 87%;
     padding-left: 1rem;
+    font-family: "Karla", sans-serif;
   }
 `
 

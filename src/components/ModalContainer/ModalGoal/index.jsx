@@ -7,13 +7,6 @@ import { useState } from "react";
 import { InputContainer } from "../styles";
 import { Container } from "./styles";
 
-// const useStyles = makeStyles({
-//   box: {
-//     display: "flex",
-//     margin: "1rem",
-//   },
-// });
-
 const ModalObjetivo = () => {
   const [value, setValue] = useState(2);
   

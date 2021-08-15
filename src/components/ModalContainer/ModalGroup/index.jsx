@@ -1,17 +1,20 @@
 import ModalContainer from "..";
 import { Title } from "../styles";
+import { InputContainer } from "../styles";
+import { Container } from "./styles";
+
 const ModalGrupo = () => {
   return (
     <ModalContainer color="#00BCD4">
-      <div className="modalGrupo">
-        <Title>novo Grupo:</Title>
-        <div className="input">
+      <Container>
+        <Title>novo grupo:</Title>
+        <InputContainer>
           <div className="legenda">
             <label>título</label>
           </div>
           <input className="GrupoTexto" placeholder="nome do grupo" />
-        </div>
-        <div className="input">
+        </InputContainer>
+        <InputContainer>
           <div className="legenda">
             <label>descrição</label>
           </div>
@@ -19,27 +22,18 @@ const ModalGrupo = () => {
             className="desc"
             placeholder="descreva um pouco sobre o grupo aqui"
           />
-        </div>
-        <div className="input">
+        </InputContainer>
+        <InputContainer>
           <div className="legenda">
             <label>categoria</label>
           </div>
           <div className="select">
-            <select
-              style={{
-                width: "100%",
-                height: "30px",
-                borderRadius: "5px",
-                paddingLeft: "1rem",
-                border: "1px solid #424242",
-                backgroundColor: "white",
-              }}
-            >
-              <option className="option">Selecione uma categoria</option>
+            <select>
+              <option className="option">selecione uma categoria</option>
             </select>
           </div>
-        </div>
-      </div>
+        </InputContainer>
+      </Container>
     </ModalContainer>
   );
 };
