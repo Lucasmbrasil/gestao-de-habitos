@@ -2,7 +2,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Rating from "@material-ui/lab/Rating";
 import Typography from "@material-ui/core/Typography";
 import ModalContainer from "..";
-
+import { Title } from "../styles";
 import { useState } from "react";
 
 const useStyles = makeStyles({
@@ -17,7 +17,7 @@ const ModalObjetivo = () => {
   return (
     <ModalContainer color="#7986CB">
       <div className="modalObjetivo">
-        <div className="titulo">novo objetivo:</div>
+        <Title>novo objetivo:</Title>
         <div className="divLegenda">
           <div className="legenda">
             <label>título</label>

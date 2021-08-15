@@ -4,7 +4,7 @@ import Typography from "@material-ui/core/Typography";
 import ModalContainer from "..";
 import Radio from "@material-ui/core/Radio";
 import { useState } from "react";
-
+import { Title } from "../styles";
 const useStyles = makeStyles({
   box: {
     display: "flex",
@@ -24,7 +24,7 @@ const ModalHabito = () => {
   return (
     <ModalContainer color="#81C784">
       <div className="modal">
-        <div className="title">novo hábito:</div>
+        <Title>novo hábito:</Title>
         <div className="input">
           <div className="text">
             <label>título</label>

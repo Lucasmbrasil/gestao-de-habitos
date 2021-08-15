@@ -1,10 +1,11 @@
 import ModalContainer from "..";
+import { Title } from "../styles";
 
 const EditAtividade = () => {
   return (
     <ModalContainer color="#8BC34A">
       <div className="modalAtividade">
-        <div className="titulo">editar atividade:</div>
+        <Title>editar atividade:</Title>
         <div className="input">
           <div className="legenda">
             <label>novo título</label>

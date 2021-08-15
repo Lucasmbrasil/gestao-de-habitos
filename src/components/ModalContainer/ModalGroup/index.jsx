@@ -1,10 +1,10 @@
 import ModalContainer from "..";
-
+import { Title } from "../styles";
 const ModalGrupo = () => {
   return (
     <ModalContainer color="#00BCD4">
       <div className="modalGrupo">
-        <div className="titulo">novo Grupo:</div>
+        <Title>novo Grupo:</Title>
         <div className="input">
           <div className="legenda">
             <label>título</label>
