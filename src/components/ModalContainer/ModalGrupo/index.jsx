@@ -1,6 +1,8 @@
+import ModalContainer from "..";
+
 const ModalGrupo = () => {
   return (
-    <>
+    <ModalContainer color="#00BCD4">
       <div className="modalGrupo">
         <div className="titulo">novo Grupo:</div>
         <div className="input">
@@ -38,7 +40,7 @@ const ModalGrupo = () => {
           </div>
         </div>
       </div>
-    </>
+    </ModalContainer>
   );
 };
 

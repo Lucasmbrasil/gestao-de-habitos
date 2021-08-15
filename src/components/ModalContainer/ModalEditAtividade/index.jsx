@@ -1,6 +1,8 @@
+import ModalContainer from "..";
+
 const EditAtividade = () => {
   return (
-    <>
+    <ModalContainer color="#8BC34A">
       <div className="modalAtividade">
         <div className="titulo">editar atividade:</div>
         <div className="input">
@@ -10,7 +12,7 @@ const EditAtividade = () => {
           <input className="Atividade" placeholder="nome da atividade" />
         </div>
       </div>
-    </>
+    </ModalContainer>
   );
 };
 

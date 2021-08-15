@@ -1,7 +1,7 @@
 import { makeStyles } from "@material-ui/core/styles";
 import Rating from "@material-ui/lab/Rating";
 import Typography from "@material-ui/core/Typography";
-
+import ModalContainer from "..";
 import Radio from "@material-ui/core/Radio";
 import { useState } from "react";
 
@@ -22,7 +22,7 @@ const ModalHabito = () => {
     setSelectedValue(event.target.value);
   };
   return (
-    <>
+    <ModalContainer color="#81C784">
       <div className="modal">
         <div className="title">novo hábito:</div>
         <div className="input">
@@ -89,7 +89,7 @@ const ModalHabito = () => {
           </div>
         </div>
       </div>
-    </>
+    </ModalContainer>
   );
 };
 

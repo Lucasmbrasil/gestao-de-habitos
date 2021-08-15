@@ -1,6 +1,7 @@
 import { makeStyles } from "@material-ui/core/styles";
 import Rating from "@material-ui/lab/Rating";
 import Typography from "@material-ui/core/Typography";
+import ModalContainer from "..";
 
 import { useState } from "react";
 
@@ -14,7 +15,7 @@ const ModalObjetivo = () => {
   const [value, setValue] = useState(2);
   const classes = useStyles();
   return (
-    <>
+    <ModalContainer color="#7986CB">
       <div className="modalObjetivo">
         <div className="titulo">novo objetivo:</div>
         <div className="divLegenda">
@@ -34,7 +35,7 @@ const ModalObjetivo = () => {
           />
         </div>
       </div>
-    </>
+    </ModalContainer>
   );
 };
 

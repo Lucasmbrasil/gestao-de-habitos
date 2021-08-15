@@ -1,8 +1,9 @@
 import TodayRoundedIcon from "@material-ui/icons/TodayRounded";
+import ModalContainer from "..";
 
 const ModalAtividade = () => {
   return (
-    <>
+    <ModalContainer color="#8BC34A">
       <div className="modalAtividade">
         <div className="titulo">nova atividade:</div>
         <div className="input">
@@ -21,7 +22,7 @@ const ModalAtividade = () => {
           </div>
         </div>
       </div>
-    </>
+    </ModalContainer>
   );
 };
 

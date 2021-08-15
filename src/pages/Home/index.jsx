@@ -16,31 +16,14 @@ import EditUsername from "../../components/ModalContainer/EditUsername";
 const Home = () => {
   return (
     <>
-      <ModalContainer color="#81C784">
         <ModalHabito />
-      </ModalContainer>
-      <ModalContainer color="#E57373">
         <ModalDelete />
-      </ModalContainer>
-
-      <ModalContainer color="#7986CB">
         <ModalObjetivo />
-      </ModalContainer>
-
-      <ModalContainer color="#7986CB">
         <ModalGrupo />
-      </ModalContainer>
-
-      <ModalContainer color="#8BC34A">
-        <ModalAtividade />
-      </ModalContainer>
-      <ModalContainer color="#8BC34A">
+        <ModalAtividade />     
         <EditAtividade />
-      </ModalContainer>
-
-      <ModalContainer color="#26A69A">
         <EditUsername />
-      </ModalContainer>
+      
       <div>Olá</div>
     </>
   );
