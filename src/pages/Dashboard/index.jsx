@@ -12,6 +12,7 @@ import {
 import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
 import { useCallback, useEffect, useState } from "react";
 import api from "../../services/api";
+import ModalHabito from "../../components/ModalContainer/ModalHabit";
 
 const Dashboard = () => {
   const [habits, setHabits] = useState([]);
@@ -26,6 +27,10 @@ const Dashboard = () => {
       .then((response) => setHabits(response.data))
       .catch((e) => console.log(e));
   }, []);
+
+  const handleButton = () => {
+    setAddGoodHabit(false);
+  };
 
   useEffect(() => {
     handleList();
@@ -60,6 +65,7 @@ const Dashboard = () => {
               )
             )
           )}
+          {addGoodHabit && <ModalHabito handleButton={handleButton} />}
         </Habits>
         <Habits>
           <TextHabits>
