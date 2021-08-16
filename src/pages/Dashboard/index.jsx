@@ -13,10 +13,12 @@ import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
 import { useCallback, useEffect, useState } from "react";
 import api from "../../services/api";
 import ModalHabito from "../../components/ModalContainer/ModalHabit";
+import { useHabitList } from "../../Providers/HabitsList";
 
 const Dashboard = () => {
-  const [habits, setHabits] = useState([]);
+  const { habits, setHabits } = useHabitList();
   const [addGoodHabit, setAddGoodHabit] = useState(false);
+  const [addBadHabit, setAddBadHabit] = useState(false);
 
   const handleList = useCallback(() => {
     const token = window.localStorage.getItem("token");
@@ -28,8 +30,11 @@ const Dashboard = () => {
       .catch((e) => console.log(e));
   }, []);
 
-  const handleButton = () => {
+  const handleButtonCloseGoodHabit = () => {
     setAddGoodHabit(false);
+  };
+  const handleButtonCloseBadHabit = () => {
+    setAddBadHabit(false);
   };
 
   useEffect(() => {
@@ -38,6 +43,9 @@ const Dashboard = () => {
 
   const handleAddGoodHabit = () => {
     setAddGoodHabit(true);
+  };
+  const handleAddBadHabit = () => {
+    setAddBadHabit(true);
   };
   return (
     <MainContainer>
@@ -54,40 +62,48 @@ const Dashboard = () => {
               criar novo
             </StyledButton>
           </TextHabits>
-          {habits.map((habit) =>
-            habit.category === "Saúde" ? (
-              <RedCard habit={habit} key={habit.id} />
-            ) : habit.category === "Estudo" ? (
-              <BlueCard habit={habit} key={habit.id} />
-            ) : (
-              habit.category === "Alimentação" && (
-                <PastelCard habit={habit} key={habit.id} />
+          {habits !== undefined &&
+            habits.map((habit) =>
+              habit.category === "Saúde" ? (
+                <RedCard habit={habit} key={habit.id} />
+              ) : habit.category === "Estudo" ? (
+                <BlueCard habit={habit} key={habit.id} />
+              ) : (
+                habit.category === "Alimentação" && (
+                  <PastelCard habit={habit} key={habit.id} />
+                )
               )
-            )
+            )}
+          {addGoodHabit && (
+            <ModalHabito handleButtonClose={handleButtonCloseGoodHabit} />
           )}
-          {addGoodHabit && <ModalHabito handleButton={handleButton} />}
         </Habits>
         <Habits>
           <TextHabits>
             <p>hábitos para eliminar</p>
             <StyledPinkButton
+              onClick={handleAddBadHabit}
               variant="contained"
               startIcon={<AddCircleOutlineIcon />}
             >
               criar novo
             </StyledPinkButton>
           </TextHabits>
-          {habits.map((habit) =>
-            habit.category === "NãoSaúde" ? (
-              <RedCard habit={habit} key={habit.id} />
-            ) : habit.category === "NãoEstudo" ? (
-              <BlueCard habit={habit} key={habit.id} />
-            ) : (
-              habit.category === "NãoAlimentação" && (
-                <PastelCard habit={habit} key={habit.id} />
-              )
-            )
+          {addBadHabit && (
+            <ModalHabito handleButtonClose={handleButtonCloseBadHabit} />
           )}
+          {habits !== undefined &&
+            habits.map((habit) =>
+              habit.category === "NãoSaúde" ? (
+                <RedCard habit={habit} key={habit.id} />
+              ) : habit.category === "NãoEstudo" ? (
+                <BlueCard habit={habit} key={habit.id} />
+              ) : (
+                habit.category === "NãoAlimentação" && (
+                  <PastelCard habit={habit} key={habit.id} />
+                )
+              )
+            )}
         </Habits>
       </HabitsContainer>
     </MainContainer>

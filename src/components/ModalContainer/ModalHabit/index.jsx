@@ -10,7 +10,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { Button, RadioGroup } from "@material-ui/core";
 
-const ModalHabito = ({ handleButton }) => {
+const ModalHabito = ({ handleButtonClose }) => {
   const [selectedValue, setSelectedValue] = useState("");
   const [value, setValue] = useState(2);
 
@@ -36,7 +36,7 @@ const ModalHabito = ({ handleButton }) => {
     <ModalContainer
       color="#aed4b0"
       onSubmit={handleSubmit(handleAdd)}
-      handleButton={handleButton}
+      handleButtonClose={handleButtonClose}
     >
       <Container>
         {/* <form onSubmit={handleSubmit(handleAdd)}> */}

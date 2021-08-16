@@ -29,6 +29,7 @@ export const InputContainer = styled.div`
 `;
 
 export const Container = styled.form`
+  /* position: absolute; */
   display: flex;
   flex-direction: column;
   width: 90vw;
@@ -38,13 +39,15 @@ export const Container = styled.form`
   background-color: ${(props) => props.color};
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
+  /* AJEITAR Z-INDEX DO BEFORE */
+
   ::before {
-    content: "";
+    z-index: 1;
+    position: absolute;
+    /* content: "";
     width: 100vw;
     height: 100vh;
-    position: absolute;
-    z-index: -1;
-    background-color: rgba(3, 61, 63, 0.4);
+    background-color: rgba(3, 61, 63, 0.4); */
   }
 
   .div {
@@ -58,7 +61,7 @@ export const Container = styled.form`
   }
 
   .colored_part {
-    background-color: ${(props) => props.color};
+    /* background-color: ${(props) => props.color}; */
     height: 38px;
   }
 
