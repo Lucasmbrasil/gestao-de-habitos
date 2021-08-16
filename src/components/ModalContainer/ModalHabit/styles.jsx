@@ -4,7 +4,7 @@ export const Container = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 400px;
+    height: 320px;
     width: 100%;
 
     textarea {
