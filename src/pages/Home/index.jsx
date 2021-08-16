@@ -6,9 +6,12 @@
 // import EditAtividade from "../../components/ModalContainer/ModalEditActivity";
 // import EditUsername from "../../components/ModalContainer/ModalEditUsername";
 
+import AddButton from "../../components/AddButton";
+
 const Home = () => {
   return (
     <>
+      <AddButton />
       <div>Olá</div>
     </>
   );
