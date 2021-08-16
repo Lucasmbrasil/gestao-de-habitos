@@ -1,3 +1,4 @@
+import HeaderDashboard from "../../components/HeaderDashboard";
 import BlueCard from "../../components/HabitosCard/BlueCard";
 import PastelCard from "../../components/HabitosCard/PastelCard";
 import RedCard from "../../components/HabitosCard/RedCard";
@@ -36,6 +37,7 @@ const Dashboard = () => {
   };
   return (
     <MainContainer>
+      <HeaderDashboard/>
       <HabitsContainer>
         <h2>meus hábitos</h2>
         <Habits>
