@@ -2,11 +2,12 @@ import styled from "styled-components";
 
 export const Button = styled.button`
   background-color: ${(props) => `${props.color}`};
-  border: 1px solid black;
-  border-radius: 5px;
+  border: 2px solid rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 8px;
   width: 10%;
-  font-size: 16px;
-  padding: 3px 3px 3px 3px;
+  font-size: 1rem;
+  padding: 5px;
   display: flex;
   justify-content: space-evenly;
   -webkit-align-items: center;
@@ -14,7 +15,8 @@ export const Button = styled.button`
   -ms-flex-align: center;
   align-items: center;
   font-family: "Karla", sans-serif;
-  color: white;
+  font-weight: 700;
+  color: #fff;
 
   .plus {
     color: white;

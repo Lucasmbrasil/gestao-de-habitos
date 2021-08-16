@@ -1,15 +1,13 @@
 import { Button } from "./styles";
-
 import ControlPointIcon from "@material-ui/icons/ControlPoint";
 
-const AddButton = ({ color }) => {
+
+const AddButton = ({ color, label }) => {
   return (
-    <>
-      <Button color={"red"}>
+      <Button color={color}>
         <ControlPointIcon className="plus" />
-        criar novo
+        {label}
       </Button>
-    </>
   );
 };
 
