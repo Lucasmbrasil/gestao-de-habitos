@@ -17,6 +17,10 @@ const StyledMenu = withStyles({
   paper: {
     border: "1px solid black",
     backgroundColor: "#006064",
+    color: "#ffffff",
+    fontFamily: "Arvo",
+    fontWeight: "bold",
+
   },
 })((props) => (
   <Menu
@@ -36,8 +40,9 @@ const StyledMenu = withStyles({
 
 const StyledMenuItem = withStyles((theme) => ({
   root: {
+    fontWeight: "bold",
     "&:focus": {
-      backgroundColor: "#FDD835",
+      backgroundColor: "#044547",
       "& .MuiListItemIcon-root, & .MuiListItemText-primary": {
         color: "red",
       },
@@ -60,7 +65,6 @@ const MenuFooter = () => {
       <Footer>
         <MenuIcon className="icons" />
         <SentimentVerySatisfiedIcon className="icons" />
-        <LineStyleIcon className="icons" />
         <div>
           <GroupIcon className="icons" onClick={handleClick} />
 
@@ -71,7 +75,7 @@ const MenuFooter = () => {
             open={Boolean(anchorEl)}
             onClose={handleClose}
           >
-            <StyledMenuItem onClick={handleClose}>Meus Grupos</StyledMenuItem>
+            <StyledMenuItem onClick={handleClose}>meus grupos</StyledMenuItem>
             <StyledMenuItem onClick={handleClose}>encontrar</StyledMenuItem>
             <StyledMenuItem onClick={handleClose}>criar grupo</StyledMenuItem>
           </StyledMenu>

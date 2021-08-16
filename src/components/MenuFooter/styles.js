@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const Footer = styled.div`
   display: none;
+  font-family: "Arvo", serif;
   @media (min-width: 320px) {
     display: flex;
 
@@ -17,6 +18,11 @@ export const Footer = styled.div`
     .icons {
       font-size: 100%;
       color: #ffffff;
+    }
+
+    svg {
+      height: 26px;
+      width: 26px;
     }
   }
 `;
