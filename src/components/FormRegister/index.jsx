@@ -2,21 +2,23 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import api from "../../services/api";
-import SendIcon from "@material-ui/icons/Send";
-import { useState } from "react";
 import {
   ButtonStyled,
   ContainerLeft,
   Form,
   FormContainer,
   InputStyled,
+  StyledCircularProgress,
 } from "./styles";
-// import { Input } from "@material-ui/core";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useHistory } from "react-router-dom";
+import { useState } from "react";
 
 const FormRegister = () => {
-  const [welcome, setWelcome] = useState(false);
-  const [message, setMessage] = useState("");
-
+  const history = useHistory();
+  const [disable, setDisable] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const schema = yup.object().shape({
     username: yup
       .string()
@@ -42,6 +44,7 @@ const FormRegister = () => {
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) });
   const handleForm = (data) => {
+    setIsLoading(true);
     const newData = {
       username: data.username,
       password: data.password,
@@ -50,12 +53,17 @@ const FormRegister = () => {
     api
       .post("/users/", newData)
       .then((response) => {
-        setWelcome(true);
-        setMessage(
-          `Bem-vindo ${data.username}! Acesse a nossa página de login e crie novos hábitos!`
-        );
+        toast.success("Cadastro realizado! Pronto para criar novos hábitos?", {
+          onClose: () => history.push("/dashboard"),
+          onOpen: () => setDisable(true),
+        });
+        setIsLoading(false);
       })
-      .catch((e) => setMessage(`Usuário já cadastrado`));
+      .catch((err) => {
+        toast.error("Ops, houve um erro ao tentar se cadastrar!");
+        console.log(err);
+        setIsLoading(false);
+      });
   };
   return (
     <form onSubmit={handleSubmit(handleForm)}>
@@ -65,30 +73,28 @@ const FormRegister = () => {
             <h2>cadastro</h2>
             <div>
               <InputStyled
+                disabled={disable ? true : false}
                 fullWidth
                 placeholder="Nome de usuário *"
-                // inputProps={{ minLength: 6 }}
                 {...register("username")}
-                // error={!!errors.username}
-                // helperText={errors.username?.message}
               />
               <p>{errors.username?.message}</p>
             </div>
             <div>
               <InputStyled
+                disabled={disable ? true : false}
                 fullWidth
                 placeholder="E-mail *"
                 {...register("email")}
-                // error={!!errors.email}
-                // helperText={errors.email?.message}
               />
               <p>{errors.email?.message}</p>
             </div>
             <div>
               <InputStyled
+                disabled={disable ? true : false}
                 fullWidth
                 placeholder="Senha *"
-                inputProps={{ minLength: 8, type: "password" }}
+                type="password"
                 {...register("password")}
               />
               <p>{errors.password?.message}</p>
@@ -96,25 +102,19 @@ const FormRegister = () => {
 
             <div>
               <InputStyled
+                disabled={disable ? true : false}
                 fullWidth
                 placeholder="Confirme a senha *"
                 {...register("confirmPassword")}
                 type="password"
-                // error={!!errors.confirmPassword}
-                // helpertext={errors.confirmPassword?.message}
               />
               <p>{errors.confirmPassword?.message}</p>
             </div>
-            <ButtonStyled
-              fullWidth
-              type="submit"
-              variant="contained"
-              color="primary"
-              // endIcon={<SendIcon></SendIcon>}
-            >
+            <ButtonStyled fullWidth type="submit" variant="contained">
               Criar conta
             </ButtonStyled>
-            <div>{welcome && message}</div>
+            {isLoading && <StyledCircularProgress />}
+            <ToastContainer className="toast" />
           </Form>
         </FormContainer>
       </ContainerLeft>
