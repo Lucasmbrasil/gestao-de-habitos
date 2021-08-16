@@ -1,16 +1,20 @@
 import styled from "styled-components";
 
 export const ContainerHeader = styled.div`
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    align-items: center;
-    background-color: #FFFDE7;
-    padding: 20px;
-    margin: 0 auto;
-    height: 160px;
-    border-bottom: 4px solid lightgray;    
+    display: none;
+    
+    @media screen and (min-width: 800px){
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        align-items: center;
+        background-color: #FFFDE7;
+        padding: 20px;
+        margin: 0 auto;
+        height: 160px;
+        border-bottom: 4px solid lightgray; 
+    }
 `;
 
 export const ContainerIconTitleSubtitle = styled.div` 
