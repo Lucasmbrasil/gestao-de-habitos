@@ -1,4 +1,4 @@
 const Providers = ({ children }) => {
-  return <></>;
+  return <>{children}</>;
 };
 export default Providers;
