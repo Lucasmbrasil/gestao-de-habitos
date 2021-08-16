@@ -29,13 +29,23 @@ export const InputContainer = styled.div`
 `
 
 export const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 90vw;
-  max-width: 350px;
-  border: 2px solid ${(props) => props.color};
-  border-radius: 16px;
-  background-color: ${(props) => props.color};
+    display: flex;
+    flex-direction: column;
+    width: 90vw;
+    max-width: 350px;
+    border: 2px solid ${(props) => props.color};
+    border-radius: 16px;
+    background-color: ${(props) => props.color};
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+    ::before{
+        content: "";
+        width: 100vw;
+        height: 100vh;
+        position: absolute;
+        z-index: -1;
+        background-color: rgba(3, 61, 63, 0.4);
+    }
 
   .div {
     width: 100%;
