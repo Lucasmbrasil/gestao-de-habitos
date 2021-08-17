@@ -7,7 +7,7 @@ const MyGroupsHeader = () => {
     <ContainerHeader>
 
         <ContainerIconTitleSubtitle>
-            <PeopleOutlineIcon fontSize="large"></PeopleOutlineIcon>
+            <PeopleOutlineIcon fontSize="large" style={{color: "#F57F17"}}/>
             <div>
                 <h2>grupos</h2>
                 <p>veja abaixo os grupos em que você se inscreveu</p>
