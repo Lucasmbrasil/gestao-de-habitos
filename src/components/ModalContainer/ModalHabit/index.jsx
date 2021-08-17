@@ -57,7 +57,11 @@ const ModalHabito = ({ handleButtonClose, addBadHabit, userID, getToken }) => {
       })
       .then((res) => handleList())
       .catch((e) => console.log(e));
-  };
+  
+      handleButtonClose();
+  }
+  
+  ;
 
   return (
     <ModalContainer
