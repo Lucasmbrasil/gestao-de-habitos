@@ -17,36 +17,46 @@ export const Container = styled.div`
         font-family: "Karla", sans-serif;
     }
 
-    .select {
-        select {
-            height: 35px;
-            border: 1px solid #424242;
-            border-radius: 0.5rem;
-            width: 100%;
-            opacity: 87%;
-            padding-left: 1rem;
-            font-family: "Karla", sans-serif;
+  textarea {
+    height: 70px;
+    border: 1px solid #424242;
+    border-radius: 0.5rem;
+    width: 100%;
+    opacity: 87%;
+    padding-left: 1rem;
+    font-family: "Karla", sans-serif;
+  }
 
-            option {
-                font-family: "Karla", sans-serif;
-                color: #424242;
-            }
-        }
-    }
+  .select {
+    select {
+      height: 35px;
+      border: 1px solid #424242;
+      border-radius: 0.5rem;
+      width: 100%;
+      opacity: 87%;
+      padding-left: 1rem;
+      font-family: "Karla", sans-serif;
 
-    .frequency-container {
-        display: flex;
-        align-items: center;
-        font-size: 1rem;
-        color: #424242;
+      option {
         font-family: "Karla", sans-serif;
-        margin: 0.5rem 0;
-        width: 90%;
+        color: #424242;
+      }
     }
-    
-    .rating {
-        display: flex;
-        align-items: center;
-    }
+  }
 
-`
+  .frequency-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 1rem;
+    color: #424242;
+    font-family: "Karla", sans-serif;
+    margin: 0.5rem 0;
+    width: 90%;
+  }
+
+  .rating {
+    display: flex;
+    align-items: center;
+  }
+`;
