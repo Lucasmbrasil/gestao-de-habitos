@@ -1,10 +1,16 @@
-// import MyGroupsHeader from "../../components/MyGroupsHeader";
-// import MyGroupsBody from "../../components/MyGroupsBody";
+import MyGroupsHeader from "../../components/MyGroupsHeader";
+import MyGroupsBody from "../../components/MyGroupsBody";
+import { BodyPage } from "./styles";
 
 const MyGroups = () => {
     return <>
-        {/* <MyGroupsHeader /> */}        
-        {/* <MyGroupsBody /> */}
+        <BodyPage>
+            <MyGroupsHeader />  
+
+            <hr />      
+            
+            <MyGroupsBody />
+        </BodyPage>
     </>
 }
 
