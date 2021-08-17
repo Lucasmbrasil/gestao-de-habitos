@@ -9,12 +9,14 @@ import {
   StyledButton,
   StyledPinkButton,
   TextHabits,
+  PageContainer
 } from "./styles";
 import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
 import { useEffect, useState } from "react";
 import api from "../../services/api";
 import ModalHabito from "../../components/ModalContainer/ModalHabit";
 import { useHabitList } from "../../Providers/HabitsList";
+import MenuSide from "../../components/MenuSide";
 import jwt_decode from "jwt-decode";
 
 const Dashboard = () => {
@@ -82,6 +84,8 @@ const Dashboard = () => {
       .catch((e) => console.log(e));
   };
   return (
+    <PageContainer>
+      <MenuSide />
     <MainContainer>
       <HeaderDashboard/>
       <HabitsContainer>
@@ -225,6 +229,7 @@ const Dashboard = () => {
         </Habits>
       </HabitsContainer>
     </MainContainer>
+    </PageContainer>
   );
 };
 export default Dashboard;

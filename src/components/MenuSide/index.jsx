@@ -53,7 +53,6 @@ const useStyles = makeStyles((theme) => ({
 const MenuSide = () => {
   const classes = useStyles();
   const [appear, setAppear] = useState(false);
-  const [showDiv, setShowDiv] = useState("notShow");
 
   const ShowGroups = () => {
     setAppear(!appear)

@@ -1,6 +1,10 @@
 import styled from "styled-components";
 import { Button } from "@material-ui/core";
 
+export const PageContainer = styled.div`
+  display: flex;
+`
+
 export const HabitsContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
