@@ -2,7 +2,7 @@ import { Route, Switch } from "react-router-dom";
 import Home from "../pages/Home";
 import Register from "../pages/Register";
 
-import GrupoUsuarioInscrito from "../pages/GrupoInscritoUsuario";
+import NotSubscribed from "../pages/GroupnotSubsbribed";
 
 const Routes = () => {
   return (
@@ -10,8 +10,8 @@ const Routes = () => {
       <Route exact path="/">
         <Home />
       </Route>
-      <Route exact path="/grupoinscrito">
-        <GrupoUsuarioInscrito />
+      <Route exact path="/notsubscribed">
+        <NotSubscribed />
       </Route>
       <Route path="/register">
         <Register />

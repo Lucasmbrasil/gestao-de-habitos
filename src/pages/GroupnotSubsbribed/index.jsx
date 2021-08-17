@@ -11,7 +11,7 @@ import {
   TextDiv,
   ActivitiesContainer,
 } from "./styles";
-const GrupoUsuarioInscrito = () => {
+const NotSubscribed = () => {
   return (
     <>
       <Container>
@@ -40,22 +40,17 @@ const GrupoUsuarioInscrito = () => {
             </div>
             <ContentContainer>
               <TextDiv>
-                <div>Objetivos ativos do grupo</div>
-                <p>edite, crie e pratique em equipe</p>
+                <div>objetivos ativos do grupo</div>
               </TextDiv>
               <ActivitiesContainer>
                 <div className="whitebox">
                   <div className="text">
-                    <div>objetivos para conquistas!</div>
-                    <button>teste</button>
-                    {/*componente button */}
+                    <div>objetivos para conquistar!</div>
                   </div>
                 </div>
                 <div className="whitebox">
                   <div className="text">
                     <div>objetivos para Eliminar!</div>
-                    <button>teste</button>
-                    {/*componente button */}
                   </div>
                 </div>
               </ActivitiesContainer>
@@ -66,4 +61,4 @@ const GrupoUsuarioInscrito = () => {
     </>
   );
 };
-export default GrupoUsuarioInscrito;
+export default NotSubscribed;
