@@ -13,7 +13,7 @@ import {
   TextDiv,
   ActivitiesContainer,
 } from "./styles";
-const GrupoUsuarioInscrito = () => {
+const GroupsNotsubscribed = () => {
   return (
     <>
       <Container>
@@ -26,9 +26,7 @@ const GrupoUsuarioInscrito = () => {
             <button>sair do grupo</button>
           </div>
           <div className="ContainerContent">
-            <div className="GroupTitle">
-              Objetivos ativos do grupo <button>criar novo</button>
-            </div>
+            <div className="GroupTitle">Objetivos ativos do grupo</div>
             <div className="whitebox">
               <div className="test">teste</div>
             </div>
@@ -78,4 +76,4 @@ const GrupoUsuarioInscrito = () => {
     </>
   );
 };
-export default GrupoUsuarioInscrito;
+export default GroupsNotsubscribed;
