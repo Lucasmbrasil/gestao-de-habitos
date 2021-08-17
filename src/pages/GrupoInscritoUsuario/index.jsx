@@ -5,10 +5,6 @@ import {
   Main,
   Container,
   ContentDiv,
-  Banner,
-  IconImage,
-  GroupText,
-  ButtonsDIV,
   ContentContainer,
   TextDiv,
   ActivitiesContainer,
@@ -22,52 +18,27 @@ const GrupoUsuarioInscrito = () => {
         <Main>
           <div className="MiniBanner">
             <div className="image">{/*icone ou imagem*/}</div>
-            nome do grupo
-            <button>sair do grupo</button>
+            <div className="GroupName">nome do grupo</div>
           </div>
+          <div className="Activities">
+            atividades ativas do grupo{/*componente button aqui*/}
+          </div>
+
           <div className="ContainerContent">
-            <div className="GroupTitle">
-              Objetivos ativos do grupo <button>criar novo</button>
-            </div>
-            <div className="whitebox">
-              <div className="test">teste</div>
-            </div>
+            <div className="whitebox"></div>
           </div>
           <MenuFooter />
           <ContentDiv>
-            <Banner>
-              <IconImage>{/*futuru icone ou imagem aqui*/}</IconImage>
-              <GroupText>
-                <div>nome do grupo</div>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-              </GroupText>
-              <ButtonsDIV>
-                <div>teste</div>
-                <button>teste</button>
-                {/*componentes button ou botões com icones */}
-              </ButtonsDIV>
-            </Banner>
-            <div className="line">
-              <div />
-            </div>
             <ContentContainer>
               <TextDiv>
-                <div>Objetivos ativos do grupo</div>
+                <div>atividades ativas do grupo</div>
                 <p>edite, crie e pratique em equipe</p>
               </TextDiv>
               <ActivitiesContainer>
                 <div className="whitebox">
-                  <div className="text">
-                    <div>objetivos para conquistas!</div>
-                    <button>teste</button>
-                    {/*componente button */}
-                  </div>
-                </div>
-                <div className="whitebox">
-                  <div className="text">
-                    <div>objetivos para Eliminar!</div>
-                    <button>teste</button>
-                    {/*componente button */}
+                  <div className="grayBox">
+                    <div className="test">card aqui</div>
+                    <div className="test">card aqui</div>
                   </div>
                 </div>
               </ActivitiesContainer>
