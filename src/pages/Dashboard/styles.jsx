@@ -2,6 +2,9 @@ import styled from "styled-components";
 import { Button } from "@material-ui/core";
 
 export const HabitsContainer = styled.div`
+  min-height: 100vh;
+  max-height: 100%;
+  margin: 0 10px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
@@ -24,6 +27,7 @@ export const Habits = styled.div`
 `;
 export const MainContainer = styled.div`
   background-color: #e0f2f1;
+  height: 100%;
 `;
 export const TextHabits = styled.div`
   width: 450px;

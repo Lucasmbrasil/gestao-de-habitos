@@ -7,7 +7,7 @@ export const Title = styled.h3`
   font-size: 1.5rem;
   font-weight: 400;
   color: #212121;
-`
+`;
 export const InputContainer = styled.div`
   font-size: 1rem;
   color: #424242;
@@ -26,26 +26,35 @@ export const InputContainer = styled.div`
     padding-left: 1rem;
     font-family: "Karla", sans-serif;
   }
-`
+  .rating label {
+    max-width: 90px;
+  }
+  .rating p {
+    margin-left: 10px;
+  }
+`;
 
-export const Container = styled.div`
-    display: flex;
-    flex-direction: column;
-    width: 90vw;
-    max-width: 350px;
-    border: 2px solid ${(props) => props.color};
-    border-radius: 16px;
-    background-color: ${(props) => props.color};
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+export const Container = styled.form`
+  /* position: absolute; */
+  display: flex;
+  flex-direction: column;
+  width: 90vw;
+  max-width: 350px;
+  border: 2px solid ${(props) => props.color};
+  border-radius: 16px;
+  background-color: ${(props) => props.color};
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
-    ::before{
-        content: "";
-        width: 100vw;
-        height: 100vh;
-        position: absolute;
-        z-index: -1;
-        background-color: rgba(3, 61, 63, 0.4);
-    }
+  /* AJEITAR Z-INDEX DO BEFORE */
+
+  ::before {
+    z-index: 1;
+    position: absolute;
+    /* content: "";
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(3, 61, 63, 0.4); */
+  }
 
   .div {
     width: 100%;
@@ -58,7 +67,7 @@ export const Container = styled.div`
   }
 
   .colored_part {
-    background-color: ${(props) => props.color};
+    /* background-color: ${(props) => props.color}; */
     height: 38px;
   }
 
