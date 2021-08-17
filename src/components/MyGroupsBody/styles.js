@@ -2,13 +2,13 @@ import styled from "styled-components";
 
 export const ContainerBody = styled.div`
     height: 90vh;   
-    width: 90%; 
+    width: 100%; 
     display: flex;
     flex-direction: column;
     margin: 10px auto;
     padding: 20px;
 
-    @media screen and (min-width: 800px){
+    @media screen and (min-width: 750px){
         width: 90%;
         background-color: lightgray;
         display: flex;
@@ -38,7 +38,7 @@ export const ContainerGroups = styled.div`
         text-decoration: underline;
     }
 
-    @media screen and (min-width: 680px){
+    @media screen and (min-width: 750px){
         width: 50%;
         background-color: #FFF;
         box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -52,7 +52,7 @@ export const ContainerGroups = styled.div`
 export const SearchPlace = styled.div`
     display: none;
 
-    @media screen and (min-width: 800px){
+    @media screen and (min-width: 750px){
         width: 500px;
         height: 100px;  
         display: flex;

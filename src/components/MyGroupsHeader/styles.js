@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const ContainerHeader = styled.div`
     display: none;
     
-    @media screen and (min-width: 680px){
+    @media screen and (min-width: 750px){
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
@@ -48,7 +48,7 @@ export const ButtonAddGroup = styled.button`
     padding: 10px;
     font-family: "Karla", sans-serif;
     font-weight: bold;
-    font-size: 1rem;
+    font-size: 0.8rem;
     border-radius: 8px;    
     width: 183px;
     height: 42px;
