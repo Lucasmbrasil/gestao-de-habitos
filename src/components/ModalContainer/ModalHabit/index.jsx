@@ -48,13 +48,7 @@ const ModalHabito = ({ handleButton }) => {
           <input placeholder="nome do hábito" {...register("title")} />
         </InputContainer>
         <InputContainer>
-          <div>
-            <label>descrição</label>
-          </div>
-          <textarea placeholder="descreva um pouco sobre o hábito aqui" />
-        </InputContainer>
-        <InputContainer>
-          <div>
+          <div >
             <label>categoria</label>
           </div>
           <div className="select">
