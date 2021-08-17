@@ -75,13 +75,7 @@ const ModalHabito = ({ handleButtonClose, addBadHabit }) => {
           <p>{errors.title?.message}</p>
         </InputContainer>
         <InputContainer>
-          <div>
-            <label>descrição</label>
-          </div>
-          <textarea placeholder="descreva um pouco sobre o hábito aqui" />
-        </InputContainer>
-        <InputContainer>
-          <div>
+          <div >
             <label>categoria</label>
           </div>
           <div className="select">
