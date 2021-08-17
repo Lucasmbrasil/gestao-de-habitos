@@ -1,9 +1,10 @@
 import styled from "styled-components";
 
 export const Container = styled.aside`
+  /* position: fixed; */
   width: 220px;
   margin: 0 auto;
-  height: 100vh;
+  height: 100%;
   float: left;
   align-content: flex-end;
   flex-direction: column;
@@ -30,7 +31,7 @@ export const TitleBar = styled.div`
 export const MenuBar = styled.div`
   background-color: #006064;
   height: 100vh;
-  float: left;
+  /* float: left; */
   width: 100%;
   font-size: 16px;
 
@@ -39,14 +40,14 @@ export const MenuBar = styled.div`
   }
 
   .option {
-    padding:1rem;
+    padding: 1rem;
     display: flex;
     align-items: center;
     font-family: "Arvo", serif;
     color: #ffffff;
     cursor: pointer;
     font-weight: 400;
-    :hover{
+    :hover {
       background: rgba(255, 255, 255, 0.25);
     }
     .text {
@@ -63,7 +64,7 @@ export const MenuBar = styled.div`
     color: #ffffff;
     cursor: pointer;
 
-    :hover{
+    :hover {
       background: rgba(255, 255, 255, 0.25);
     }
 
@@ -110,8 +111,8 @@ export const MenuBar = styled.div`
       width: 70%;
       padding: 0.2rem;
 
-      :hover{
-      background: rgba(255, 255, 255, 0.25);
+      :hover {
+        background: rgba(255, 255, 255, 0.25);
       }
     }
   }
@@ -124,7 +125,7 @@ export const MenuBar = styled.div`
     padding: 1rem;
     font-weight: 500;
     cursor: pointer;
-    :hover{
+    :hover {
       background: rgba(255, 255, 255, 0.25);
     }
 

@@ -98,6 +98,7 @@ export const ButtonStyled = styled(Button)`
 
 export const StyledCircularProgress = styled(CircularProgress)`
   && {
+    margin: 0 auto 10px;
     color: #fbc02d;
     margin-top: 20px;
   }
