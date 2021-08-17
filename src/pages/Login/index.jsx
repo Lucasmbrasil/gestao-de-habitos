@@ -49,7 +49,8 @@ const Login = () => {
       .post("/sessions/", data)
       .then((response) => {
         localStorage.clear();
-        localStorage.setItem("token", response.data.access);
+        localStorage.setItem("token", response.data.access)
+        localStorage.setItem("user", data.username);
         setTimeout(() => history.push("/dashboard"), 500);
       })
       .catch((err) => {
