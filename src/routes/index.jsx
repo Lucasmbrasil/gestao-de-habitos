@@ -10,7 +10,7 @@ const Routes = () => {
       <Route exact path="/">
         <Home />
       </Route>
-      <Route exact path="/grupoinscrito">
+      <Route exact path="/subscribed">
         <GrupoUsuarioInscrito />
       </Route>
       <Route path="/register">
