@@ -2,10 +2,12 @@
 // import MyGroupsBody from "../../components/MyGroupsBody";
 
 const MyGroups = () => {
-    return <>
-        {/* <MyGroupsHeader /> */}        
-        {/* <MyGroupsBody /> */}
+  return (
+    <>
+      {/* <MyGroupsHeader /> */}
+      {/* <MyGroupsBody /> */}
     </>
-}
+  );
+};
 
 export default MyGroups;
