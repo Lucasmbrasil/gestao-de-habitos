@@ -14,11 +14,16 @@ import { useEffect, useState } from "react";
 import api from "../../services/api";
 import ModalHabito from "../../components/ModalContainer/ModalHabit";
 import { useHabitList } from "../../Providers/HabitsList";
+import jwt_decode from "jwt-decode";
 
 const Dashboard = () => {
-  const { habits, handleList, getToken } = useHabitList();
+  const { habits, handleList } = useHabitList();
   const [addGoodHabit, setAddGoodHabit] = useState(false);
   const [addBadHabit, setAddBadHabit] = useState(false);
+
+  const getToken = window.localStorage.getItem("token");
+  const decodeToken = jwt_decode(getToken);
+  const userID = decodeToken.user_id;
 
   const addHowMuchAchieved = (habit) => {
     api
@@ -91,7 +96,11 @@ const Dashboard = () => {
             </StyledButton>
           </TextHabits>
           {addGoodHabit && (
-            <ModalHabito handleButtonClose={handleButtonCloseGoodHabit} />
+            <ModalHabito
+              handleButtonClose={handleButtonCloseGoodHabit}
+              userID={userID}
+              getToken={getToken}
+            />
           )}
           {habits !== undefined &&
             habits.map((habit) => {
@@ -158,6 +167,8 @@ const Dashboard = () => {
             <ModalHabito
               handleButtonClose={handleButtonCloseBadHabit}
               addBadHabit={addBadHabit}
+              userID={userID}
+              getToken={getToken}
             />
           )}
           {habits !== undefined &&

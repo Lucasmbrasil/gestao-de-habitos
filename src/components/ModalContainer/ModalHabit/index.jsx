@@ -18,11 +18,11 @@ const labels = {
   4: "Muito Difícil",
 };
 
-const ModalHabito = ({ handleButtonClose, addBadHabit }) => {
+const ModalHabito = ({ handleButtonClose, addBadHabit, userID, getToken }) => {
   const [selectedValue, setSelectedValue] = useState("");
   const [value, setValue] = useState(0);
   const [hover, setHover] = useState(-1);
-  const { handleList, getToken, userID } = useHabitList();
+  const { handleList } = useHabitList();
 
   const schema = yup.object().shape({
     title: yup.string().required("Campo obrigatório"),
@@ -75,7 +75,7 @@ const ModalHabito = ({ handleButtonClose, addBadHabit }) => {
           <p>{errors.title?.message}</p>
         </InputContainer>
         <InputContainer>
-          <div >
+          <div>
             <label>categoria</label>
           </div>
           <div className="select">

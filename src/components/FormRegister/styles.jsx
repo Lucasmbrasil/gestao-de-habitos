@@ -8,6 +8,8 @@ export const ContainerLeft = styled.div`
   justify-content: center;
   align-items: center;
   background-color: #e0f2f1;
+  font-family: "Karla", sans-serif;
+
   && h2 {
     font-family: "Arvo", sans-serif;
     font-weight: normal;
@@ -17,7 +19,9 @@ export const ContainerLeft = styled.div`
     color: #fbc02d;
     text-align: initial;
   }
-
+  h5:hover {
+    cursor: pointer;
+  }
   width: 100vw;
   @media (min-width: 768px) {
     width: 50vw;
@@ -77,7 +81,7 @@ export const InputStyled = styled(Input)`
 `;
 export const ButtonStyled = styled(Button)`
   && {
-    margin-top: 20px;
+    margin: 20px 0px 10px;
     background-color: #fdd835;
     color: #000000;
     text-transform: none;
