@@ -28,15 +28,6 @@ export const Habits = styled.div`
 export const MainContainer = styled.div`
   background-color: #e0f2f1;
   height: 100%;
-  .divPai {
-    display: flex;
-    flex-direction: row;
-  }
-  .divvazia {
-    width: 220px;
-    background-color: red;
-    height: 100vh;
-  }
 `;
 export const TextHabits = styled.div`
   width: 450px;
