@@ -1,4 +1,6 @@
 import MenuSide from "../../components/MenuSide";
+
+import MenuFooter from "../../components/MenuFooter";
 import {
   Main,
   Container,
@@ -15,19 +17,29 @@ const GrupoUsuarioInscrito = () => {
   return (
     <>
       <Container>
+        <header className="header">procrastinare</header>
         <MenuSide />
         <Main>
+          <div className="MiniBanner">
+            <div className="image">{/*icone ou imagem*/}</div>
+            nome do grupo
+            <button>sair do grupo</button>
+          </div>
+          <div className="ContainerContent">
+            <div className="GroupTitle">
+              Objetivos ativos do grupo <button>criar novo</button>
+            </div>
+            <div className="whitebox">
+              <div className="test">teste</div>
+            </div>
+          </div>
+          <MenuFooter />
           <ContentDiv>
             <Banner>
               <IconImage>{/*futuru icone ou imagem aqui*/}</IconImage>
               <GroupText>
                 <div>nome do grupo</div>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Voluptate eligendi dolore eveniet doloremque officia nemo
-                  ipsam accusantium natus autem recusandae veritatis nihil
-                  dolorum qui eius assumenda doloribus magnam, neque quis.
-                </p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
               </GroupText>
               <ButtonsDIV>
                 <div>teste</div>

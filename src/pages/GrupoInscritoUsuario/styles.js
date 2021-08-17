@@ -4,6 +4,27 @@ export const Container = styled.div`
   width: 100%;
   display: flex;
   height: 100vh;
+
+  .header {
+    display: none;
+  }
+  @media (max-width: 768px) {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    height: "container";
+    .header {
+      background-color: rgba(0, 96, 100, 0.5);
+      color: white;
+      height: 7%;
+      align-items: center;
+      justify-content: center;
+      display: flex;
+      font-family: "Arvo", serif;
+    }
+  }
 `;
 export const Main = styled.div`
   background-color: blue;
@@ -12,14 +33,84 @@ export const Main = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  .MiniBanner {
+    display: none;
+  }
+
+  .ContainerContent {
+    display: none;
+  }
+
+  @media (max-width: 768px) {
+    background-color: #e0f2f1;
+    height: "Main";
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+
+    .MiniBanner {
+      background-color: red;
+      height: 8%;
+      margin-top: 1rem;
+      width: 54%;
+      display: flex;
+
+      align-items: center;
+      -webkit-box-pack: unset;
+      -webkit-justify-content: unset;
+      -ms-flex-pack: unset;
+      justify-content: space-between;
+
+      .image {
+        background-color: blue;
+        width: 18%;
+        height: 92%;
+      }
+    }
+    .ContainerContent {
+      background-color: rgba(225, 190, 231, 0.25);
+      width: 94%;
+      height: 64%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 1rem;
+
+      .GroupTitle {
+        font-family: "Arvo", serif;
+        height: 11%;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+      }
+
+      .whitebox {
+        background-color: white;
+        width: 91%;
+        height: 82%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .test {
+          border: 1px solid black;
+        }
+      }
+    }
+  }
 `;
+
 export const ContentDiv = styled.div`
   background-color: #e0f2f1;
   height: 97vh;
   margin-top: 1.5rem;
   width: 93%;
+  display: flex;
+  flex-direction: column;
   .line {
-    /* background-color: darkmagenta; */
     height: 33px;
     display: flex;
     justify-content: center;
@@ -32,9 +123,12 @@ export const ContentDiv = styled.div`
       width: 91%;
     }
   }
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 export const Banner = styled.div`
-  /* background-color: red; */
   box-shadow: 1px 5px 5px -3px #000000;
   border: 1px solid;
   width: 93%;
@@ -47,7 +141,6 @@ export const IconImage = styled.div`
   height: 100%;
 `;
 export const GroupText = styled.div`
-  /* background-color: pink; */
   width: 64%;
   div {
     font-family: "Arvo", serif;
@@ -56,7 +149,6 @@ export const GroupText = styled.div`
   }
 `;
 export const ButtonsDIV = styled.div`
-  /* background-color: darkgreen; */
   display: flex;
   width: 17%;
   flex-direction: column;
@@ -70,7 +162,6 @@ export const ContentContainer = styled.div`
   margin: 0 1rem 0 1rem;
 `;
 export const TextDiv = styled.div`
-  /* background-color: green; */
   width: 100%;
   height: 15%;
   display: flex;
