@@ -1,14 +1,15 @@
 import styled from "styled-components";
 
 export const ContainerBody = styled.div`
-    height: 90vh;    
+    height: 90vh;   
+    width: 90%; 
     display: flex;
     flex-direction: column;
     margin: 10px auto;
     padding: 20px;
 
     @media screen and (min-width: 800px){
-        width: 100%;
+        width: 90%;
         background-color: lightgray;
         display: flex;
         flex-direction: row;
