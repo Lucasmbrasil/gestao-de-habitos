@@ -1,15 +1,14 @@
-import { ContainerBody, ContainerMyGroups, ContainerSuggestionGroups, SearchPlace, SearchBar } from "./styles"
+import { ContainerBody, ContainerGroups, SearchPlace, SearchBar } from "./styles"
 import SearchIcon from '@material-ui/icons/Search';
 
 const MyGroupsBody = () => {
-    return (<>
-
+    return (
         <ContainerBody>        
-            <ContainerMyGroups>
+            <ContainerGroups>
                 <h2>meus grupos</h2>
-            </ContainerMyGroups>
+            </ContainerGroups>
 
-            <ContainerSuggestionGroups>
+            <ContainerGroups>
                 <h2>grupos sugeridos</h2>
 
                 <SearchPlace>
@@ -18,9 +17,9 @@ const MyGroupsBody = () => {
                         buscar novos grupos <SearchIcon />
                     </SearchBar>
                 </SearchPlace>
-            </ContainerSuggestionGroups>
+            </ContainerGroups>
         </ContainerBody> 
-    </>)
+    )
 }
 
 export default MyGroupsBody;
