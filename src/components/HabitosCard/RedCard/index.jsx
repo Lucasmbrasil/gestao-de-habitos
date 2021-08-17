@@ -5,7 +5,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import CreateOutlinedIcon from "@material-ui/icons/CreateOutlined";
 import FitnessCenterIcon from "@material-ui/icons/FitnessCenter";
 import HealingIcon from "@material-ui/icons/Healing";
-import { useState } from "react";
+import { Box, CircularProgress } from "@material-ui/core";
 
 const useStyles = makeStyles({
   box: {
@@ -14,8 +14,7 @@ const useStyles = makeStyles({
   },
 });
 
-const RedCard = ({ habit }) => {
-  const [value, setValue] = useState(2);
+const RedCard = ({ habit, subHowMuchAchieved, addHowMuchAchieved }) => {
   const classes = useStyles();
   return (
     <>
@@ -30,10 +29,9 @@ const RedCard = ({ habit }) => {
             <Typography component="legend">nivel</Typography>
             <Rating
               name="red"
-              value={value}
-              onChange={(event, newValue) => {
-                setValue(newValue);
-              }}
+              value={Number(habit.difficulty)}
+              max={4}
+              readOnly
             />
           </div>
         </div>
@@ -46,7 +44,63 @@ const RedCard = ({ habit }) => {
         </div>
 
         <div className="filled2">
-          {habit.category === "Saúde" ? <button>+</button> : <button>-</button>}
+          {habit.category === "Saúde" ? (
+            <div className="filled2">
+              <button onClick={() => addHowMuchAchieved(habit)}>+</button>
+              <Box position="relative" display="inline-flex">
+                <CircularProgress
+                  variant="determinate"
+                  value={habit.how_much_achieved}
+                />
+                <Box
+                  top={0}
+                  left={0}
+                  bottom={0}
+                  right={0}
+                  position="absolute"
+                  display="flex"
+                  alignItems="center"
+                  justifyContent="center"
+                >
+                  <Typography
+                    variant="caption"
+                    component="div"
+                    color="textSecondary"
+                  >
+                    {habit.how_much_achieved}
+                  </Typography>
+                </Box>
+              </Box>
+            </div>
+          ) : (
+            <div className="filled2">
+              <button onClick={() => subHowMuchAchieved(habit)}>-</button>
+              <Box position="relative" display="inline-flex">
+                <CircularProgress
+                  variant="determinate"
+                  value={habit.how_much_achieved}
+                />
+                <Box
+                  top={0}
+                  left={0}
+                  bottom={0}
+                  right={0}
+                  position="absolute"
+                  display="flex"
+                  alignItems="center"
+                  justifyContent="center"
+                >
+                  <Typography
+                    variant="caption"
+                    component="div"
+                    color="textSecondary"
+                  >
+                    {habit.how_much_achieved}
+                  </Typography>
+                </Box>
+              </Box>
+            </div>
+          )}
         </div>
       </HabitCardRed>
     </>

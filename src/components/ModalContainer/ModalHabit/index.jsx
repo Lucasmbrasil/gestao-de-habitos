@@ -8,15 +8,27 @@ import { Container } from "./styles";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { Button, RadioGroup } from "@material-ui/core";
+import { RadioGroup } from "@material-ui/core";
+import api from "../../../services/api";
+import { useHabitList } from "../../../Providers/HabitsList";
+const labels = {
+  1: "Fácil",
+  2: "Normal",
+  3: "Difícil",
+  4: "Muito Difícil",
+};
 
-const ModalHabito = ({ handleButtonClose }) => {
+const ModalHabito = ({ handleButtonClose, addBadHabit }) => {
   const [selectedValue, setSelectedValue] = useState("");
-  const [value, setValue] = useState(2);
+  const [value, setValue] = useState(0);
+  const [hover, setHover] = useState(-1);
+  const { handleList, getToken, userID } = useHabitList();
 
   const schema = yup.object().shape({
     title: yup.string().required("Campo obrigatório"),
-    // status: yup.string().required("Campo obrigatório"),
+    category: yup.string().min(1, "Campo obrigatório"),
+    frequency: yup.string().required("Campo obrigatório"),
+    difficulty: yup.string().required("Campo obrigatório"),
   });
 
   const {
@@ -28,8 +40,23 @@ const ModalHabito = ({ handleButtonClose }) => {
   const handleChange = (event) => {
     setSelectedValue(event.target.value);
   };
+
   const handleAdd = (data) => {
-    console.log(data);
+    const newData = {
+      title: data.title,
+      category: data.category,
+      difficulty: Number(data.difficulty),
+      frequency: data.frequency,
+      achieved: false,
+      how_much_achieved: Number(0),
+      user: Number(userID),
+    };
+    api
+      .post("/habits/", newData, {
+        headers: { Authorization: `Bearer ${getToken}` },
+      })
+      .then((res) => handleList())
+      .catch((e) => console.log(e));
   };
 
   return (
@@ -39,13 +66,13 @@ const ModalHabito = ({ handleButtonClose }) => {
       handleButtonClose={handleButtonClose}
     >
       <Container>
-        {/* <form onSubmit={handleSubmit(handleAdd)}> */}
         <Title>novo hábito:</Title>
         <InputContainer>
           <div>
             <label>título</label>
           </div>
           <input placeholder="nome do hábito" {...register("title")} />
+          <p>{errors.title?.message}</p>
         </InputContainer>
         <InputContainer>
           <div>
@@ -58,61 +85,67 @@ const ModalHabito = ({ handleButtonClose }) => {
             <label>categoria</label>
           </div>
           <div className="select">
-            <select {...register("category")}>
-              <option>selecione uma categoria</option>
-              <option value="Alimentação">Alimentação</option>
-              <option value="Educação">Educação</option>
-              <option value="Saúde">Saúde</option>
+            <select {...register("category")} defaultValue="">
+              <option disabled value="">
+                selecione uma categoria
+              </option>
+              <option value={addBadHabit ? "NãoAlimentação" : "Alimentação"}>
+                Alimentação
+              </option>
+              <option value={addBadHabit ? "NãoEstudo" : "Estudo"}>
+                Educação
+              </option>
+              <option value={addBadHabit ? "NãoSaúde" : "Saúde"}>Saúde</option>
             </select>
+            <p>{errors.category?.message}</p>
           </div>
         </InputContainer>
-        <RadioGroup
-          {...register("frequency")}
-          value="a"
-          defaultValue={selectedValue}
-        >
-          <div className="frequency-container">
-            <label>frequência:</label>
+        <RadioGroup className="frequency-container" {...register("frequency")}>
+          {/* <div className="frequency-container"> */}
+          <label>frequência:</label>
 
-            <Radio
-              id="1"
-              type="radio"
-              checked={selectedValue === "a"}
-              onChange={handleChange}
-              value="a"
-              // name="radio-button"
-              // inputProps={{ "aria-label": "A" }}
-            />
-            <label htmlFor="1">diária</label>
+          <Radio
+            id="1"
+            type="radio"
+            checked={selectedValue === "Diária"}
+            onChange={handleChange}
+            value="Diária"
+          />
+          <label htmlFor="1">diária</label>
 
-            <Radio
-              type="radio"
-              id="2"
-              checked={selectedValue === "b"}
-              onChange={handleChange}
-              value="b"
-              // name="radio-button"
-              // inputProps={{ "aria-label": "B" }}
-            />
-            <label htmlFor="2">semanal</label>
-          </div>
+          <Radio
+            type="radio"
+            id="2"
+            checked={selectedValue === "Semanal"}
+            onChange={handleChange}
+            value="Semanal"
+          />
+          <label htmlFor="2">semanal</label>
+          {/* </div> */}
+          <p>{errors.frequency?.message}</p>
         </RadioGroup>
+
         <InputContainer>
           <div className="rating">
             <label>nível de dificuldade:</label>
             <Rating
+              defaultValue={0}
+              max={4}
               name="habito"
-              value={value}
+              {...register("difficulty")}
               onChange={(event, newValue) => {
                 setValue(newValue);
               }}
+              onChangeActive={(event, newHover) => {
+                setHover(newHover);
+              }}
             />
+            {value !== null && (
+              <p ml={2}>{labels[hover !== -1 ? hover : value]}</p>
+            )}
           </div>
+          <p>{errors.difficulty?.message}</p>
         </InputContainer>
-        {/* <Button type="submit" variant="contained" color="secondary">
-            Salvar
-          </Button> */}
-        {/* </form> */}
       </Container>
     </ModalContainer>
   );

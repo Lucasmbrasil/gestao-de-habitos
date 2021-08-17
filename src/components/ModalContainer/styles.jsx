@@ -26,6 +26,12 @@ export const InputContainer = styled.div`
     padding-left: 1rem;
     font-family: "Karla", sans-serif;
   }
+  .rating label {
+    max-width: 90px;
+  }
+  .rating p {
+    margin-left: 10px;
+  }
 `;
 
 export const Container = styled.form`
