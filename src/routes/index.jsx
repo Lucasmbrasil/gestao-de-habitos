@@ -1,7 +1,7 @@
 import { Route, Switch } from "react-router-dom";
 import Home from "../pages/Home";
 import Register from "../pages/Register";
-
+//
 import NotSubscribed from "../pages/GroupnotSubsbribed";
 
 const Routes = () => {
