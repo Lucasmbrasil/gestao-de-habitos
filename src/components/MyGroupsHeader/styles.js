@@ -3,7 +3,8 @@ import styled from "styled-components";
 export const ContainerHeader = styled.div`
     display: none;
     
-    @media screen and (min-width: 750px){
+    @media screen and (min-width: 900px){
+        width: 90%;
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
@@ -11,7 +12,7 @@ export const ContainerHeader = styled.div`
         align-items: center;
         background-color: rgba(255, 253, 231, 0.5);
         padding: 20px;
-        margin: 0 auto;
+        margin: 10px auto;
         height: 130px;
         border-bottom: 4px solid lightgray; 
         box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);

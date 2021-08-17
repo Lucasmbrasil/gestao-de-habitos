@@ -17,7 +17,6 @@ const MyGroupsHeader = () => {
             <AddCircleOutlineIcon fontSize="small" /> criar novo grupo
         </ButtonAddGroup>
     </ContainerHeader>
-
     </>
 }
 

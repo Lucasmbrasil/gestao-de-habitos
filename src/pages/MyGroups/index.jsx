@@ -1,14 +1,14 @@
 import MyGroupsHeader from "../../components/MyGroupsHeader";
 import MyGroupsBody from "../../components/MyGroupsBody";
-import { BodyPage } from "./styles";
+import { BodyPage, HorizontalLine } from "./styles";
+// import MenuSide from "../../components/MenuSide";
 
 const MyGroups = () => {
     return <>
+    {/* <MenuSide /> */}
         <BodyPage>
-            <MyGroupsHeader />  
-
-            <hr />      
-            
+            <MyGroupsHeader />
+                <HorizontalLine /> 
             <MyGroupsBody />
         </BodyPage>
     </>

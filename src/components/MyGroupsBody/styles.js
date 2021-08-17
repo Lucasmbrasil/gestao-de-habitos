@@ -5,7 +5,7 @@ export const ContainerBody = styled.div`
     width: 100%; 
     display: flex;
     flex-direction: column;
-    margin: 10px auto;
+    margin: 30px auto;
     padding: 20px;
 
     @media screen and (min-width: 750px){
@@ -34,7 +34,7 @@ export const ContainerGroups = styled.div`
         height: 80px;
         background-color: #FFF;
         color: #424242;
-        font-family: Arvo;
+        font-family: "Arvo", sans-serif;
         text-decoration: underline;
     }
 
