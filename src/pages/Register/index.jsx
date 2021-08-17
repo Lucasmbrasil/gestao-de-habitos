@@ -1,4 +1,17 @@
+import FormRegister from "../../components/FormRegister";
+import { ContainerRight } from "./styles";
+import { RegisterContainer } from "./styles";
+import registerImage from "../../assets/register.png";
+
 const Register = () => {
-  return <div></div>;
+  return (
+    <RegisterContainer>
+      <FormRegister />
+      <ContainerRight>
+        <h1>Procrastinare</h1>
+        <img src={registerImage} alt="registerImage" />
+      </ContainerRight>
+    </RegisterContainer>
+  );
 };
 export default Register;
