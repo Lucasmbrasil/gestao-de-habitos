@@ -8,6 +8,9 @@ export const ContainerPai = styled.div`
   align-content: flex-end;
   flex-direction: column;
   display: flex;
+  @media (min-width: 320px) {
+    display: none;
+  }
 `;
 
 export const TitleBar = styled.div`
@@ -32,6 +35,7 @@ export const MenuBar = styled.div`
   height: 100vh;
   float: left;
   width: 169px;
+
   .pages {
     height: 91%;
   }
