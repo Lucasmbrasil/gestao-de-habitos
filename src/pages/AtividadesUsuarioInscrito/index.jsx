@@ -9,7 +9,7 @@ import {
   TextDiv,
   ActivitiesContainer,
 } from "./styles";
-const GrupoUsuarioInscrito = () => {
+const ActivitiesSubs = () => {
   return (
     <>
       <Container>
@@ -49,4 +49,4 @@ const GrupoUsuarioInscrito = () => {
     </>
   );
 };
-export default GrupoUsuarioInscrito;
+export default ActivitiesSubs;

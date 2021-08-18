@@ -2,7 +2,7 @@ import { Route, Switch } from "react-router-dom";
 import Home from "../pages/Home";
 import Register from "../pages/Register";
 
-import GrupoUsuarioInscrito from "../pages/GrupoInscritoUsuario";
+import ActivitiesSubs from "../pages/AtividadesUsuarioInscrito";
 
 const Routes = () => {
   return (
@@ -11,7 +11,7 @@ const Routes = () => {
         <Home />
       </Route>
       <Route exact path="/activitiesSubs">
-        <GrupoUsuarioInscrito />
+        <ActivitiesSubs />
       </Route>
       <Route path="/register">
         <Register />
