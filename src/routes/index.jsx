@@ -4,10 +4,14 @@ import Home from "../pages/Home";
 import Register from "../pages/Register";
 import Login from '../pages/Login';
 import MyGroups from "../pages/MyGroups";
+import LandingPage from "../pages/LandingPage";
 
 const Routes = () => {
   return (
     <Switch>
+      <Route path='/landingpage'>
+        <LandingPage/>
+      </Route>
       <Route exact path="/">
         <Home />
       </Route>
