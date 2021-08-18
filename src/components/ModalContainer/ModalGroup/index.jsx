@@ -61,16 +61,24 @@ const ModalGrupo = ({ handleButtonClose, setCreateGroup }) => {
           <div>
             <label>título</label>
           </div>
+<<<<<<< HEAD
           <input placeholder="nome do grupo" {...register("name")} />
           <p>{errors.category?.message}</p>
+=======
+          <input type="text" placeholder="nome do grupo" />
+>>>>>>> 2fe91af8d2ab97737f4a2180ebaf27241a13439f
         </InputContainer>
         <InputContainer>
           <div>
             <label>descrição</label>
           </div>
+<<<<<<< HEAD
           <input
             placeholder="descreva um pouco sobre o grupo aqui"
             {...register("description")}
+=======
+          <input type="text" placeholder="descreva um pouco sobre o grupo aqui"
+>>>>>>> 2fe91af8d2ab97737f4a2180ebaf27241a13439f
           />
           <p>{errors.category?.message}</p>
         </InputContainer>

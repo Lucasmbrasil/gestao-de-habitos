@@ -1,38 +1,37 @@
-import { HabitCardBlue } from "./styles";
-import MenuBookIcon from "@material-ui/icons/MenuBook";
-import SportsEsportsIcon from "@material-ui/icons/SportsEsports";
+import { HabitCardYellow } from "./styles";
+import RestaurantIcon from "@material-ui/icons/Restaurant";
 import Rating from "@material-ui/lab/Rating";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
-import CreateOutlinedIcon from "@material-ui/icons/CreateOutlined";
+import FastfoodIcon from "@material-ui/icons/Fastfood";
 import { Box, CircularProgress } from "@material-ui/core";
 
 const useStyles = makeStyles({
   box: {
     display: "flex",
     margin: "0px",
+    alignItems: "center",
   },
 });
 
-const BlueCard = ({ habit, subHowMuchAchieved, addHowMuchAchieved }) => {
+const PastelCard = ({ habit, addHowMuchAchieved, subHowMuchAchieved, handleDeleteHabit }) => {
   const classes = useStyles();
   return (
     <>
-      <HabitCardBlue>
+      <HabitCardYellow>
         <div className="filled">
-          {habit.category === "Estudo" ? (
-            <MenuBookIcon />
+          {habit.category === "Alimentação" ? (
+            <RestaurantIcon />
           ) : (
-            <SportsEsportsIcon />
+            <FastfoodIcon />
           )}
         </div>
         <div className="text">
-          <div className="title">{habit.title}</div>
-          <div>descrição</div>
+          <h3 className="title">{habit.title}</h3>
           <div className={classes.box} component="fieldset" mb={3}>
-            <Typography component="legend">nivel</Typography>
+            <span>nível: </span>
             <Rating
-              name="blue"
+              name="red"
               value={Number(habit.difficulty)}
               max={4}
               readOnly
@@ -40,15 +39,13 @@ const BlueCard = ({ habit, subHowMuchAchieved, addHowMuchAchieved }) => {
           </div>
         </div>
         <div className="text2">
-          <div className="pen">
-            <CreateOutlinedIcon />
-          </div>
-          <div className="category">categoria: Estudo </div>
-          <div>frenquência: {habit.frequency}</div>
+            <button onClick={() => handleDeleteHabit(habit)}>X</button>
+            <span className="category">alimentação</span>
+            <span>{(habit.frequency).toLowerCase()}</span>
         </div>
 
         <div className="filled2">
-          {habit.category === "Estudo" ? (
+          {habit.category === "Alimentação" ? (
             <div className="filled2">
               <button onClick={() => addHowMuchAchieved(habit)}>+</button>
               <Box position="relative" display="inline-flex">
@@ -106,9 +103,9 @@ const BlueCard = ({ habit, subHowMuchAchieved, addHowMuchAchieved }) => {
             </div>
           )}
         </div>
-      </HabitCardBlue>
+      </HabitCardYellow>
     </>
   );
 };
 
-export default BlueCard;
+export default PastelCard;

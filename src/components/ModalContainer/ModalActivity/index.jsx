@@ -67,8 +67,12 @@ const ModalAtividade = ({
           <div>
             <label>título</label>
           </div>
+<<<<<<< HEAD
           <input placeholder="nome da atividade" {...register("title")} />
           <p>{errors.title?.message}</p>
+=======
+          <input type="text" placeholder="nome da atividade" />
+>>>>>>> 2fe91af8d2ab97737f4a2180ebaf27241a13439f
         </InputContainer>
         <InputContainer>
           <div className="legenda">
