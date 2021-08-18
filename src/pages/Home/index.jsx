@@ -9,8 +9,7 @@
 
 const Home = () => {
   return (
-    <div style={{display: "flex"}}>
-      <MenuSide />
+    <div style={{ display: "flex" }}>
       <div>Olá</div>
     </div>
   );
