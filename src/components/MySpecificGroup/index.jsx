@@ -49,6 +49,7 @@ const MySpecificGroup = () => {
 
   return (
     <>
+      <ToastContainer position="top-center" autoClose={2500} />
       <h1>{specificGroup.name}</h1>
       {enterGroup ? (
         <button disabled>Entrar no grupo</button>

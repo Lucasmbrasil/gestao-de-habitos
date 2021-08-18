@@ -8,28 +8,31 @@ import { GetGroupActivitiesProvider } from "./GetGroupActivities";
 import { DeleteProvider } from "./Delete";
 import { CreateActivityProvider } from "./CreateActivity";
 import { SubscribeGroupProvider } from "./SubscribeGroup";
+import { SearchGroupProvider } from "./SearchGroup";
 
 const Providers = ({ children }) => {
   return (
     <SubscribeGroupProvider>
       <SpecificGroupProvider>
-        <MyGroupsListProvider>
-          <HabitsListProvider>
-            <GroupListProvider>
-              <GetGroupGoalsProvider>
-                <GetGroupActivitiesProvider>
-                  <DeleteProvider>
-                    <CreateGroupProvider>
-                      <CreateActivityProvider>
-                        {children}
-                      </CreateActivityProvider>
-                    </CreateGroupProvider>
-                  </DeleteProvider>
-                </GetGroupActivitiesProvider>
-              </GetGroupGoalsProvider>
-            </GroupListProvider>
-          </HabitsListProvider>
-        </MyGroupsListProvider>
+        <SearchGroupProvider>
+          <MyGroupsListProvider>
+            <HabitsListProvider>
+              <GroupListProvider>
+                <GetGroupGoalsProvider>
+                  <GetGroupActivitiesProvider>
+                    <DeleteProvider>
+                      <CreateGroupProvider>
+                        <CreateActivityProvider>
+                          {children}
+                        </CreateActivityProvider>
+                      </CreateGroupProvider>
+                    </DeleteProvider>
+                  </GetGroupActivitiesProvider>
+                </GetGroupGoalsProvider>
+              </GroupListProvider>
+            </HabitsListProvider>
+          </MyGroupsListProvider>
+        </SearchGroupProvider>
       </SpecificGroupProvider>
     </SubscribeGroupProvider>
   );

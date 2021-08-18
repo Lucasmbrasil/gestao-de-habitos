@@ -5,8 +5,6 @@ import { Container } from "./styles";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 // import { useCreateActivity } from "../../../Providers/CreateActivity";
 import { useSpecificGroup } from "../../../Providers/SpecificGroup";
 import { toast } from "react-toastify";
@@ -80,11 +78,6 @@ const ModalAtividade = ({
           <p>{errors.realization_time?.message}</p>
         </InputContainer>
       </Container>
-      <ToastContainer
-        className="toast"
-        autoClose={2000}
-        position="top-center"
-      />
     </ModalContainer>
   );
 };
