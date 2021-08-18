@@ -1,15 +1,17 @@
 import { useGroupList } from "../../Providers/GroupList";
+import CardGroup from "../CardsGroupsPage/CardGroup";
 
 const MySuggestedGroups = () => {
   const { group } = useGroupList();
   const shortGroup = group.slice(0, 4);
   return (
-    <div>
+    <div style={{overflow: "scroll", height: "60%"}}>
       {shortGroup.map((group) => (
-        <div key={group.id} style={{ margin: "20px" }}>
-          <div>{group.name}</div>
-          <div>{group.description}</div>
-        </div>
+        <CardGroup 
+                  key={group.id} 
+                  name={group.name} 
+                  description={group.description} 
+                  category={group.category} />
       ))}
     </div>
   );
