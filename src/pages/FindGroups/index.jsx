@@ -1,5 +1,4 @@
 import MenuSide from "../../components/MenuSide";
-import CardAvailableGroup from "../../components/CardsGroupsPage/CardAvailableGroup";
 import { PageContainer, MainContainer } from "../Dashboard/styles";
 import {ButtonAddGroup, ContainerHeader, ContainerIconTitleSubtitle} from "./styles"
 import PeopleOutlineIcon from '@material-ui/icons/PeopleOutline';

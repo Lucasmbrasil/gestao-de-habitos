@@ -1,4 +1,4 @@
-import { Container, CardBlue, CardGreen, Icon, Image2, Image3 } from "./styles";
+import { Container, Icon } from "./styles";
 import FitnessCenterIcon from '@material-ui/icons/FitnessCenter';
 
 const CardGroup = ({name, description, category}) => {

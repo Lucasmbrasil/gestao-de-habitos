@@ -3,11 +3,10 @@ import styled from "styled-components";
 export const ContainerHeader = styled.div`
     display: none;
     
-    @media screen and (min-width: 680px){
+    @media screen and (min-width: 768px){
         width: 95%;
         display: flex;
         flex-direction: row;
-        flex-wrap: wrap;
         justify-content: space-evenly;
         align-items: center;
         background-color: rgba(255, 253, 231, 0.5);
@@ -23,7 +22,6 @@ export const ContainerIconTitleSubtitle = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
-    flex-wrap: wrap;
     justify-content: space-evenly;
     width: 70%;   
     color: #212121; 
