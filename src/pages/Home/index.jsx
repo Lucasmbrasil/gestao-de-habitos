@@ -9,10 +9,10 @@
 
 const Home = () => {
   return (
-    <>   
-      {/* <MenuSide />    */}
+    <div style={{display: "flex"}}>
+      <MenuSide />
       <div>Olá</div>
-    </>
+    </div>
   );
 };
 export default Home;

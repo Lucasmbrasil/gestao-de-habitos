@@ -1,12 +1,14 @@
 import styled from "styled-components";
 export const HabitCardBlue = styled.div`
-  border: 1px solid black;
+  border: 1px solid rgba(0, 0, 0, 0.6);
   display: flex;
-  height: 100px;
-  width: 450px;
+  height: 80px;
+  width: 100%;
   justify-content: space-between;
   margin-bottom: 10px;
   font-family: "Karla", sans-serif;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
   .filled {
     background-color: #bbdefb;
     width: 50px;
@@ -27,16 +29,34 @@ export const HabitCardBlue = styled.div`
 
   .filled2 {
     background-color: #bbdefb;
-    width: 50px;
+    padding: 2px;
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
+    margin-left: 0.4rem;
+
+    button {
+    border-radius: 50%;
+    border: 1px solid black;
+    width: 18px;
+    font-weight: bold;
+    box-shadow: 0 1px 2px #000000;
+    background-color: #fff;
+    }
+
+    button:active {
+    position: relative;
+    top: 1px;
+    box-shadow: none;
+    }
   }
   .title {
     font-family: "Arvo", sans-serif;
     font-weight: bold;
+    font-size: 14px;
+    padding-left: 0.5rem;
   }
   .text {
     display: flex;
@@ -52,10 +72,24 @@ export const HabitCardBlue = styled.div`
     display: flex;
     flex-direction: column;
     font-size: 0.875rem;
-
     justify-content: space-evenly;
+    align-items: center;
+
     .pen {
       text-align: end;
+    }
+
+    button {
+      background-color: #B71C1C;
+      color: #fff;
+      font-family: "Karla", sans-serif;
+      font-weight: bold;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      font-size: 1rem;
+      cursor: pointer;
     }
   }
   .text2 div {
@@ -67,17 +101,9 @@ export const HabitCardBlue = styled.div`
     border: none;
     opacity: 50%;
     text-align: center;
-    font-size: 12px;
+    font-size: 14px;
+    padding: 2px;
+    width: 100%;
   }
-  button {
-    border-radius: 50%;
-    border: 1px solid black;
-    width: 18px;
-    box-shadow: 0 1px 2px #000000;
-  }
-  button:active {
-    position: relative;
-    top: 1px;
-    box-shadow: none;
-  }
+  
 `;
