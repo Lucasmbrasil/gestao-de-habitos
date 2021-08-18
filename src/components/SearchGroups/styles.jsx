@@ -55,8 +55,8 @@ export const InputPaper = styled(Paper)`
         width: 95%;
     }
     && svg{
-        width: 5%;
-        height: 95%;
+        width: 30px;
+        height: 30px;
     }
 `;
 

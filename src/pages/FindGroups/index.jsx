@@ -5,6 +5,7 @@ import PeopleOutlineIcon from '@material-ui/icons/PeopleOutline';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import SearchGroups from "../../components/SearchGroups";
 import { useMediaQuery } from 'react-responsive';
+import MenuFooter from "../../components/MenuFooter";
 
 const FindGroups = () => {
     const desktop = useMediaQuery({ query: '(min-width: 769px)' })
@@ -27,7 +28,7 @@ const FindGroups = () => {
                 </ContainerHeader>
                 <SearchGroups />
             </MainContainer>
-
+            {!desktop && <MenuFooter />}
         </PageContainer>
     )
 }

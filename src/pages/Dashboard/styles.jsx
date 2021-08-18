@@ -2,7 +2,9 @@ import styled from "styled-components";
 import { Button } from "@material-ui/core";
 
 export const PageContainer = styled.div`
-  display: flex;
+  @media(min-width: 769px){
+    display: flex;
+  }
 `
 
 export const MainContainer = styled.div`

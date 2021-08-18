@@ -5,14 +5,12 @@ export const Footer = styled.div`
   font-family: "Arvo", serif;
   @media (min-width: 320px) {
     display: flex;
-
-    position: absolute;
-    top: 20%;
+    position: fixed;
+    bottom: 0;
     background-color: #006064;
     align-items: center;
     justify-content: space-evenly;
     width: 100%;
-
     height: 55px;
 
     .icons {
