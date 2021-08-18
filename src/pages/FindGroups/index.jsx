@@ -4,12 +4,13 @@ import {ButtonAddGroup, ContainerHeader, ContainerIconTitleSubtitle} from "./sty
 import PeopleOutlineIcon from '@material-ui/icons/PeopleOutline';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import SearchGroups from "../../components/SearchGroups";
+import { useMediaQuery } from 'react-responsive';
 
 const FindGroups = () => {
-
+    const desktop = useMediaQuery({ query: '(min-width: 769px)' })
     return (
         <PageContainer>
-            <MenuSide />
+            {desktop && <MenuSide />}
             <MainContainer>
                 <ContainerHeader>
                     <ContainerIconTitleSubtitle>

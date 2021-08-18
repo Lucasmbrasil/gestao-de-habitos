@@ -7,7 +7,9 @@ export const PageContainer = styled.div`
 
 export const MainContainer = styled.div`
   background-color: #e0f2f1;
-  width: calc(100vw - 210px);
+  @media(min-width: 769px){
+    width: calc(100vw - 210px);
+  }
   min-height: 100vh;
 `;
 
