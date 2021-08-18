@@ -5,10 +5,11 @@
 // import ModalAtividade from "../../components/ModalContainer/ModalActivity";
 // import EditAtividade from "../../components/ModalContainer/ModalEditActivity";
 // import EditUsername from "../../components/ModalContainer/ModalEditUsername";
-
+import SearchGroups from "../../components/SearchGroups";
 const Home = () => {
   return (
     <>
+    <SearchGroups />
       <div>Olá</div>
     </>
   );

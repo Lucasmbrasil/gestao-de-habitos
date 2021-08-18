@@ -6,7 +6,7 @@ import { cyan } from '@material-ui/core/colors';
 import { InputBase} from '@material-ui/core';
 
 const SearchGroups = () => {
-    const {group} = useContext(GroupListContext)
+    const {group} = useContext(GroupListContext);
     const [search, setSearch] = useState('');
     const filtered = group.filter((value) => (value.name.toLowerCase()).includes(search.toLowerCase()))
     console.log(filtered)
