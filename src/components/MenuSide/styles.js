@@ -1,30 +1,38 @@
 import styled from "styled-components";
 
+export const DisplayContainer = styled.aside`
+  width: 210px;
+  height: 748px;
+  @media (max-width: 768px) {
+    display: none;
+  }
+`;
+
 export const ListItemMenu = styled.p`
   color: #ffffff;
   font-family: "Arvo", serif;
   font-size: 16px;
-`
+`;
 export const ListItemMenuGroup = styled.p`
   color: #ffffff;
   font-family: "Arvo", serif;
   font-size: 14px;
   text-align: right;
-`
+`;
 
 export const LogoutDiv = styled.div`
-    color: #ffffff;
-    display: flex;
-    align-items: center;
-    padding: 1rem;
-    font-weight: 500;
-    cursor: pointer;
-    position: absolute;
-    bottom: 0;
-    :hover{
-      background: rgba(255, 255, 255, 0.25);
-    }
-`
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  position: absolute;
+  bottom: 0;
+  :hover {
+    background: rgba(255, 255, 255, 0.25);
+  }
+`;
 
 export const Container = styled.aside`
   width: 220px;
@@ -37,7 +45,7 @@ export const Container = styled.aside`
 `;
 
 export const TitleBar = styled.div`
-  background-color: rgb(184, 195, 195, .8);
+  background-color: rgb(184, 195, 195, 0.8);
   height: 58px;
   display: flex;
   justify-content: center;
@@ -47,5 +55,4 @@ export const TitleBar = styled.div`
   font-weight: bold;
   color: #ffffff;
   font-size: 24px;
- 
 `;

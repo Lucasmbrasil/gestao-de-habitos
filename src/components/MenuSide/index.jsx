@@ -1,4 +1,10 @@
-import { TitleBar, ListItemMenu, ListItemMenuGroup, LogoutDiv } from "./styles";
+import {
+  DisplayContainer,
+  TitleBar,
+  ListItemMenu,
+  ListItemMenuGroup,
+  LogoutDiv,
+} from "./styles";
 import MenuIcon from "@material-ui/icons/Menu";
 import InsertEmoticonIcon from "@material-ui/icons/InsertEmoticon";
 import LineStyleIcon from "@material-ui/icons/LineStyle";
@@ -20,20 +26,26 @@ const drawerWidth = 210;
 
 const theme = createTheme({
   breakpoints: {
-    // Define custom breakpoint values.
-    // These will apply to Material-UI components that use responsive
-    // breakpoints, such as `Grid` and `Hidden`. You can also use the
-    // theme breakpoint functions `up`, `down`, and `between` to create
-    // media queries for these breakpoints
+    keys: ["xs", "sm", "md", "lg", "xl"],
     values: {
       xs: 0,
-      sm: 769,
-      md: 960,
+      sm: 320,
+      md: 768,
       lg: 1280,
       xl: 1920,
     },
   },
 });
+
+/*
+xs: 0,
+      sm: 600,
+      md: 960,
+      lg: 1280,
+      xl: 1920,
+
+**/
+console.log(theme.breakpoints.values);
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -54,9 +66,6 @@ const useStyles = makeStyles((theme) => ({
     width: drawerWidth,
     flexShrink: 0,
     backgroundColor: cyan[900],
-    [theme.breakpoints.up("xs")]: {
-      display: "none",
-    },
   },
   drawerPaper: {
     width: drawerWidth,
@@ -82,75 +91,77 @@ const MenuSide = () => {
 
   return (
     <>
-      <Drawer
-        className={classes.drawer}
-        variant="permanent"
-        classes={{
-          paper: classes.drawerPaper,
-        }}
-        anchor="left"
-      >
-        <TitleBar>procrastinare</TitleBar>
-        <Divider />
-        <List>
-          <ListItem key="1" button>
-            <ListItemIcon>
-              <MenuIcon style={{ color: "#ffffff" }} />
-            </ListItemIcon>
-            <ListItemMenu>dashboard</ListItemMenu>
-          </ListItem>
-          <ListItem key="2" button>
-            <ListItemIcon>
-              <InsertEmoticonIcon style={{ color: "#ffffff" }} />
-            </ListItemIcon>
-            <ListItemMenu>perfil</ListItemMenu>
-          </ListItem>
-          <ListItem key="3" button>
-            <ListItemIcon>
-              <LineStyleIcon style={{ color: "#ffffff" }} />
-            </ListItemIcon>
-            <ListItemMenu>dashboard</ListItemMenu>
-          </ListItem>
-          <ListItem key="4" button onClick={ShowGroups}>
-            <ListItemIcon>
-              <GroupIcon style={{ color: "#ffffff" }} />
-            </ListItemIcon>
-            <ListItemMenu>grupos</ListItemMenu>
-            {appear === true ? (
-              <ExpandLessIcon
-                style={{ color: "#ffffff", marginLeft: "2rem" }}
-              />
-            ) : (
-              <ExpandMoreIcon
-                style={{ color: "#ffffff", marginLeft: "2rem" }}
-              />
-            )}
-          </ListItem>
-        </List>
-        <Divider />
-        {appear && (
-          <List key="5" className={classes.list}>
-            <ListItem button className={classes.list}>
-              <ListItemMenuGroup>meus grupos</ListItemMenuGroup>
+      <DisplayContainer>
+        <Drawer
+          className={classes.drawer}
+          variant="permanent"
+          classes={{
+            paper: classes.drawerPaper,
+          }}
+          anchor="left"
+        >
+          <TitleBar>procrastinare</TitleBar>
+          <Divider />
+          <List>
+            <ListItem key="1" button>
+              <ListItemIcon>
+                <MenuIcon style={{ color: "#ffffff" }} />
+              </ListItemIcon>
+              <ListItemMenu>dashboard</ListItemMenu>
             </ListItem>
-            <ListItem key="6" button className={classes.list}>
-              <ListItemMenuGroup>encontrar grupos</ListItemMenuGroup>
+            <ListItem key="2" button>
+              <ListItemIcon>
+                <InsertEmoticonIcon style={{ color: "#ffffff" }} />
+              </ListItemIcon>
+              <ListItemMenu>perfil</ListItemMenu>
             </ListItem>
-            <ListItem key="8" button className={classes.list}>
-              <ListItemMenuGroup>criar novo grupo</ListItemMenuGroup>
+            <ListItem key="3" button>
+              <ListItemIcon>
+                <LineStyleIcon style={{ color: "#ffffff" }} />
+              </ListItemIcon>
+              <ListItemMenu>dashboard</ListItemMenu>
+            </ListItem>
+            <ListItem key="4" button onClick={ShowGroups}>
+              <ListItemIcon>
+                <GroupIcon style={{ color: "#ffffff" }} />
+              </ListItemIcon>
+              <ListItemMenu>grupos</ListItemMenu>
+              {appear === true ? (
+                <ExpandLessIcon
+                  style={{ color: "#ffffff", marginLeft: "2rem" }}
+                />
+              ) : (
+                <ExpandMoreIcon
+                  style={{ color: "#ffffff", marginLeft: "2rem" }}
+                />
+              )}
             </ListItem>
           </List>
-        )}
+          <Divider />
+          {appear && (
+            <List key="5" className={classes.list}>
+              <ListItem button className={classes.list}>
+                <ListItemMenuGroup>meus grupos</ListItemMenuGroup>
+              </ListItem>
+              <ListItem key="6" button className={classes.list}>
+                <ListItemMenuGroup>encontrar grupos</ListItemMenuGroup>
+              </ListItem>
+              <ListItem key="8" button className={classes.list}>
+                <ListItemMenuGroup>criar novo grupo</ListItemMenuGroup>
+              </ListItem>
+            </List>
+          )}
 
-        <LogoutDiv>
-          <ListItem key="7" button>
-            <ListItemIcon>
-              <ExitToAppIcon style={{ color: "#ffffff" }} />
-            </ListItemIcon>
-            <ListItemMenu>logout</ListItemMenu>
-          </ListItem>
-        </LogoutDiv>
-      </Drawer>
+          <LogoutDiv>
+            <ListItem key="7" button>
+              <ListItemIcon>
+                <ExitToAppIcon style={{ color: "#ffffff" }} />
+              </ListItemIcon>
+              <ListItemMenu>logout</ListItemMenu>
+            </ListItem>
+          </LogoutDiv>
+        </Drawer>
+      </DisplayContainer>
     </>
   );
 };
