@@ -1,0 +1,26 @@
+import { useContext } from "react";
+import { useCallback } from "react";
+import { createContext } from "react";
+import api from "../../services/api";
+
+const CreateGroupContext = createContext();
+
+export const CreateGroupProvider = ({ children }) => {
+  const handleCreateGroup = useCallback((data) => {
+    const getToken = window.localStorage.getItem("token");
+    api
+      .post(`/groups/`, data, {
+        headers: { Authorization: `Bearer ${getToken}` },
+      })
+      .then((response) => console.log(response.data))
+      .catch((e) => console.log(e));
+  }, []);
+
+  return (
+    <CreateGroupContext.Provider value={handleCreateGroup}>
+      {children}
+    </CreateGroupContext.Provider>
+  );
+};
+
+export const useCreateGroup = () => useContext(CreateGroupContext);

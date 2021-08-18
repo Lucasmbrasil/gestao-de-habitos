@@ -1,11 +1,11 @@
 import Routes from "./routes";
 import GlobalStyle from "./styles/global";
-import SearchGroup from './components/SearchGroups';
+// import SearchGroup from "./components/SearchGroups";
 
 function App() {
   return (
     <>
-      <SearchGroup/>
+      {/* <SearchGroup/> */}
       <GlobalStyle />
       <Routes />
     </>
