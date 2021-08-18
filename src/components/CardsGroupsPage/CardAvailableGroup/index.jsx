@@ -48,7 +48,7 @@ const CardAvailableGroup = ({name, description, category}) => {
             <div className="card_content">
 
               <div className="card_header">
-                  <Icon><FastfoodIcon style={{color: "#354283"}} /></Icon>
+                  <Icon><FastfoodIcon style={{color: "#1A237E"}} /></Icon>
                   <div className="group">
                       <h3>{name}</h3>
                       <span>{category}</span>
