@@ -15,7 +15,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import { cyan } from "@material-ui/core/colors";
 import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 
-const drawerWidth = 240;
+const drawerWidth = 210;
 
 const useStyles = makeStyles((theme) => ({
   root: {
