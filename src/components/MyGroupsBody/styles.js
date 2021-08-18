@@ -16,11 +16,12 @@ export const ContainerBody = styled.div`
 `;
 
 export const ContainerGroups = styled.div`
-  width: 100%;
+  width: 50%;
   margin: 10px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  align-content: flex-start;
   min-height: 200px;
 
   h2 {
@@ -53,7 +54,7 @@ export const SearchPlace = styled.div`
   display: none;
 
   @media screen and (min-width: 750px) {
-    width: 500px;
+    width: 100%;
     height: 100px;
     display: flex;
     flex-direction: column;
@@ -79,7 +80,7 @@ export const SearchPlace = styled.div`
 `;
 
 export const SearchBar = styled.div`
-  width: 280px;
+  width: 260px;
   height: 40px;
   font-size: 18px;
   background-color: #e65100;

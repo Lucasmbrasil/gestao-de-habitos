@@ -4,6 +4,7 @@ import { BodyPage, HorizontalLine } from "./styles";
 import MenuSide from "../../components/MenuSide";
 import { useSpecificGroup } from "../../Providers/SpecificGroup";
 import MySpecificGroup from "../../components/MySpecificGroup";
+import { PageContainer, MainContainer } from "../Dashboard/styles"; 
 
 const MyGroups = () => {
   const { specificGroup } = useSpecificGroup();
@@ -16,12 +17,14 @@ const MyGroups = () => {
         </>
       ) : (
         <>
+        <PageContainer>
           <MenuSide />
           <BodyPage>
             <MyGroupsHeader />
             <HorizontalLine />
             <MyGroupsBody />
           </BodyPage>
+        </PageContainer>
         </>
       )}
     </>

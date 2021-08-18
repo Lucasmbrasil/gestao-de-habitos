@@ -2,7 +2,7 @@ import { Container, Icon } from "./styles";
 import FitnessCenterIcon from '@material-ui/icons/FitnessCenter';
 
 const CardGroup = ({name, description, category}) => {
-  //fazer os ifs para as categorias e deixar um retorno default
+  
   return (
     <>
       <Container color="#7986cb">

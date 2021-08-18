@@ -32,7 +32,7 @@ const MySpecificGroup = () => {
   const [createActivities, setCreateActivities] = useState(false);
   const myGroupsId = myGroups.map((group) => group.id);
   const enterGroup = myGroupsId.includes(specificGroup.id);
-  console.log(enterGroup);
+  // console.log(enterGroup);
   const handleButtonClose = () => {
     setCreateGoal(false);
   };
