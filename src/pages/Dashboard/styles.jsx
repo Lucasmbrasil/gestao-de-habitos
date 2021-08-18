@@ -13,7 +13,12 @@ export const MainContainer = styled.div`
 
 export const HabitsContainer = styled.main`
   display: flex;
+  @media (min-width: 1000px){
+    flex-wrap: wrap;
+    flex-direction: row;
+  }
   flex-wrap: wrap;
+  flex-direction: column;
   justify-content: space-evenly;
   background: rgba(255, 253, 231, 0.5);
   width: 95%;
@@ -50,10 +55,14 @@ export const Habits = styled.section`
   padding: 1rem;
   margin-bottom: 1rem;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  @media(max-width: 980px){
+    width: 80%;
+    margin: 1rem auto;
+  }
 `;
 
 export const TextHabits = styled.div`
-  width: 450px;
+  width: 100%;
   border: 1px solid black;
   text-align: center;
   padding: 15px 0;
