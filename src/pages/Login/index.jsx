@@ -17,10 +17,14 @@ import { useForm } from "react-hook-form";
 import { Grid } from "@material-ui/core";
 import api from "../../services/api";
 import * as yup from "yup";
-import React from "react";
+import React, { useState } from "react";
+import { StyledCircularProgress } from "../../components/FormRegister/styles";
 
 const Login = () => {
   const history = useHistory();
+  const [isLoading, setIsLoading] = useState(false);
+  const [disable, setDisable] = useState(false);
+
   const formSchema = yup.object().shape({
     username: yup
       .string()
@@ -45,23 +49,30 @@ const Login = () => {
   });
 
   const handleForm = (data) => {
+    setDisable(true);
+    setIsLoading(true);
     api
       .post("/sessions/", data)
       .then((response) => {
         localStorage.clear();
-        localStorage.setItem("token", response.data.access)
+        localStorage.setItem("token", response.data.access);
         localStorage.setItem("user", data.username);
         setTimeout(() => history.push("/dashboard"), 500);
+        setIsLoading(false);
+        setDisable(false);
       })
       .catch((err) => {
         toast.error("Ops, houve um erro ao tentar se logar!");
+        setIsLoading(false);
+        setDisable(false);
+
         console.log(err);
       });
   };
   return (
     <Main>
       <DivFigure>
-        <h1>Procastinare</h1>
+        <h1>Procrastinare</h1>
         <img src={loginFigure} alt="Login" />
       </DivFigure>
       <Container>
@@ -76,20 +87,30 @@ const Login = () => {
               <form onSubmit={handleSubmit(handleForm)}>
                 <h2>login</h2>
                 <StyledInput
+                  disabled={disable ? true : false}
                   placeholder="usuário"
                   type="text"
                   {...register("username")}
                 />
                 <Erro>{errors.username?.message}</Erro>
                 <StyledInput
+                  disabled={disable ? true : false}
                   placeholder="senha"
                   type="password"
                   {...register("password")}
                 />
                 <Erro>{errors.password?.message}</Erro>
                 <StyledButton type="submit">entrar</StyledButton>
-                <p>Ainda não tem uma conta?</p>
-                <h5 onClick={() => history.push("/register")}>Clique aqui!</h5>
+                {isLoading ? (
+                  <StyledCircularProgress />
+                ) : (
+                  <>
+                    <p>Ainda não tem uma conta?</p>
+                    <h5 onClick={() => history.push("/register")}>
+                      Clique aqui!
+                    </h5>
+                  </>
+                )}
               </form>
             </Form>
           </StyledPaper>

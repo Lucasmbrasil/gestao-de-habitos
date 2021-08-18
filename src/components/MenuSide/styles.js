@@ -27,9 +27,10 @@ export const LogoutDiv = styled.div`
 `
 
 export const Container = styled.aside`
+  /* position: fixed; */
   width: 220px;
   margin: 0 auto;
-  height: 100vh;
+  height: 100%;
   float: left;
   align-content: flex-end;
   flex-direction: column;

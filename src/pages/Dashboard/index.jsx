@@ -9,7 +9,7 @@ import {
   PageContainer
 } from "./styles";
 import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import api from "../../services/api";
 import ModalHabito from "../../components/ModalContainer/ModalHabit";
 import { useHabitList } from "../../Providers/HabitsList";
@@ -21,10 +21,23 @@ const Dashboard = () => {
   const { habits, handleList } = useHabitList();
   const [addGoodHabit, setAddGoodHabit] = useState(false);
   const [addBadHabit, setAddBadHabit] = useState(false);
+  const [username, setUsername] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const getToken = window.localStorage.getItem("token");
   const decodeToken = jwt_decode(getToken);
   const userID = decodeToken.user_id;
+
+  const getUsername = useCallback(() => {
+    setIsLoading(true);
+    api
+      .get(`users/${userID}/`)
+      .then((res) => {
+        setUsername(res.data.username);
+        setIsLoading(false);
+      })
+      .catch((e) => setIsLoading(false));
+  }, [userID]);
 
   const addHowMuchAchieved = (habit) => {
     api
@@ -54,6 +67,7 @@ const Dashboard = () => {
       })
       .catch((e) => console.log(e));
   };
+
   const handleButtonCloseGoodHabit = () => {
     setAddGoodHabit(false);
   };
@@ -71,7 +85,8 @@ const Dashboard = () => {
 
   useEffect(() => {
     handleList();
-  }, [handleList]);
+    getUsername();
+  }, [handleList, getUsername]);
 
   const handleDeleteHabit = (habit) => {
     api
