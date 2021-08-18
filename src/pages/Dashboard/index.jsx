@@ -1,7 +1,7 @@
 import HeaderDashboard from "../../components/HeaderDashboard";
-import BlueCard from "../../components/HabitosCard/BlueCard";
-import PastelCard from "../../components/HabitosCard/PastelCard";
-import RedCard from "../../components/HabitosCard/RedCard";
+import BlueCard from "../../components/HabitCard/BlueCard";
+import PastelCard from "../../components/HabitCard/PastelCard";
+import RedCard from "../../components/HabitCard/RedCard";
 import {
   Habits,
   HabitsContainer,
@@ -32,7 +32,7 @@ const Dashboard = () => {
     api
       .patch(
         `/habits/${habit.id}/`,
-        { how_much_achieved: habit.how_much_achieved + 1 },
+        { how_much_achieved: habit.how_much_achieved + 10 },
         {
           headers: { Authorization: `Bearer ${getToken}` },
         }
@@ -83,13 +83,17 @@ const Dashboard = () => {
       .then((res) => handleList())
       .catch((e) => console.log(e));
   };
+
   return (
     <PageContainer>
       <MenuSide />
     <MainContainer>
       <HeaderDashboard/>
       <HabitsContainer>
-        <h2>meus hábitos</h2>
+        <div className="habits_header">
+            <h2>meus hábitos</h2>
+            <p>crie e pratique!</p>
+        </div>
         <Habits>
           <TextHabits>
             <p>hábitos para praticar</p>
@@ -120,6 +124,7 @@ const Dashboard = () => {
                       <RedCard
                         habit={habit}
                         addHowMuchAchieved={addHowMuchAchieved}
+
                       />
                       {habit.how_much_achieved % 100 === 0 &&
                         habit.how_much_achieved !== 0 &&
