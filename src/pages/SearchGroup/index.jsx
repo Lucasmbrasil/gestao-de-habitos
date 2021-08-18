@@ -1,7 +1,13 @@
-const SpecificGroup = () => {
-  return <div>Grupo específico</div>;
+import SearchGroups from "../../components/SearchGroups";
+
+const SearchGroup = () => {
+  return (
+    <div>
+      <SearchGroups />
+    </div>
+  );
 };
-export default SpecificGroup;
+export default SearchGroup;
 
 //
 // CLICAR EM UM GRUPO ESPECÍFICO => GET/BASEURL/GROUPS/GROUPID => VERIFICAR SE EM USERS_ON_GRUP TEM O USERNAME DO USUÁRIO

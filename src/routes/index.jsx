@@ -4,7 +4,7 @@ import Home from "../pages/Home";
 import Register from "../pages/Register";
 import Login from "../pages/Login";
 import MyGroups from "../pages/MyGroups";
-import SpecificGroup from "../pages/SpecificGroup";
+import SearchGroup from "../pages/SearchGroup";
 
 const Routes = () => {
   return (
@@ -24,8 +24,8 @@ const Routes = () => {
       <Route path="/mygroups">
         <MyGroups />
       </Route>
-      <Route path="/specific-group">
-        <SpecificGroup />
+      <Route path="/searchgroup">
+        <SearchGroup />
       </Route>
     </Switch>
   );

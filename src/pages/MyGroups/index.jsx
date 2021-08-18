@@ -4,13 +4,16 @@ import { BodyPage, HorizontalLine } from "./styles";
 import MenuSide from "../../components/MenuSide";
 import { useSpecificGroup } from "../../Providers/SpecificGroup";
 import MySpecificGroup from "../../components/MySpecificGroup";
+
 const MyGroups = () => {
   const { specificGroup } = useSpecificGroup();
 
   return (
     <>
       {specificGroup !== "" ? (
-        <MySpecificGroup />
+        <>
+          <MySpecificGroup />
+        </>
       ) : (
         <>
           <MenuSide />

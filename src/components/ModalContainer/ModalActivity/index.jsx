@@ -7,13 +7,19 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useCreateActivity } from "../../../Providers/CreateActivity";
+// import { useCreateActivity } from "../../../Providers/CreateActivity";
+import { useSpecificGroup } from "../../../Providers/SpecificGroup";
+import { toast } from "react-toastify";
+import api from "../../../services/api";
+import { useGetGroupActivities } from "../../../Providers/GetGroupActivities";
 
 const ModalAtividade = ({
   handleButtonCloseActivities,
   setCreateActivities,
 }) => {
-  const { handleCreateActivities } = useCreateActivity();
+  // const { handleCreateActivities } = useCreateActivity();
+  const { specificGroup } = useSpecificGroup();
+  const { handleActivities } = useGetGroupActivities();
 
   const schema = yup.object().shape({
     title: yup.string().required("Campo obrigatório"),
@@ -26,10 +32,33 @@ const ModalAtividade = ({
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) });
 
+  const handleCreateActivities = (data) => {
+    console.log(specificGroup.id);
+    const getToken = window.localStorage.getItem("token");
+    const newData = {
+      title: data.title,
+      realization_time: `${data.realization_time}T23:59:59Z`,
+      group: Number(specificGroup.id),
+    };
+    console.log(newData);
+    api
+      .post(`/activities/`, newData, {
+        headers: { Authorization: `Bearer ${getToken}` },
+      })
+      .then((response) =>
+        toast.success("Atividade criada com sucesso!", {
+          onClose: () => {
+            handleActivities();
+            setCreateActivities(false);
+          },
+        })
+      )
+      .catch((e) => console.log(e));
+  };
   return (
     <ModalContainer
       color="#8BC34A"
-      onSubmit={handleSubmit(handleCreateActivities(setCreateActivities))}
+      onSubmit={handleSubmit(handleCreateActivities)}
       handleButtonClose={handleButtonCloseActivities}
     >
       <Container>

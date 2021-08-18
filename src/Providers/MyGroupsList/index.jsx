@@ -6,14 +6,15 @@ const MyGroupsListContext = createContext();
 
 export const MyGroupsListProvider = ({ children }) => {
   const [myGroups, setMyGroups] = useState([]);
-
   const handleMyGroupsList = () => {
     const getToken = window.localStorage.getItem("token");
     api
       .get("/groups/subscriptions/", {
         headers: { Authorization: `Bearer ${getToken}` },
       })
-      .then((res) => setMyGroups(res.data))
+      .then((res) => {
+        setMyGroups(res.data);
+      })
       .catch((e) => console.log(e));
   };
 

@@ -7,7 +7,6 @@ export const ContainerBody = styled.div`
   flex-direction: column;
   margin: 30px auto;
   padding: 20px;
-
   @media screen and (min-width: 750px) {
     width: 90%;
     background-color: lightgray;

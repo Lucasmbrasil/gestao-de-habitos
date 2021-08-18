@@ -5,10 +5,10 @@ import { Container } from "./styles";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import { useCreateGroup } from "../../../Providers/CreateGroup";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import api from "../../../services/api";
 
 const ModalGrupo = ({ handleButtonClose, setCreateGroup }) => {
   const { handleCreateGroup } = useCreateGroup();
@@ -18,17 +18,41 @@ const ModalGrupo = ({ handleButtonClose, setCreateGroup }) => {
     category: yup.string().min(1, "Campo obrigatório"),
     description: yup.string().required("Campo obrigatório"),
   });
-
+  // const handleCreateGroup = (data) => {
+  //   const getToken = window.localStorage.getItem("token");
+  //   api
+  //     .post(`/groups/`, data, {
+  //       headers: { Authorization: `Bearer ${getToken}` },
+  //     })
+  //     .then((response) =>
+  //       toast.success("Grupo criado com sucesso!", {
+  //         onClose: () => {
+  //           setCreateGroup(false);
+  //         },
+  //       })
+  //     )
+  //     .catch((e) => console.log(e));
+  // };
+  const onCloseToast = () => {
+    toast.success("Grupo criado com sucesso!", {
+      onClose: () => {
+        setCreateGroup(false);
+      },
+    });
+  };
+  const newCreate = (data) => {
+    handleCreateGroup(data);
+    onCloseToast();
+  };
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) });
-
   return (
     <ModalContainer
       color="#00BCD4"
-      onSubmit={handleSubmit(handleCreateGroup)}
+      onSubmit={handleSubmit(newCreate)}
       handleButtonClose={handleButtonClose}
     >
       <Container>
@@ -69,6 +93,7 @@ const ModalGrupo = ({ handleButtonClose, setCreateGroup }) => {
       </Container>
       <ToastContainer
         className="toast"
+        // onClose={setCreateGroup(false)}
         autoClose={2000}
         position="top-center"
       />

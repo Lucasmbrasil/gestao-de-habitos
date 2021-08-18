@@ -6,6 +6,7 @@ import ModalActivity from "../ModalContainer/ModalActivity";
 import { useGetGroupGoals } from "../../Providers/GetGroupGoals";
 import { useGetGroupActivities } from "../../Providers/GetGroupActivities";
 import { useDelete } from "../../Providers/Delete";
+import { useMyGroupsList } from "../../Providers/MyGroupsList";
 
 const MySpecificGroup = () => {
   const { specificGroup, setSpecificGroup } = useSpecificGroup();
@@ -26,10 +27,12 @@ const MySpecificGroup = () => {
     nextActivitiesPage,
   } = useGetGroupActivities();
   const { handleDeleteGoal, handleDeleteActivity } = useDelete();
-
+  const { myGroups } = useMyGroupsList();
   const [createGoal, setCreateGoal] = useState(false);
   const [createActivities, setCreateActivities] = useState(false);
-
+  const myGroupsId = myGroups.map((group) => group.id);
+  const enterGroup = myGroupsId.includes(specificGroup.id);
+  console.log(enterGroup);
   const handleButtonClose = () => {
     setCreateGoal(false);
   };
@@ -45,6 +48,11 @@ const MySpecificGroup = () => {
   return (
     <>
       <h1>{specificGroup.name}</h1>
+      {enterGroup ? (
+        <button disabled>Entrar no grupo</button>
+      ) : (
+        <button disabled>Entrar no grupo</button>
+      )}
       <button onClick={() => setSpecificGroup("")}>Voltar</button>
       <button onClick={() => setCreateGoal(true)}>Criar objetivo</button>
       {createGoal && (

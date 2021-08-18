@@ -7,6 +7,7 @@ import {
 import SearchIcon from "@material-ui/icons/Search";
 import MyGroupsList from "../MyGroupsList";
 import MySuggestedGroups from "../MySuggestedGroups";
+import { Link } from "react-router-dom";
 const MyGroupsBody = () => {
   return (
     <ContainerBody>
@@ -20,9 +21,11 @@ const MyGroupsBody = () => {
         <MySuggestedGroups />
         <SearchPlace>
           <p>deseja ver mais? busque novos grupos</p>
-          <SearchBar>
-            buscar novos grupos <SearchIcon />
-          </SearchBar>
+          <Link to="/searchgroup">
+            <SearchBar>
+              buscar novos grupos <SearchIcon />
+            </SearchBar>
+          </Link>
         </SearchPlace>
       </ContainerGroups>
     </ContainerBody>
