@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Footer = styled.div`
   display: none;
   font-family: "Arvo", serif;
-  @media (min-width: 320px) {
+  @media (max-width: 768px) {
     display: flex;
     position: fixed;
     bottom: 0;

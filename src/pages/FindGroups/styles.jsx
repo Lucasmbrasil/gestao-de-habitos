@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const ContainerHeader = styled.div`
     display: none;
     
-    @media screen and (min-width: 768px){
+    @media screen and (min-width: 769px){
         width: 95%;
         display: flex;
         flex-direction: row;

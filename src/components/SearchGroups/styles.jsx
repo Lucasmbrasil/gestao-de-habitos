@@ -48,10 +48,16 @@ export const InputPaper = styled(Paper)`
         border-radius: 10px;
         box-shadow: 0px 10px 15px -8px rgba(0,0,0,0.75);
         padding: 10px;
+        @media(max-width: 768px){
+            margin-top: 60px;
+            margin-bottom: 0;
+        }
         margin: 30px;
+        min-width: 250px;
         width: 50%;
     }
     && input{
+        
         width: 95%;
     }
     && svg{

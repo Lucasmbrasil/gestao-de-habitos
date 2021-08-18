@@ -6,12 +6,14 @@ import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import SearchGroups from "../../components/SearchGroups";
 import { useMediaQuery } from 'react-responsive';
 import MenuFooter from "../../components/MenuFooter";
+import MobileHeader from "../../components/MobileHeader";
 
 const FindGroups = () => {
     const desktop = useMediaQuery({ query: '(min-width: 769px)' })
     return (
         <PageContainer>
             {desktop && <MenuSide />}
+            {!desktop && <MobileHeader />}
             <MainContainer>
                 <ContainerHeader>
                     <ContainerIconTitleSubtitle>

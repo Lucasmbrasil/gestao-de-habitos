@@ -1,16 +1,11 @@
 import { Footer } from "./styles";
-
 import MenuIcon from "@material-ui/icons/Menu";
 import SentimentVerySatisfiedIcon from "@material-ui/icons/SentimentVerySatisfied";
-import LineStyleIcon from "@material-ui/icons/LineStyle";
 import GroupIcon from "@material-ui/icons/Group";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
-
 import { withStyles } from "@material-ui/core/styles";
-
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
-
 import { useState } from "react";
 
 const StyledMenu = withStyles({
