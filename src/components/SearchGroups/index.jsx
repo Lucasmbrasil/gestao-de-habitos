@@ -4,7 +4,7 @@ import {Card, Container, BackgroundDiv, PaperDiv, InputPaper} from './styles';
 import SearchIcon from '@material-ui/icons/Search';
 import { cyan } from '@material-ui/core/colors';
 import { InputBase} from '@material-ui/core';
-
+import CardAvailableGroup from '../CardsGroupsPage/CardAvailableGroup';
 const SearchGroups = () => {
     const {group} = useContext(GroupListContext);
     const [search, setSearch] = useState('');
@@ -18,7 +18,11 @@ const SearchGroups = () => {
             </InputPaper>
             <BackgroundDiv>
                 <PaperDiv elevation='6'>
-                    {filtered && filtered.map((item, index) => <Card key={index}><h3>{item.name}</h3><h5>{item.description}</h5><p>{item.category}</p> </Card>)}
+                    {filtered && filtered.map((group, index) => <CardAvailableGroup 
+                                                                    name={group.name} 
+                                                                    description={group.description} 
+                                                                    category={group.category}
+                                                                    />)}
                 </PaperDiv>
             </BackgroundDiv>
         </Container>

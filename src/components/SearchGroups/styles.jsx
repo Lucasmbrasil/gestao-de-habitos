@@ -9,8 +9,8 @@ export const Container = styled(Grid)`
     justify-content: center;
     align-items: center;
     padding: 10px;
-    width: 100%;
-    height: 100vh;
+    width: 95%;
+    margin: 0 auto;
 }
 `;
 
@@ -18,9 +18,11 @@ export const BackgroundDiv = styled(Grid)`
     && {
         background-color: RGB(225, 190, 231, 0.25);
         padding: 15px;
-        margin: 30px;
+        margin: 10px;
         width: 100%;
-        height: 100%;
+        height: 70vh;
+        max-height: 600px;
+        /* overflow: hidden; */
     }
 `;
 
@@ -28,10 +30,12 @@ export const PaperDiv = styled(Paper)`
     && {
         display: flex;
         flex-wrap: wrap;
-        justify-content: flex-start;
+        justify-content: space-evenly;
         padding: 10px;
         background: #ECEFF1;
-        height: 100%;
+        height: 65vh;
+        max-height: 580px;
+        overflow: scroll;
     }
 `;
 
@@ -50,9 +54,9 @@ export const InputPaper = styled(Paper)`
     && input{
         width: 95%;
     }
-    && SearchIcon{
+    && svg{
         width: 5%;
-        heigth: 95%;
+        height: 95%;
     }
 `;
 

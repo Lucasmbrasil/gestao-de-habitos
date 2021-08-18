@@ -4,6 +4,7 @@ export const ContainerHeader = styled.div`
     display: none;
     
     @media screen and (min-width: 680px){
+        width: 95%;
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
