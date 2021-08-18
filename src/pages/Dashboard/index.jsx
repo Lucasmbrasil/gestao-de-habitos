@@ -1,7 +1,4 @@
 import HeaderDashboard from "../../components/HeaderDashboard";
-import BlueCard from "../../components/HabitCard/BlueCard";
-import PastelCard from "../../components/HabitCard/PastelCard";
-import RedCard from "../../components/HabitCard/RedCard";
 import {
   Habits,
   HabitsContainer,
@@ -18,6 +15,7 @@ import ModalHabito from "../../components/ModalContainer/ModalHabit";
 import { useHabitList } from "../../Providers/HabitsList";
 import MenuSide from "../../components/MenuSide";
 import jwt_decode from "jwt-decode";
+import HabitCard from "../../components/HabitCard";
 
 const Dashboard = () => {
   const { habits, handleList } = useHabitList();
@@ -114,53 +112,21 @@ const Dashboard = () => {
           )}
           {habits !== undefined &&
             habits.map((habit) => {
-              return (
-                <div key={habit.id}>
-                  {habit.category === "Saúde" ? (
-                    <div>
-                      <button onClick={() => handleDeleteHabit(habit)}>
-                        remover
-                      </button>
-                      <RedCard
+              if(habit.category === "Saúde" ||
+                 habit.category === "Alimentação" || 
+                 habit.category === "Estudo"){
+                   
+                  return (
+                    <HabitCard 
+                        key={habit.id}
                         habit={habit}
                         addHowMuchAchieved={addHowMuchAchieved}
+                        handleDeleteHabit={handleDeleteHabit}
+                    />
+                  );
+                 }
 
-                      />
-                      {habit.how_much_achieved % 100 === 0 &&
-                        habit.how_much_achieved !== 0 &&
-                        `Parabéns! Você praticou esse hábito ${habit.how_much_achieved} vezes!`}
-                    </div>
-                  ) : habit.category === "Estudo" ? (
-                    <div>
-                      <button onClick={() => handleDeleteHabit(habit)}>
-                        remover
-                      </button>
-                      <BlueCard
-                        habit={habit}
-                        addHowMuchAchieved={addHowMuchAchieved}
-                      />
-                      {habit.how_much_achieved % 100 === 0 &&
-                        habit.how_much_achieved !== 0 &&
-                        `Parabéns! Você praticou esse hábito ${habit.how_much_achieved} vezes!`}
-                    </div>
-                  ) : (
-                    habit.category === "Alimentação" && (
-                      <div>
-                        <button onClick={() => handleDeleteHabit(habit)}>
-                          remover
-                        </button>
-                        <PastelCard
-                          habit={habit}
-                          addHowMuchAchieved={addHowMuchAchieved}
-                        />
-                        {habit.how_much_achieved % 100 === 0 &&
-                          habit.how_much_achieved !== 0 &&
-                          `Parabéns! Você praticou esse hábito ${habit.how_much_achieved} vezes!`}
-                      </div>
-                    )
-                  )}
-                </div>
-              );
+                return(<></>)  
             })}
         </Habits>
         <Habits>
@@ -184,52 +150,21 @@ const Dashboard = () => {
           )}
           {habits !== undefined &&
             habits.map((habit) => {
-              return (
-                <div key={habit.id}>
-                  {habit.category === "NãoSaúde" ? (
-                    <div>
-                      <button onClick={() => handleDeleteHabit(habit)}>
-                        remover
-                      </button>
-                      <RedCard
-                        habit={habit}
-                        subHowMuchAchieved={subHowMuchAchieved}
-                      />
-                      {habit.how_much_achieved % 100 === 0 &&
-                        habit.how_much_achieved !== 0 &&
-                        `Parabéns! Você deixou de praticar esse hábito ${-habit.how_much_achieved} vezes!`}
-                    </div>
-                  ) : habit.category === "NãoEstudo" ? (
-                    <div>
-                      <button onClick={() => handleDeleteHabit(habit)}>
-                        remover
-                      </button>
-                      <BlueCard
-                        habit={habit}
-                        subHowMuchAchieved={subHowMuchAchieved}
-                      />
-                      {habit.how_much_achieved % 100 === 0 &&
-                        habit.how_much_achieved !== 0 &&
-                        `Parabéns! Você deixou de praticar esse hábito ${-habit.how_much_achieved} vezes!`}
-                    </div>
-                  ) : (
-                    habit.category === "NãoAlimentação" && (
-                      <div>
-                        <button onClick={() => handleDeleteHabit(habit)}>
-                          remover
-                        </button>
-                        <PastelCard
-                          habit={habit}
-                          subHowMuchAchieved={subHowMuchAchieved}
-                        />
-                        {habit.how_much_achieved % 100 === 0 &&
-                          habit.how_much_achieved !== 0 &&
-                          `Parabéns! Você deixou de praticar esse hábito ${-habit.how_much_achieved} vezes!`}
-                      </div>
-                    )
-                  )}
-                </div>
-              );
+              if(habit.category === "NãoSaúde" ||
+                 habit.category === "NãoAlimentação" || 
+                 habit.category === "NãoEstudo"){
+                   
+                  return (
+                    <HabitCard 
+                      key={`${habit.id}bad`}
+                      habit={habit}
+                      subHowMuchAchieved={subHowMuchAchieved}
+                      handleDeleteHabit={handleDeleteHabit}
+                    />
+                  );
+                }
+
+                return(<></>)            
             })}
         </Habits>
       </HabitsContainer>
@@ -238,3 +173,4 @@ const Dashboard = () => {
   );
 };
 export default Dashboard;
+

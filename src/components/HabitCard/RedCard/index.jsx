@@ -36,7 +36,7 @@ const RedCard = ({ habit, subHowMuchAchieved, addHowMuchAchieved, handleDeleteHa
           </div>
         </div>
         <div className="text2">
-            <button onClick={() => handleDeleteHabit(habit.id)}>X</button>
+            <button onClick={() => handleDeleteHabit(habit)}>X</button>
             <span className="category">saúde</span>
             <span>{(habit.frequency).toLowerCase()}</span>
         </div>

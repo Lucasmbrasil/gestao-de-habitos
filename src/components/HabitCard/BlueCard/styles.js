@@ -29,7 +29,7 @@ export const HabitCardBlue = styled.div`
 
   .filled2 {
     background-color: #bbdefb;
-    width: 50px;
+    padding: 2px;
     height: 100%;
     display: flex;
     flex-direction: column;

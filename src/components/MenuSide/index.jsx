@@ -15,7 +15,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import { cyan } from "@material-ui/core/colors";
 import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 
-const drawerWidth = 240;
+const drawerWidth = 210;
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -70,19 +70,19 @@ const MenuSide = () => {
         <TitleBar>procrastinare</TitleBar>
         <Divider />
         <List>    
-            <ListItem button>
+            <ListItem key="1" button>
               <ListItemIcon><MenuIcon style={{color: "#ffffff"}} /></ListItemIcon>
               <ListItemMenu>dashboard</ListItemMenu>
             </ListItem>
-            <ListItem button>
+            <ListItem key="2" button>
               <ListItemIcon><InsertEmoticonIcon style={{color: "#ffffff"}} /></ListItemIcon>
               <ListItemMenu>perfil</ListItemMenu>
             </ListItem> 
-            <ListItem button>
+            <ListItem key="3" button>
               <ListItemIcon><LineStyleIcon style={{color: "#ffffff"}} /></ListItemIcon>
               <ListItemMenu>dashboard</ListItemMenu>
             </ListItem> 
-            <ListItem button onClick={ShowGroups}>
+            <ListItem key="4" button onClick={ShowGroups}>
               <ListItemIcon><GroupIcon style={{color: "#ffffff"}} /></ListItemIcon>
               <ListItemMenu>grupos</ListItemMenu>
               {
@@ -95,21 +95,21 @@ const MenuSide = () => {
         <Divider />
             {
               appear && 
-              <List className={classes.list}>
+              <List key="5" className={classes.list}>
                 <ListItem button className={classes.list}>
                     <ListItemMenuGroup>meus grupos</ListItemMenuGroup>
                 </ListItem>
-                <ListItem button className={classes.list}>
+                <ListItem key="6" button className={classes.list}>
                     <ListItemMenuGroup>encontrar grupos</ListItemMenuGroup>
                 </ListItem>
-                <ListItem button className={classes.list}>
+                <ListItem key="8" button className={classes.list}>
                     <ListItemMenuGroup>criar novo grupo</ListItemMenuGroup>
                 </ListItem>
               </List>
             }
         
         <LogoutDiv>
-            <ListItem button >
+            <ListItem key="7" button >
               <ListItemIcon><ExitToAppIcon style={{color: "#ffffff"}} /></ListItemIcon>
               <ListItemMenu>logout</ListItemMenu>
             </ListItem> 

@@ -39,7 +39,7 @@ const PastelCard = ({ habit, addHowMuchAchieved, subHowMuchAchieved, handleDelet
           </div>
         </div>
         <div className="text2">
-            <button onClick={() => handleDeleteHabit(habit.id)}>X</button>
+            <button onClick={() => handleDeleteHabit(habit)}>X</button>
             <span className="category">alimentação</span>
             <span>{(habit.frequency).toLowerCase()}</span>
         </div>

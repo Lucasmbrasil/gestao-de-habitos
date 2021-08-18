@@ -7,7 +7,7 @@ export const PageContainer = styled.div`
 
 export const MainContainer = styled.div`
   background-color: #e0f2f1;
-  width: calc(100vw - 240px);
+  width: calc(100vw - 210px);
   min-height: 100vh;
 `;
 
@@ -21,6 +21,7 @@ export const HabitsContainer = styled.main`
   min-height: 75%;
 
   .habits_header {
+    padding: 8px;
     width: 100%;
     text-align: center;
 
@@ -38,11 +39,10 @@ export const HabitsContainer = styled.main`
 `;
 
 export const Habits = styled.section`
-  width: 45%;
+  width: 47%;
   max-width: 520px;
   height: 460px;
   background-color: #ffffff;
-  margin-top: 40px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -60,18 +60,27 @@ export const TextHabits = styled.div`
   display: flex;
   justify-content: space-around;
   align-items: center;
+  background-color: #ffffff;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  font-family: "Arvo", serif;
+  font-style: italic;
+  font-weight: normal;
+  font-size: 16px;
 `;
 export const StyledButton = styled(Button)`
   && {
     color: white;
     text-transform: none;
-    background-color: #ffab00;
+    background-color: #ec9805;
     display: flex;
     justify-content: space-between;
-    border: 1px solid black;
+    font-weight: bold;
+    border: 2px solid rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 8px;
   }
   &&:hover {
-    background-color: #ffa000;
+    background-color: #d68801;
   }
 `;
 export const StyledPinkButton = styled(StyledButton)`
