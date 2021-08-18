@@ -9,14 +9,16 @@ import {
   StyledButton,
   StyledPinkButton,
   TextHabits,
+  PageContainer
 } from "./styles";
 import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
 import { useCallback, useEffect, useState } from "react";
 import api from "../../services/api";
 import ModalHabito from "../../components/ModalContainer/ModalHabit";
 import { useHabitList } from "../../Providers/HabitsList";
-import jwt_decode from "jwt-decode";
 import MenuSide from "../../components/MenuSide";
+import jwt_decode from "jwt-decode";
+
 
 import { CircularProgress } from "@material-ui/core";
 
@@ -100,6 +102,8 @@ const Dashboard = () => {
       .catch((e) => console.log(e));
   };
   return (
+    <PageContainer>
+      <MenuSide />
     <MainContainer>
       <MenuSide />
       {isLoading ? (
@@ -251,6 +255,7 @@ const Dashboard = () => {
         </HabitsContainer>
       )}
     </MainContainer>
+    </PageContainer>
   );
 };
 export default Dashboard;

@@ -5,14 +5,14 @@
 // import ModalAtividade from "../../components/ModalContainer/ModalActivity";
 // import EditAtividade from "../../components/ModalContainer/ModalEditActivity";
 // import EditUsername from "../../components/ModalContainer/ModalEditUsername";
-// import MenuSide from "../../components/MenuSide";
+import MenuSide from "../../components/MenuSide";
 
 const Home = () => {
   return (
-    <>   
-      {/* <MenuSide />    */}
+    <div style={{display: "flex"}}>
+      <MenuSide />
       <div>Olá</div>
-    </>
+    </div>
   );
 };
 export default Home;
