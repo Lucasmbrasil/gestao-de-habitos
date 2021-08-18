@@ -14,7 +14,7 @@ const CardAvailableGroup = ({name, description, category}) => {
             <div className="card_content">
 
               <div className="card_header">
-                  <Icon><FitnessCenterIcon /></Icon>
+                  <Icon><FitnessCenterIcon style={{color: "#802727"}}/></Icon>
                   <div className="group">
                       <h3>{name}</h3>
                       <span>{category}</span>
@@ -48,7 +48,7 @@ const CardAvailableGroup = ({name, description, category}) => {
             <div className="card_content">
 
               <div className="card_header">
-                  <Icon><FastfoodIcon /></Icon>
+                  <Icon><FastfoodIcon style={{color: "#354283"}} /></Icon>
                   <div className="group">
                       <h3>{name}</h3>
                       <span>{category}</span>
@@ -77,12 +77,12 @@ const CardAvailableGroup = ({name, description, category}) => {
   
   if(category === "Estudo") {
     return (
-        <Container color="#81C7843">
+        <Container color="#81C784">
           <div className="card_colored-part" />
             <div className="card_content">
 
               <div className="card_header">
-                  <Icon><MenuBookIcon /></Icon>
+                  <Icon><MenuBookIcon style={{color: "#275a29"}}/></Icon>
                   <div className="group">
                       <h3>{name}</h3>
                       <span>{category}</span>
@@ -115,7 +115,7 @@ const CardAvailableGroup = ({name, description, category}) => {
             <div className="card_content">
 
               <div className="card_header">
-                  <Icon><NaturePeopleIcon /></Icon>
+                  <Icon><NaturePeopleIcon style={{color: "#26A69A"}} /></Icon>
                   <div className="group">
                       <h3>{name}</h3>
                       <span>{category}</span>
