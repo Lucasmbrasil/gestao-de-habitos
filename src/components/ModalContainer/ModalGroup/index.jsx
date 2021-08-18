@@ -12,13 +12,13 @@ const ModalGrupo = () => {
           <div>
             <label>título</label>
           </div>
-          <input placeholder="nome do grupo" />
+          <input type="text" placeholder="nome do grupo" />
         </InputContainer>
         <InputContainer>
           <div>
             <label>descrição</label>
           </div>
-          <input placeholder="descreva um pouco sobre o grupo aqui"
+          <input type="text" placeholder="descreva um pouco sobre o grupo aqui"
           />
         </InputContainer>
         <InputContainer>

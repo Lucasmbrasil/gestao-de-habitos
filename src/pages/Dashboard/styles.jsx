@@ -1,32 +1,68 @@
 import styled from "styled-components";
 import { Button } from "@material-ui/core";
 
-export const HabitsContainer = styled.div`
+export const PageContainer = styled.div`
   display: flex;
+`
+
+export const MainContainer = styled.div`
+  background-color: #e0f2f1;
+  width: calc(100vw - 210px);
+  min-height: 100vh;
+`;
+
+export const HabitsContainer = styled.main`
+  display: flex;
+  @media (min-width: 1000px){
+    flex-wrap: wrap;
+    flex-direction: row;
+  }
   flex-wrap: wrap;
+  flex-direction: column;
   justify-content: space-evenly;
   background: rgba(255, 253, 231, 0.5);
+  width: 95%;
+  margin: 0 auto;
+  min-height: 75%;
 
-  h2 {
+  .habits_header {
+    padding: 8px;
     width: 100%;
     text-align: center;
+
+    h2 {
+    width: 100%;
     height: fit-content;
-    font-family: "Arvo", sans-serif;
+    font-family: "Arvo", serif;
+    }
+
+    p {
+      font-family: "Karla", sans-serif;
+    }
   }
+  
 `;
-export const Habits = styled.div`
-  width: 45%;
-  margin-top: 40px;
+
+export const Habits = styled.section`
+  width: 47%;
+  max-width: 520px;
+  height: 460px;
+  background-color: #ffffff;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-content: flex-start;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  @media(max-width: 980px){
+    width: 80%;
+    margin: 1rem auto;
+  }
 `;
-export const MainContainer = styled.div`
-  background-color: #e0f2f1;
-`;
+
 export const TextHabits = styled.div`
-  width: 450px;
+  width: 100%;
   border: 1px solid black;
   text-align: center;
   padding: 15px 0;
@@ -34,18 +70,27 @@ export const TextHabits = styled.div`
   display: flex;
   justify-content: space-around;
   align-items: center;
+  background-color: #ffffff;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  font-family: "Arvo", serif;
+  font-style: italic;
+  font-weight: normal;
+  font-size: 16px;
 `;
 export const StyledButton = styled(Button)`
   && {
     color: white;
     text-transform: none;
-    background-color: #ffab00;
+    background-color: #ec9805;
     display: flex;
     justify-content: space-between;
-    border: 1px solid black;
+    font-weight: bold;
+    border: 2px solid rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 8px;
   }
   &&:hover {
-    background-color: #ffa000;
+    background-color: #d68801;
   }
 `;
 export const StyledPinkButton = styled(StyledButton)`

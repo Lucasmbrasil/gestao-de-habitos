@@ -13,7 +13,7 @@ const ModalAtividade = () => {
           <div>
             <label>título</label>
           </div>
-          <input placeholder="nome da atividade" />
+          <input type="text" placeholder="nome da atividade" />
         </InputContainer>
         <InputContainer>
           <div className="legenda">

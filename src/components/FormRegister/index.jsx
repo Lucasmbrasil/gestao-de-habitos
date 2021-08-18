@@ -43,6 +43,7 @@ const FormRegister = () => {
     handleSubmit,
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) });
+
   const handleForm = (data) => {
     setIsLoading(true);
     const newData = {
@@ -50,12 +51,26 @@ const FormRegister = () => {
       password: data.password,
       email: data.email,
     };
+
     api
       .post("/users/", newData)
       .then((response) => {
         toast.success("Cadastro realizado! Pronto para criar novos hábitos?", {
-          onClose: () => history.push("/dashboard"),
-          onOpen: () => setDisable(true),
+          onClose: () => {
+            api
+              .post("/sessions/", newData)
+              .then((response) => {
+                localStorage.clear();
+                localStorage.setItem("token", response.data.access);
+                history.push("/dashboard");
+              })
+              .catch((err) => {
+                console.log(err);
+              });
+          },
+          onOpen: () => {
+            setDisable(true);
+          },
         });
         setIsLoading(false);
       })
@@ -65,6 +80,7 @@ const FormRegister = () => {
         setIsLoading(false);
       });
   };
+
   return (
     <form onSubmit={handleSubmit(handleForm)}>
       <ContainerLeft>
@@ -114,7 +130,10 @@ const FormRegister = () => {
               Criar conta
             </ButtonStyled>
             {isLoading && <StyledCircularProgress />}
-            <ToastContainer className="toast" />
+
+            <ToastContainer className="toast" autoClose={3500} />
+            <div>Já tem uma conta? </div>
+            <h5 onClick={() => history.push("/login")}>Clique aqui!</h5>
           </Form>
         </FormContainer>
       </ContainerLeft>
