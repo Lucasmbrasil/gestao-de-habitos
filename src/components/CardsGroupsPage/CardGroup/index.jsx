@@ -4,11 +4,11 @@ import FastfoodIcon from '@material-ui/icons/Fastfood';
 import MenuBookIcon from '@material-ui/icons/MenuBook';
 import NaturePeopleIcon from '@material-ui/icons/NaturePeople'; 
 
-const CardGroup = ({name, description, category}) => {
-  //fazer os ifs para as categorias e deixar um retorno default
+const CardGroup = ({name, description, category, handleSpecificGroup, id, pointer = false}) => {
+  
   if(category === "Saúde"){
     return (
-      <Container color="#E57373">
+      <Container pointer={pointer} color="#E57373" onClick={handleSpecificGroup ? () => handleSpecificGroup(id) : () => false}>
         <div className="card_colored-part" />
         <div className="card_content">
             <div className="card_header">
@@ -29,7 +29,7 @@ const CardGroup = ({name, description, category}) => {
 
   if(category === "Alimentação"){
     return (
-      <Container color="#7986cb">
+      <Container pointer={pointer} color="#7986cb" onClick={handleSpecificGroup ? () => handleSpecificGroup(id) : () => false}>
         <div className="card_colored-part" />
         <div className="card_content">
             <div className="card_header">
@@ -50,7 +50,7 @@ const CardGroup = ({name, description, category}) => {
 
   if(category === "Estudo"){
     return (
-      <Container color="#81C784">
+      <Container pointer={pointer} color="#81C784" onClick={handleSpecificGroup ? () => handleSpecificGroup(id) : () => false}>
         <div className="card_colored-part" />
         <div className="card_content">
             <div className="card_header">
@@ -70,7 +70,7 @@ const CardGroup = ({name, description, category}) => {
   }
   return (
     <>
-      <Container color="#26A69A">
+      <Container pointer={pointer} color="#26A69A" onClick={handleSpecificGroup ? () => handleSpecificGroup(id) : () => false}>
         <div className="card_colored-part" />
         <div className="card_content">
             <div className="card_header">

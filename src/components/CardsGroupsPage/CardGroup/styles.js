@@ -9,6 +9,7 @@ export const Container = styled.div`
   overflow: hidden;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   margin: 10px;
+  cursor: ${(props) => (props.pointer ? "pointer" : "default")};
 
   .card_colored-part {
     background-color: ${(props) => props.color};
@@ -22,6 +23,7 @@ export const Container = styled.div`
     flex-direction: column;
     justify-content: space-around;
     background-color: #fff;
+  
   }
 
   .card_header {

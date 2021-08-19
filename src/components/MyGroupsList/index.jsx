@@ -13,9 +13,17 @@ const MyGroupsList = () => {
   }, [handleMyGroupsList]);
 
   return (
-    <div>
+    <div style={{overflow: "scroll", height: "70%", maxHeight: "400px"}}>
       {myGroups.map((group) => (
-        <CardGroup key={group.id} name={group.name} description={group.description} category={group.category} />
+        <CardGroup 
+                  pointer={true} 
+                  handleSpecificGroup={handleSpecificGroup}
+                  key={group.id}
+                  id={group.id} 
+                  name={group.name} 
+                  description={group.description} 
+                  category={group.category} 
+                  />
       ))}
     </div>
   );

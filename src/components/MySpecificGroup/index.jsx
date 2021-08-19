@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { useSpecificGroup } from "../../Providers/SpecificGroup";
 import ModalGoal from "../ModalContainer/ModalGoal";
 import ModalActivity from "../ModalContainer/ModalActivity";
-
 import { useGetGroupGoals } from "../../Providers/GetGroupGoals";
 import { useGetGroupActivities } from "../../Providers/GetGroupActivities";
 import { useDelete } from "../../Providers/Delete";
