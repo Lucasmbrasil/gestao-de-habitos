@@ -32,7 +32,7 @@ const HabitCard = ({
       <BlueCard
         addBadHabit={addBadHabit}
         habit={habit}
-        subHowMuchAchieved={subHowMuchAchieved}
+        addHowMuchAchieved={addHowMuchAchieved}
         handleDeleteHabit={handleDeleteHabit}
       ></BlueCard>
     );
@@ -50,7 +50,7 @@ const HabitCard = ({
       <PastelCard
         addBadHabit={addBadHabit}
         habit={habit}
-        subHowMuchAchieved={subHowMuchAchieved}
+        addHowMuchAchieved={addHowMuchAchieved}
         handleDeleteHabit={handleDeleteHabit}
       ></PastelCard>
     );

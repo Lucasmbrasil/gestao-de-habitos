@@ -47,7 +47,7 @@ const Dashboard = () => {
     api
       .patch(
         `/habits/${habit.id}/`,
-        { how_much_achieved: habit.how_much_achieved + 10 },
+        { how_much_achieved: habit.how_much_achieved + 5 },
         {
           headers: { Authorization: `Bearer ${getToken}` },
         }
@@ -61,7 +61,7 @@ const Dashboard = () => {
     api
       .patch(
         `/habits/${habit.id}/`,
-        { how_much_achieved: habit.how_much_achieved - 1 },
+        { how_much_achieved: habit.how_much_achieved - 5 },
         {
           headers: { Authorization: `Bearer ${getToken}` },
         }
