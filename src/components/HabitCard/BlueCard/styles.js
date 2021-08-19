@@ -115,4 +115,16 @@ export const HabitCardBlue = styled.div`
     padding: 2px;
     width: 100%;
   }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    height: 39%;
+    .filled {
+      width: 100%;
+    }
+
+    .filled2 {
+      margin-left: 0;
+    }
+  }
 `;

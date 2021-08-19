@@ -1,4 +1,7 @@
 import HeaderDashboard from "../../components/HeaderDashboard";
+import { useMediaQuery } from "react-responsive";
+import MenuFooter from "../../components/MenuFooter";
+
 import {
   Habits,
   HabitsContainer,
@@ -22,6 +25,9 @@ import ModalEditHabit from "../../components/ModalContainer/ModalEditHabit";
 import { ToastContainer } from "react-toastify";
 
 const Dashboard = () => {
+  const desktop = useMediaQuery({ query: "(min-width:769px)" });
+  const mobileComponents = useMediaQuery({ query: "(max-width:768px)" });
+
   const { habits, handleList } = useHabitList();
   const [addGoodHabit, setAddGoodHabit] = useState(false);
   const [addBadHabit, setAddBadHabit] = useState(false);
@@ -107,8 +113,12 @@ const Dashboard = () => {
     <PageContainer>
       <ToastContainer position="top-center" autoClose={2500} />
 
-      <MenuSide />
+      {desktop && <MenuSide />}
       <MainContainer>
+        {mobileComponents && (
+          <header className="MobileHeader">procrastinare</header>
+        )}
+
         <HeaderDashboard username={username} />
         <HabitsContainer>
           <div className="habits_header">
@@ -197,6 +207,7 @@ const Dashboard = () => {
               })}
           </Habits>
         </HabitsContainer>
+        {mobileComponents && <MenuFooter />}
       </MainContainer>
     </PageContainer>
   );

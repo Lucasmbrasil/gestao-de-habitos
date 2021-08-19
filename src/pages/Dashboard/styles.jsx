@@ -2,22 +2,36 @@ import styled from "styled-components";
 import { Button } from "@material-ui/core";
 
 export const PageContainer = styled.div`
-  @media(min-width: 769px){
+  @media (min-width: 769px) {
     display: flex;
   }
-`
+`;
 
 export const MainContainer = styled.div`
   background-color: #e0f2f1;
-  @media(min-width: 769px){
+  @media (min-width: 769px) {
     width: calc(100vw - 210px);
   }
   min-height: 100vh;
+  .MobileHeader {
+    background-color: rgba(0, 96, 100, 0.5);
+    font-family: "Arvo", sans-serif;
+    color: white;
+    font-size: 32px;
+    height: 15vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 export const HabitsContainer = styled.main`
   display: flex;
-  @media (min-width: 1000px){
+  @media (min-width: 1000px) {
     flex-wrap: wrap;
     flex-direction: row;
   }
@@ -35,16 +49,15 @@ export const HabitsContainer = styled.main`
     text-align: center;
 
     h2 {
-    width: 100%;
-    height: fit-content;
-    font-family: "Arvo", serif;
+      width: 100%;
+      height: fit-content;
+      font-family: "Arvo", serif;
     }
 
     p {
       font-family: "Karla", sans-serif;
     }
   }
-  
 `;
 
 export const Habits = styled.section`
@@ -59,9 +72,10 @@ export const Habits = styled.section`
   padding: 1rem;
   margin-bottom: 1rem;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  @media(max-width: 980px){
+  @media (max-width: 980px) {
     width: 80%;
     margin: 1rem auto;
+    height: 90vh;
   }
 `;
 export const TextHabits = styled.div`

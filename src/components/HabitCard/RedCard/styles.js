@@ -6,4 +6,16 @@ export const HabitCardRed = styled(HabitCardBlue)`
   .category {
     background-color: #ffcdd2;
   }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    height: 39%;
+    .filled {
+      width: 100%;
+    }
+
+    .filled2 {
+      margin-left: 0;
+    }
+  }
 `;
