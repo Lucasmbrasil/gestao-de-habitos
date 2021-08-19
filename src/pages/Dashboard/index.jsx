@@ -16,8 +16,7 @@ import { useHabitList } from "../../Providers/HabitsList";
 import MenuSide from "../../components/MenuSide";
 import jwt_decode from "jwt-decode";
 import HabitCard from "../../components/HabitCard";
-
-import { CircularProgress } from "@material-ui/core";
+import { ToastContainer } from "react-toastify";
 
 const Dashboard = () => {
   const { habits, handleList } = useHabitList();
@@ -25,7 +24,7 @@ const Dashboard = () => {
   const [addBadHabit, setAddBadHabit] = useState(false);
   const [username, setUsername] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-
+  const [edit, setEdit] = useState(false);
   const getToken = window.localStorage.getItem("token");
   const decodeToken = jwt_decode(getToken);
   const userID = decodeToken.user_id;
@@ -45,7 +44,7 @@ const Dashboard = () => {
     api
       .patch(
         `/habits/${habit.id}/`,
-        { how_much_achieved: habit.how_much_achieved + 10 },
+        { how_much_achieved: habit.how_much_achieved + 5 },
         {
           headers: { Authorization: `Bearer ${getToken}` },
         }
@@ -59,7 +58,7 @@ const Dashboard = () => {
     api
       .patch(
         `/habits/${habit.id}/`,
-        { how_much_achieved: habit.how_much_achieved - 1 },
+        { how_much_achieved: habit.how_much_achieved - 5 },
         {
           headers: { Authorization: `Bearer ${getToken}` },
         }
@@ -84,7 +83,9 @@ const Dashboard = () => {
     setAddBadHabit(true);
     setAddGoodHabit(false);
   };
-
+  const handleCloseEditHabit = () => {
+    setEdit(false);
+  };
   useEffect(() => {
     handleList();
     getUsername();
@@ -101,6 +102,8 @@ const Dashboard = () => {
 
   return (
     <PageContainer>
+      <ToastContainer position="top-center" autoClose={2500} />
+
       <MenuSide />
       <MainContainer>
         <HeaderDashboard username={username} />
@@ -135,12 +138,15 @@ const Dashboard = () => {
                   habit.category === "Estudo"
                 ) {
                   return (
-                    <HabitCard
-                      key={habit.id}
-                      habit={habit}
-                      addHowMuchAchieved={addHowMuchAchieved}
-                      handleDeleteHabit={handleDeleteHabit}
-                    />
+                    <>
+                      <HabitCard
+                        key={habit.id}
+                        habit={habit}
+                        addHowMuchAchieved={addHowMuchAchieved}
+                        handleDeleteHabit={handleDeleteHabit}
+                        addBadHabit={addBadHabit}
+                      />
+                    </>
                   );
                 }
                 return <></>;
@@ -178,6 +184,7 @@ const Dashboard = () => {
                       habit={habit}
                       subHowMuchAchieved={subHowMuchAchieved}
                       handleDeleteHabit={handleDeleteHabit}
+                      addBadHabit={addBadHabit}
                     />
                   );
                 }

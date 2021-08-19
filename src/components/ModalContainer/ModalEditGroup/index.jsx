@@ -7,9 +7,14 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useCreateGroup } from "../../../Providers/CreateGroup";
 import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useEditGroup } from "../../../Providers/EditGroup";
+import { useSpecificGroup } from "../../../Providers/SpecificGroup";
 
-const ModalGrupo = ({ handleButtonClose, setCreateGroup }) => {
-  const { handleCreateGroup } = useCreateGroup();
+const ModalEditGroup = ({ handleButtonClose, setEditGroup }) => {
+  const { handleEditGroup } = useEditGroup();
+  const { specificGroup, handleSpecificGroup } = useSpecificGroup();
+  console.log(specificGroup);
 
   const schema = yup.object().shape({
     name: yup.string().required("Campo obrigatório"),
@@ -17,14 +22,15 @@ const ModalGrupo = ({ handleButtonClose, setCreateGroup }) => {
     description: yup.string().required("Campo obrigatório"),
   });
   const onCloseToast = () => {
-    toast.success("Grupo criado com sucesso!", {
+    toast.success("Grupo editado com sucesso!", {
       onClose: () => {
-        setCreateGroup(false);
+        handleSpecificGroup(specificGroup.id);
+        setEditGroup(false);
       },
     });
   };
-  const newCreate = (data) => {
-    handleCreateGroup(data);
+  const newEdit = (data) => {
+    handleEditGroup(data, specificGroup);
     onCloseToast();
   };
   const {
@@ -35,7 +41,7 @@ const ModalGrupo = ({ handleButtonClose, setCreateGroup }) => {
   return (
     <ModalContainer
       color="#00BCD4"
-      onSubmit={handleSubmit(newCreate)}
+      onSubmit={handleSubmit(newEdit)}
       handleButtonClose={handleButtonClose}
     >
       <Container>
@@ -83,4 +89,4 @@ const ModalGrupo = ({ handleButtonClose, setCreateGroup }) => {
   );
 };
 
-export default ModalGrupo;
+export default ModalEditGroup;

@@ -5,6 +5,10 @@ import { makeStyles } from "@material-ui/core/styles";
 import FitnessCenterIcon from "@material-ui/icons/FitnessCenter";
 import HealingIcon from "@material-ui/icons/Healing";
 import { Box, CircularProgress } from "@material-ui/core";
+import { useState } from "react";
+import ModalEditHabit from "../../ModalContainer/ModalEditHabit";
+import CreateIcon from "@material-ui/icons/Create";
+import DeleteIcon from "@material-ui/icons/Delete";
 
 const useStyles = makeStyles({
   box: {
@@ -14,7 +18,18 @@ const useStyles = makeStyles({
   },
 });
 
-const RedCard = ({ habit, subHowMuchAchieved, addHowMuchAchieved, handleDeleteHabit }) => {
+const RedCard = ({
+  habit,
+  subHowMuchAchieved,
+  addHowMuchAchieved,
+  handleDeleteHabit,
+}) => {
+  const [edit, setEdit] = useState(false);
+  const handleCloseEditHabit = () => {
+    setEdit(false);
+  };
+  const [addBadHabit, setAddBadHabit] = useState(false);
+
   const classes = useStyles();
   return (
     <>
@@ -36,9 +51,26 @@ const RedCard = ({ habit, subHowMuchAchieved, addHowMuchAchieved, handleDeleteHa
           </div>
         </div>
         <div className="text2">
-            <button onClick={() => handleDeleteHabit(habit)}>X</button>
-            <span className="category">saúde</span>
-            <span>{(habit.frequency).toLowerCase()}</span>
+          <div id="buttons">
+            <CreateIcon
+              onClick={() => {
+                setEdit(true);
+                habit.category === "NãoSaúde"
+                  ? setAddBadHabit(true)
+                  : setAddBadHabit(false);
+              }}
+            />
+            <DeleteIcon onClick={() => handleDeleteHabit(habit)} />
+          </div>
+          <span className="category">saúde</span>
+          <span>{habit.frequency.toLowerCase()}</span>
+          {edit && (
+            <ModalEditHabit
+              handleButtonClose={handleCloseEditHabit}
+              habit={habit}
+              addBadHabit={addBadHabit}
+            />
+          )}
         </div>
 
         <div className="filled2">
@@ -64,7 +96,6 @@ const RedCard = ({ habit, subHowMuchAchieved, addHowMuchAchieved, handleDeleteHa
                     variant="subtitle2"
                     component="span"
                     color="textSecondary"
-                  
                   >
                     {habit.how_much_achieved}
                   </Typography>

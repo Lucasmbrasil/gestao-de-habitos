@@ -60,15 +60,24 @@ const MySpecificGroup = () => {
   const { handleMyGroupsList, myGroups } = useMyGroupsList();
   const [createGoal, setCreateGoal] = useState(false);
   const [createActivities, setCreateActivities] = useState(false);
+  const [editGroup, setEditGroup] = useState(false);
   const myGroupsId = myGroups.map((group) => group.id);
   const enterGroup = myGroupsId.includes(specificGroup.id);
+  const getToken = window.localStorage.getItem("token");
+  const decodeToken = jwt_decode(getToken);
+  const userID = decodeToken.user_id;
+
   const handleButtonClose = () => {
     setCreateGoal(false);
   };
   const handleButtonCloseActivities = () => {
     setCreateActivities(false);
   };
-
+  const handleButtonCloseEditGroup = () => {
+    setEditGroup(false);
+  };
+  console.log(specificGroup.creator.id);
+  console.log(userID);
   useEffect(() => {
     handleGoal();
     handleActivities();

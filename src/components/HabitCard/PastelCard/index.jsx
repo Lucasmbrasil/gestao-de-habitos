@@ -5,6 +5,10 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import FastfoodIcon from "@material-ui/icons/Fastfood";
 import { Box, CircularProgress } from "@material-ui/core";
+import ModalEditHabit from "../../ModalContainer/ModalEditHabit";
+import { useState } from "react";
+import CreateIcon from "@material-ui/icons/Create";
+import DeleteIcon from "@material-ui/icons/Delete";
 
 const useStyles = makeStyles({
   box: {
@@ -14,7 +18,17 @@ const useStyles = makeStyles({
   },
 });
 
-const PastelCard = ({ habit, addHowMuchAchieved, subHowMuchAchieved, handleDeleteHabit }) => {
+const PastelCard = ({
+  habit,
+  addHowMuchAchieved,
+  subHowMuchAchieved,
+  handleDeleteHabit,
+}) => {
+  const [edit, setEdit] = useState(false);
+  const handleCloseEditHabit = () => {
+    setEdit(false);
+  };
+  const [addBadHabit, setAddBadHabit] = useState(false);
   const classes = useStyles();
   return (
     <>
@@ -39,9 +53,27 @@ const PastelCard = ({ habit, addHowMuchAchieved, subHowMuchAchieved, handleDelet
           </div>
         </div>
         <div className="text2">
-            <button onClick={() => handleDeleteHabit(habit)}>X</button>
-            <span className="category">alimentação</span>
-            <span>{(habit.frequency).toLowerCase()}</span>
+          <div id="buttons">
+            <CreateIcon
+              onClick={() => {
+                setEdit(true);
+                habit.category === "NãoAlimentação"
+                  ? setAddBadHabit(true)
+                  : setAddBadHabit(false);
+              }}
+            />
+            <DeleteIcon onClick={() => handleDeleteHabit(habit)} />
+          </div>
+          {edit && (
+            <ModalEditHabit
+              handleButtonClose={handleCloseEditHabit}
+              habit={habit}
+              addBadHabit={addBadHabit}
+            />
+          )}
+
+          <span className="category">alimentação</span>
+          <span>{habit.frequency.toLowerCase()}</span>
         </div>
 
         <div className="filled2">

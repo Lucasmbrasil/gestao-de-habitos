@@ -4,13 +4,14 @@ import Radio from "@material-ui/core/Radio";
 import { useState } from "react";
 import { Title } from "../styles";
 import { InputContainer } from "../styles";
-import { Container } from "./styles";
+import { Container } from "../ModalHabit/styles";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { RadioGroup } from "@material-ui/core";
 import api from "../../../services/api";
 import { useHabitList } from "../../../Providers/HabitsList";
+import { toast } from "react-toastify";
 const labels = {
   1: "Fácil",
   2: "Normal",
@@ -18,7 +19,7 @@ const labels = {
   4: "Muito Difícil",
 };
 
-const ModalHabito = ({ handleButtonClose, addBadHabit, userID, getToken }) => {
+const ModalEditHabit = ({ handleButtonClose, addBadHabit, habit }) => {
   const [selectedValue, setSelectedValue] = useState("");
   const [value, setValue] = useState(0);
   const [hover, setHover] = useState(-1);
@@ -30,7 +31,7 @@ const ModalHabito = ({ handleButtonClose, addBadHabit, userID, getToken }) => {
     frequency: yup.string().required("Campo obrigatório"),
     difficulty: yup.string().required("Campo obrigatório"),
   });
-
+  console.log(addBadHabit);
   const {
     register,
     handleSubmit,
@@ -40,35 +41,36 @@ const ModalHabito = ({ handleButtonClose, addBadHabit, userID, getToken }) => {
   const handleChange = (event) => {
     setSelectedValue(event.target.value);
   };
+  console.log(addBadHabit);
+  const handleEdit = (data, habit) => {
+    const getToken = window.localStorage.getItem("token");
 
-  const handleAdd = (data) => {
     const newData = {
       title: data.title,
       category: data.category,
       difficulty: Number(data.difficulty),
       frequency: data.frequency,
-      achieved: false,
-      how_much_achieved: Number(0),
-      user: Number(userID),
     };
     api
-      .post("/habits/", newData, {
+      .patch(`/habits/${habit.id}/`, newData, {
         headers: { Authorization: `Bearer ${getToken}` },
       })
       .then((res) => handleList())
+      .then((res) => toast.success("Hábito editado"))
+      .then((res) => handleButtonClose())
       .catch((e) => console.log(e));
-
-    handleButtonClose();
   };
-
+  const newEdit = (data) => {
+    handleEdit(data, habit);
+  };
   return (
     <ModalContainer
       color="#aed4b0"
-      onSubmit={handleSubmit(handleAdd)}
+      onSubmit={handleSubmit(newEdit)}
       handleButtonClose={handleButtonClose}
     >
       <Container>
-        <Title>novo hábito:</Title>
+        <Title>editar hábito:</Title>
         <InputContainer>
           <div>
             <label>título</label>
@@ -151,4 +153,4 @@ const ModalHabito = ({ handleButtonClose, addBadHabit, userID, getToken }) => {
   );
 };
 
-export default ModalHabito;
+export default ModalEditHabit;
