@@ -143,7 +143,6 @@ const Dashboard = () => {
                     />
                   );
                 }
-
                 return <></>;
               })}
           </Habits>
