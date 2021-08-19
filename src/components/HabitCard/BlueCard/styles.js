@@ -37,14 +37,14 @@ export const HabitCardBlue = styled.div`
     align-items: center;
     margin-left: 0.4rem;
 
-    button {
+    /* button {
       border-radius: 50%;
       border: 1px solid black;
       width: 18px;
       font-weight: bold;
       box-shadow: 0 1px 2px #000000;
       background-color: #fff;
-    }
+    } */
 
     button:active {
       position: relative;
@@ -78,7 +78,7 @@ export const HabitCardBlue = styled.div`
       text-align: end;
     }
 
-    button {
+    /* button {
       background-color: #b71c1c;
       color: #fff;
       font-family: "Karla", sans-serif;
@@ -89,7 +89,7 @@ export const HabitCardBlue = styled.div`
       border: 1px solid rgba(255, 255, 255, 0.5);
       font-size: 1rem;
       cursor: pointer;
-    }
+    } */
   }
   .text2 div {
     margin-right: 10px;
