@@ -31,7 +31,6 @@ const ModalAtividade = ({
   } = useForm({ resolver: yupResolver(schema) });
 
   const handleCreateActivities = (data) => {
-    console.log(specificGroup.id);
     const getToken = window.localStorage.getItem("token");
     const newData = {
       title: data.title,
@@ -65,7 +64,11 @@ const ModalAtividade = ({
           <div>
             <label>título</label>
           </div>
-          <input type="text" placeholder="nome da atividade" />
+          <input
+            type="text"
+            placeholder="nome da atividade"
+            {...register("title")}
+          />
         </InputContainer>
         <InputContainer>
           <div className="legenda">

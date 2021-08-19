@@ -1,6 +1,16 @@
 import { useState, useContext } from "react";
 import { GroupListContext } from "../../Providers/GroupList";
-import { Container, BackgroundDiv, PaperDiv, InputPaper } from "./styles";
+import {
+  Container,
+  BackgroundDiv,
+  PaperDiv,
+  InputPaper,
+  Card,
+  Button,
+  ButtonNext,
+  ButtonPrevious,
+  ButtonContainer,
+} from "./styles";
 import SearchIcon from "@material-ui/icons/Search";
 import { cyan } from "@material-ui/core/colors";
 import { InputBase } from "@material-ui/core";
@@ -11,6 +21,7 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import { useSearchGroup } from "../../Providers/SearchGroup";
+import CardGroup from "../CardsGroupsPage/CardGroup";
 
 const SearchGroups = () => {
   const { group, count, previousPage, nextPage, setCount } =
@@ -22,10 +33,11 @@ const SearchGroups = () => {
 
   return (
     <Container>
-      <ToastContainer />
+      <ToastContainer autoClose={2000} position="top-center" />
 
       <InputPaper>
         <InputBase
+          fullWidth
           placeholder='Ex: "Menos fastfood!"'
           onChange={(e) => setSearch(e.target.value)}
         />
@@ -38,18 +50,20 @@ const SearchGroups = () => {
         <PaperDiv elevation={6}>
           {searched ? (
             searchResults.length > 0 ? (
-              searchResults.map((item, index) => (
-                <Card
-                  key={index}
+              searchResults.map((group) => (
+                <CardGroup
+                  pointer={true}
+                  handleSpecificGroup={handleSpecificGroup}
+                  key={group.id}
+                  id={group.id}
+                  name={group.name}
+                  description={group.description}
+                  category={group.category}
                   onClick={() => {
                     handleMyGroupsList();
-                    handleSpecificGroup(item.id);
+                    handleSpecificGroup(group.id);
                   }}
-                >
-                  <h3>{item.name}</h3>
-                  <h5>{item.description}</h5>
-                  <p>{item.category}</p>
-                </Card>
+                />
               ))
             ) : (
               <h2>Nenhum resultado encontrado</h2>
@@ -58,28 +72,28 @@ const SearchGroups = () => {
             <CircularProgress />
           ) : (
             <>
-              {group.map((item) => (
-                <Card
-                  key={item.id}
+              {group.map((group) => (
+                <CardGroup
+                  pointer={true}
+                  handleSpecificGroup={handleSpecificGroup}
+                  key={group.id}
+                  id={group.id}
+                  name={group.name}
+                  description={group.description}
+                  category={group.category}
                   onClick={() => {
                     handleMyGroupsList();
-                    handleSpecificGroup(item.id);
+                    handleSpecificGroup(group.id);
                   }}
-                >
-                  <h3>{item.name}</h3>
-                  <h5>{item.description}</h5>
-                  <p>{item.category}</p>
-                </Card>
+                />
               ))}
-              {previousPage !== null && (
-                <button onClick={() => setCount(count - 1)}>Voltar</button>
-              )}
-              {nextPage !== null && (
-                <button onClick={() => setCount(count + 1)}>Avançar</button>
-              )}
             </>
           )}
         </PaperDiv>
+        <ButtonPrevious onClick={() => setCount(count - 1)}>
+          Voltar
+        </ButtonPrevious>
+        <ButtonNext onClick={() => setCount(count + 1)}>Avançar</ButtonNext>
       </BackgroundDiv>
     </Container>
   );

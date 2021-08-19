@@ -1,12 +1,13 @@
-import { createContext, useContext } from "react";
+import { createContext, useContext, useState } from "react";
 import { toast } from "react-toastify";
 import api from "../../services/api";
 import { useMyGroupsList } from "../MyGroupsList";
-import { useSpecificGroup } from "../SpecificGroup";
 
 const SubscribeGroupContext = createContext();
 
 export const SubscribeGroupProvider = ({ children }) => {
+  const [register, setRegister] = useState(false);
+
   const handleSubscribeGroup = (specificGroup) => {
     const getToken = window.localStorage.getItem("token");
     api
@@ -14,10 +15,19 @@ export const SubscribeGroupProvider = ({ children }) => {
         headers: { Authorization: `Bearer ${getToken}` },
       })
       .then((res) => toast.success("Inscrição realizada com sucesso!"))
-      .catch((e) => console.log(e));
+      .then((res) =>
+        api
+          .get("/groups/subscriptions/", {
+            headers: { Authorization: `Bearer ${getToken}` },
+          })
+          .then((res) => {
+            setRegister(true);
+          })
+          .catch((e) => console.log(e))
+      );
   };
   return (
-    <SubscribeGroupContext.Provider value={{ handleSubscribeGroup }}>
+    <SubscribeGroupContext.Provider value={{ handleSubscribeGroup, register }}>
       {children}
     </SubscribeGroupContext.Provider>
   );

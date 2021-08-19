@@ -38,6 +38,14 @@ const MyGroupsBody = () => {
             setCreateGroup={setCreateGroup}
           />
         )}
+        <SearchPlace>
+          <p>deseja ver mais? busque novos grupos</p>
+          <Link to="/groups/find">
+            <SearchBar>
+              buscar novos grupos <SearchIcon />
+            </SearchBar>
+          </Link>
+        </SearchPlace>
       </ContainerGroups>
     </ContainerBody>
   );

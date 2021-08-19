@@ -9,6 +9,7 @@ import { useGetGroupActivities } from "../../Providers/GetGroupActivities";
 import { useDelete } from "../../Providers/Delete";
 import { useMyGroupsList } from "../../Providers/MyGroupsList";
 import { useSubscribeGroup } from "../../Providers/SubscribeGroup";
+import { ButtonAddGroup } from "../MyGroupsHeader/styles";
 
 const MySpecificGroup = () => {
   const { specificGroup, setSpecificGroup } = useSpecificGroup();
@@ -29,8 +30,8 @@ const MySpecificGroup = () => {
     nextActivitiesPage,
   } = useGetGroupActivities();
   const { handleDeleteGoal, handleDeleteActivity } = useDelete();
-  const { handleSubscribeGroup } = useSubscribeGroup();
-  const { myGroups, handleMyGroupsList } = useMyGroupsList();
+  const { handleSubscribeGroup, register } = useSubscribeGroup();
+  const { handleMyGroupsList, myGroups } = useMyGroupsList();
   const [createGoal, setCreateGoal] = useState(false);
   const [createActivities, setCreateActivities] = useState(false);
   const myGroupsId = myGroups.map((group) => group.id);
@@ -46,18 +47,18 @@ const MySpecificGroup = () => {
     handleGoal();
     handleActivities();
   }, [handleGoal, handleActivities]);
-
+  console.log(enterGroup);
   return (
     <>
       <ToastContainer position="top-center" autoClose={2500} />
       <h1>{specificGroup.name}</h1>
-      {enterGroup ? (
+      {enterGroup || register ? (
         <button disabled>Entrar no grupo</button>
       ) : (
         <button
           onClick={() => {
+            handleMyGroupsList();
             handleSubscribeGroup(specificGroup);
-            setTimeout(() => handleMyGroupsList(), 4000);
           }}
         >
           Entrar no grupo
@@ -118,7 +119,7 @@ const MySpecificGroup = () => {
             <div>Título: {activity.title}</div>
             <div>
               Data limite de realização:{" "}
-              {activity.realization_time.slice(0, 10)}
+              {new Date(activity.realization_time).toLocaleDateString("pt-BR")}
             </div>
             <button onClick={() => handleDeleteActivity(activity)}>
               Remover

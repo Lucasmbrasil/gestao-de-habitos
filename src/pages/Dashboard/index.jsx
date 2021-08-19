@@ -103,7 +103,7 @@ const Dashboard = () => {
     <PageContainer>
       <MenuSide />
       <MainContainer>
-        <HeaderDashboard />
+        <HeaderDashboard username={username} />
         <HabitsContainer>
           <div className="habits_header">
             <h2>meus hábitos</h2>

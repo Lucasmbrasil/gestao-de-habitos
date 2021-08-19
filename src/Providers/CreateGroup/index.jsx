@@ -12,7 +12,7 @@ export const CreateGroupProvider = ({ children }) => {
       .post(`/groups/`, data, {
         headers: { Authorization: `Bearer ${getToken}` },
       })
-      .then((response) => toast.success("Grupo criado com sucesso!", {}))
+      .then((response) => response)
       .catch((e) => console.log(e));
   };
 
