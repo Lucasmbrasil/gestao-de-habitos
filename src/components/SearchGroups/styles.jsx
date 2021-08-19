@@ -34,6 +34,7 @@ export const PaperDiv = styled(Paper)`
     padding: 10px;
     background: #eceff1;
     height: 100%;
+    width: 100%;
   }
 `;
 
@@ -54,9 +55,10 @@ export const InputPaper = styled(Paper)`
   && input {
     width: 95%;
   }
-  && SearchIcon {
+  && svg {
     width: 5%;
-    heigth: 95%;
+    height: 95%;
+    cursor: pointer;
   }
 `;
 
