@@ -18,7 +18,7 @@ import FastfoodIcon from '@material-ui/icons/Fastfood';
 import MenuBookIcon from '@material-ui/icons/MenuBook';
 import NaturePeopleIcon from '@material-ui/icons/NaturePeople'; 
 import ControlPointIcon from "@material-ui/icons/ControlPoint";
-
+import GoalCard from "../GoalCard";
 
 const MySpecificGroup = () => {
   const desktop = useMediaQuery({ query: "(min-width: 769px)" });
@@ -108,19 +108,8 @@ const MySpecificGroup = () => {
                   <Button onClick={() => setCreateGoal(true)}><ControlPointIcon /> <span>criar objetivo</span></Button>
                 </ContainerText>
                 {goals.map((goal) => (
-                  <div
-                    key={goal.id}
-                    style={{
-                      margin: "20px",
-                      border: "2px solid red",
-                      width: "200px",
-                    }}
-                  >
-                    <div>Título do objetivo: {goal.title}</div>
-                    <div>Dificuldade: {goal.difficulty}</div>
-                    <button onClick={() => handleDeleteGoal(goal)}>Remover</button>
-                  </div>
-                ))}
+                  <GoalCard goal={goal} handleDeleteGoal={handleDeleteGoal}/>
+                    ))}
                 {previousGoalsPage !== null && (
                   <button onClick={() => setCount(count - 1)}>Voltar</button>
                 )}

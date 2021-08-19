@@ -65,6 +65,7 @@ export const ContainerTitle = styled.div`
     width: 70%;   
     color: #212121; 
     font-family: "Karla", sans-serif;
+    
     svg{
         width: 75px;
         height: 75px;
@@ -104,7 +105,8 @@ export const Container = styled.section`
   }
   flex-wrap: wrap;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: center;
+  align-content: flex-start;
   background: rgba(225, 190, 231, 0.25);
   width: 95%;
   margin: 2.5rem auto;
@@ -114,6 +116,7 @@ export const Container = styled.section`
     padding: 8px;
     width: 100%;
     text-align: center;
+    height: 100px;
 
     h2 {
     width: 100%;
