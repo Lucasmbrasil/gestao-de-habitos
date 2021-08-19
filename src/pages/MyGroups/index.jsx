@@ -8,6 +8,8 @@ import { PageContainer } from "../Dashboard/styles";
 import { useMediaQuery } from "react-responsive";
 import MenuFooter from "../../components/MenuFooter";
 import MobileHeader from "../../components/MobileHeader";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const MyGroups = () => {
   const desktop = useMediaQuery({ query: "(min-width: 769px)" });
@@ -15,6 +17,8 @@ const MyGroups = () => {
 
   return (
     <>
+      <ToastContainer position="top-center" autoClose={2500} />
+
       {specificGroup !== "" ? (
         <>
           <MySpecificGroup />

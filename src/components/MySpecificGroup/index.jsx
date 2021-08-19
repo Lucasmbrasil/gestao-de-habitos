@@ -10,6 +10,8 @@ import { useDelete } from "../../Providers/Delete";
 import { useMyGroupsList } from "../../Providers/MyGroupsList";
 import { useSubscribeGroup } from "../../Providers/SubscribeGroup";
 import { ButtonAddGroup } from "../MyGroupsHeader/styles";
+import ModalEditGroup from "../ModalContainer/ModalEditGroup";
+import jwt_decode from "jwt-decode";
 
 const MySpecificGroup = () => {
   const { specificGroup, setSpecificGroup } = useSpecificGroup();
@@ -34,19 +36,29 @@ const MySpecificGroup = () => {
   const { handleMyGroupsList, myGroups } = useMyGroupsList();
   const [createGoal, setCreateGoal] = useState(false);
   const [createActivities, setCreateActivities] = useState(false);
+  const [editGroup, setEditGroup] = useState(false);
   const myGroupsId = myGroups.map((group) => group.id);
   const enterGroup = myGroupsId.includes(specificGroup.id);
+  const getToken = window.localStorage.getItem("token");
+  const decodeToken = jwt_decode(getToken);
+  const userID = decodeToken.user_id;
+
   const handleButtonClose = () => {
     setCreateGoal(false);
   };
   const handleButtonCloseActivities = () => {
     setCreateActivities(false);
   };
-
+  const handleButtonCloseEditGroup = () => {
+    setEditGroup(false);
+  };
+  console.log(specificGroup.creator.id);
+  console.log(userID);
   useEffect(() => {
     handleGoal();
     handleActivities();
   }, [handleGoal, handleActivities]);
+
   return (
     <>
       <ToastContainer position="top-center" autoClose={2500} />
@@ -69,6 +81,17 @@ const MySpecificGroup = () => {
         <ModalGoal
           handleButtonClose={handleButtonClose}
           setCreateGoal={setCreateGoal}
+        />
+      )}
+      {specificGroup.creator.id === userID ? (
+        <button onClick={() => setEditGroup(true)}>Editar grupo</button>
+      ) : (
+        <button disabled>Editar grupo</button>
+      )}
+      {editGroup && (
+        <ModalEditGroup
+          handleButtonClose={handleButtonCloseEditGroup}
+          setEditGroup={setEditGroup}
         />
       )}
       <div>

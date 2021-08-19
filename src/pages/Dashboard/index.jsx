@@ -16,9 +16,6 @@ import { useHabitList } from "../../Providers/HabitsList";
 import MenuSide from "../../components/MenuSide";
 import jwt_decode from "jwt-decode";
 import HabitCard from "../../components/HabitCard";
-
-import { CircularProgress } from "@material-ui/core";
-import ModalEditHabit from "../../components/ModalContainer/ModalEditHabit";
 import { ToastContainer } from "react-toastify";
 
 const Dashboard = () => {
