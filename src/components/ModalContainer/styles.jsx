@@ -35,7 +35,11 @@ export const InputContainer = styled.div`
 `;
 
 export const Container = styled.form`
-  /* position: absolute; */
+  position: absolute;
+  z-index: 20;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   display: flex;
   flex-direction: column;
   width: 90vw;
@@ -48,12 +52,15 @@ export const Container = styled.form`
   /* AJEITAR Z-INDEX DO BEFORE */
 
   ::before {
-    z-index: 1;
+    z-index: -1;
     position: absolute;
-    /* content: "";
+    content: "";
     width: 100vw;
     height: 100vh;
-    background-color: rgba(3, 61, 63, 0.4); */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(3, 61, 63, 0.4);
   }
 
   .div {
@@ -67,7 +74,7 @@ export const Container = styled.form`
   }
 
   .colored_part {
-    /* background-color: ${(props) => props.color}; */
+    background-color: ${(props) => props.color};
     height: 38px;
   }
 

@@ -1,26 +1,54 @@
-import { ContainerBody, ContainerMyGroups, ContainerSuggestionGroups, SearchPlace, SearchBar } from "./styles"
-import SearchIcon from '@material-ui/icons/Search';
+import {
+  ContainerBody,
+  ContainerGroups,
+  SearchPlace,
+  SearchBar,
+  ButtonAddGroup,
+} from "./styles";
+import SearchIcon from "@material-ui/icons/Search";
+import MyGroupsList from "../MyGroupsList";
+import MySuggestedGroups from "../MySuggestedGroups";
+import { Link } from "react-router-dom";
+import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
+import ModalGroup from "../ModalContainer/ModalGroup";
+import { useMediaQuery } from "react-responsive";
+import { useState } from "react";
 
 const MyGroupsBody = () => {
-    return (<>
+  const desktop = useMediaQuery({ query: "(min-width: 769px)" });
+  const [createGroup, setCreateGroup] = useState(false);
 
-        <ContainerBody>        
-            <ContainerMyGroups>
-                <h2>meus grupos</h2>
-            </ContainerMyGroups>
+  const handleButtonClose = () => {
+    setCreateGroup(false);
+  };
 
-            <ContainerSuggestionGroups>
-                <h2>grupos sugeridos</h2>
-
-                <SearchPlace>
-                    <p>deseja ver mais? busque novos grupos</p>                
-                    <SearchBar>
-                        buscar novos grupos <SearchIcon />
-                    </SearchBar>
-                </SearchPlace>
-            </ContainerSuggestionGroups>
-        </ContainerBody> 
-    </>)
-}
+  return (
+    <ContainerBody>
+      <ContainerGroups>
+        <h2>meus grupos</h2>
+        <MyGroupsList />
+        {!desktop && (
+          <ButtonAddGroup onClick={() => setCreateGroup(true)}>
+            <AddCircleOutlineIcon fontSize="small" /> criar novo grupo
+          </ButtonAddGroup>
+        )}
+        {createGroup && (
+          <ModalGroup
+            handleButtonClose={handleButtonClose}
+            setCreateGroup={setCreateGroup}
+          />
+        )}
+        <SearchPlace>
+          <p>deseja ver mais? busque novos grupos</p>
+          <Link to="/groups/find">
+            <SearchBar>
+              buscar novos grupos <SearchIcon />
+            </SearchBar>
+          </Link>
+        </SearchPlace>
+      </ContainerGroups>
+    </ContainerBody>
+  );
+};
 
 export default MyGroupsBody;

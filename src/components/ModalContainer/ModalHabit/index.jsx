@@ -57,6 +57,8 @@ const ModalHabito = ({ handleButtonClose, addBadHabit, userID, getToken }) => {
       })
       .then((res) => handleList())
       .catch((e) => console.log(e));
+
+    handleButtonClose();
   };
 
   return (
@@ -71,7 +73,11 @@ const ModalHabito = ({ handleButtonClose, addBadHabit, userID, getToken }) => {
           <div>
             <label>título</label>
           </div>
-          <input placeholder="nome do hábito" {...register("title")} />
+          <input
+            type="text"
+            placeholder="nome do hábito"
+            {...register("title")}
+          />
           <p>{errors.title?.message}</p>
         </InputContainer>
         <InputContainer>
