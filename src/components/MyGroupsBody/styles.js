@@ -5,19 +5,20 @@ export const ContainerBody = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  margin: 30px auto;
-  padding: 20px;
+  margin: 20px auto;
+  
   @media screen and (min-width: 900px) {
     height: 90vh;
     width: 90%;
     background-color: lightgray;
     display: flex;
     flex-direction: row;
+    padding: 20px;
   }
 `;
 
 export const ContainerGroups = styled.div`
-min-width: 280px;
+min-width: 270px;
   width: 80%;
   margin: 1rem auto;
   display: flex;
@@ -25,6 +26,10 @@ min-width: 280px;
   justify-content: center;
   align-content: flex-start;
   min-height: 200px;
+  @media (max-width: 768px){
+    flex-direction: column;
+    align-items: center;
+  }
 
   h2 {
     display: flex;
@@ -69,7 +74,6 @@ export const SearchPlace = styled.div`
     font-family: "Karla", sans-serif;
     font-weight: bold;
     font-size: 18px;
-    margin-top: 1rem;
     text-align: center;
     }
 
@@ -126,4 +130,6 @@ export const ButtonAddGroup = styled.button`
     border-radius: 8px;    
     width: 183px;
     height: 42px;
+    margin-top: 1rem;
+    
 `;
