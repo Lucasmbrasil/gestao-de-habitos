@@ -129,11 +129,16 @@ const FormRegister = () => {
             <ButtonStyled fullWidth type="submit" variant="contained">
               Criar conta
             </ButtonStyled>
-            {isLoading && <StyledCircularProgress />}
+            {isLoading ? (
+              <StyledCircularProgress />
+            ) : (
+              <>
+                <div>Já tem uma conta? </div>
+                <h5 onClick={() => history.push("/login")}>Clique aqui!</h5>
+              </>
+            )}
 
             <ToastContainer className="toast" autoClose={3500} />
-            <div>Já tem uma conta? </div>
-            <h5 onClick={() => history.push("/login")}>Clique aqui!</h5>
           </Form>
         </FormContainer>
       </ContainerLeft>

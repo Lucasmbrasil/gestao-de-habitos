@@ -1,21 +1,34 @@
 import { HabitCardYellow } from "./styles";
 import RestaurantIcon from "@material-ui/icons/Restaurant";
-
 import Rating from "@material-ui/lab/Rating";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
-import CreateOutlinedIcon from "@material-ui/icons/CreateOutlined";
 import FastfoodIcon from "@material-ui/icons/Fastfood";
 import { Box, CircularProgress } from "@material-ui/core";
+import ModalEditHabit from "../../ModalContainer/ModalEditHabit";
+import { useState } from "react";
+import CreateIcon from "@material-ui/icons/Create";
+import DeleteIcon from "@material-ui/icons/Delete";
 
 const useStyles = makeStyles({
-  box1: {
+  box: {
     display: "flex",
     margin: "0px",
+    alignItems: "center",
   },
 });
 
-const PastelCard = ({ habit, addHowMuchAchieved, subHowMuchAchieved }) => {
+const PastelCard = ({
+  habit,
+  addHowMuchAchieved,
+  subHowMuchAchieved,
+  handleDeleteHabit,
+}) => {
+  const [edit, setEdit] = useState(false);
+  const handleCloseEditHabit = () => {
+    setEdit(false);
+  };
+  const [addBadHabit, setAddBadHabit] = useState(false);
   const classes = useStyles();
   return (
     <>
@@ -28,12 +41,11 @@ const PastelCard = ({ habit, addHowMuchAchieved, subHowMuchAchieved }) => {
           )}
         </div>
         <div className="text">
-          <div className="title">{habit.title}</div>
-          <div>descrição</div>
-          <div className={classes.box1} component="fieldset" mb={3}>
-            <Typography component="legend">nivel</Typography>
+          <h3 className="title">{habit.title}</h3>
+          <div className={classes.box} component="fieldset" mb={3}>
+            <span>nível: </span>
             <Rating
-              name="pastel"
+              name="red"
               value={Number(habit.difficulty)}
               max={4}
               readOnly
@@ -41,11 +53,27 @@ const PastelCard = ({ habit, addHowMuchAchieved, subHowMuchAchieved }) => {
           </div>
         </div>
         <div className="text2">
-          <div className="pen">
-            <CreateOutlinedIcon />
+          <div id="buttons">
+            <CreateIcon
+              onClick={() => {
+                setEdit(true);
+                habit.category === "NãoAlimentação"
+                  ? setAddBadHabit(true)
+                  : setAddBadHabit(false);
+              }}
+            />
+            <DeleteIcon onClick={() => handleDeleteHabit(habit)} />
           </div>
-          <div className="category">categoria: Alimentação</div>
-          <div>frenquencia: {habit.frequency}</div>
+          {edit && (
+            <ModalEditHabit
+              handleButtonClose={handleCloseEditHabit}
+              habit={habit}
+              addBadHabit={addBadHabit}
+            />
+          )}
+
+          <span className="category">alimentação</span>
+          <span>{habit.frequency.toLowerCase()}</span>
         </div>
 
         <div className="filled2">

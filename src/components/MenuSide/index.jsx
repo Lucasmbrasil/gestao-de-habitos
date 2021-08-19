@@ -104,7 +104,7 @@ const MenuSide = () => {
             }
         
         <LogoutDiv>
-            <ListItem button >
+            <ListItem key="7" button >
               <ListItemIcon><ExitToAppIcon style={{color: "#ffffff"}} /></ListItemIcon>
               <ListItemMenu>logout</ListItemMenu>
             </ListItem> 

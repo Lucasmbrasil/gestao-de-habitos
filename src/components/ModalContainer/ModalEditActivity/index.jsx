@@ -12,7 +12,7 @@ const EditAtividade = () => {
           <div>
             <label>novo título</label>
           </div>
-          <input placeholder="nome da atividade" />
+          <input type="text" placeholder="nome da atividade" />
         </InputContainer>
       </Container>
     </ModalContainer>

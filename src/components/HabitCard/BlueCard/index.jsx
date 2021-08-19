@@ -1,32 +1,49 @@
-import { HabitCardRed } from "./styles";
+import { HabitCardBlue } from "./styles";
+import MenuBookIcon from "@material-ui/icons/MenuBook";
+import SportsEsportsIcon from "@material-ui/icons/SportsEsports";
 import Rating from "@material-ui/lab/Rating";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
-import CreateOutlinedIcon from "@material-ui/icons/CreateOutlined";
-import FitnessCenterIcon from "@material-ui/icons/FitnessCenter";
-import HealingIcon from "@material-ui/icons/Healing";
 import { Box, CircularProgress } from "@material-ui/core";
-
+import { useState } from "react";
+import ModalEditHabit from "../../ModalContainer/ModalEditHabit";
+import CreateIcon from "@material-ui/icons/Create";
+import DeleteIcon from "@material-ui/icons/Delete";
 const useStyles = makeStyles({
   box: {
     display: "flex",
     margin: "0px",
+    alignItems: "center",
   },
 });
 
-const RedCard = ({ habit, subHowMuchAchieved, addHowMuchAchieved }) => {
+const BlueCard = ({
+  habit,
+  subHowMuchAchieved,
+  addHowMuchAchieved,
+  handleDeleteHabit,
+}) => {
+  const [edit, setEdit] = useState(false);
+  const handleCloseEditHabit = () => {
+    setEdit(false);
+  };
+  const [addBadHabit, setAddBadHabit] = useState(false);
+
   const classes = useStyles();
   return (
     <>
-      <HabitCardRed>
+      <HabitCardBlue>
         <div className="filled">
-          {habit.category === "Saúde" ? <FitnessCenterIcon /> : <HealingIcon />}
+          {habit.category === "Estudo" ? (
+            <MenuBookIcon />
+          ) : (
+            <SportsEsportsIcon />
+          )}
         </div>
         <div className="text">
-          <div className="title">{habit.title}</div>
-          <div>descrição</div>
+          <h3 className="title">{habit.title}</h3>
           <div className={classes.box} component="fieldset" mb={3}>
-            <Typography component="legend">nivel</Typography>
+            <span>nível: </span>
             <Rating
               name="red"
               value={Number(habit.difficulty)}
@@ -36,15 +53,31 @@ const RedCard = ({ habit, subHowMuchAchieved, addHowMuchAchieved }) => {
           </div>
         </div>
         <div className="text2">
-          <div className="pen">
-            <CreateOutlinedIcon />
+          <div id="buttons">
+            <CreateIcon
+              onClick={() => {
+                setEdit(true);
+                habit.category === "NãoEstudo"
+                  ? setAddBadHabit(true)
+                  : setAddBadHabit(false);
+              }}
+            />
+            <DeleteIcon onClick={() => handleDeleteHabit(habit)} />
           </div>
-          <div className="category">categoria: Saúde</div>
-          <div>frenquencia: {habit.frequency}</div>
+          {edit && (
+            <ModalEditHabit
+              handleButtonClose={handleCloseEditHabit}
+              habit={habit}
+              addBadHabit={addBadHabit}
+            />
+          )}
+
+          <span className="category">estudo</span>
+          <span>{habit.frequency.toLowerCase()}</span>
         </div>
 
         <div className="filled2">
-          {habit.category === "Saúde" ? (
+          {habit.category === "Estudo" ? (
             <div className="filled2">
               <button onClick={() => addHowMuchAchieved(habit)}>+</button>
               <Box position="relative" display="inline-flex">
@@ -102,9 +135,9 @@ const RedCard = ({ habit, subHowMuchAchieved, addHowMuchAchieved }) => {
             </div>
           )}
         </div>
-      </HabitCardRed>
+      </HabitCardBlue>
     </>
   );
 };
 
-export default RedCard;
+export default BlueCard;

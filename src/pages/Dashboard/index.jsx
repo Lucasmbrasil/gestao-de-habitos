@@ -1,7 +1,4 @@
 import HeaderDashboard from "../../components/HeaderDashboard";
-import BlueCard from "../../components/HabitosCard/BlueCard";
-import PastelCard from "../../components/HabitosCard/PastelCard";
-import RedCard from "../../components/HabitosCard/RedCard";
 import {
   Habits,
   HabitsContainer,
@@ -9,30 +6,45 @@ import {
   StyledButton,
   StyledPinkButton,
   TextHabits,
-  PageContainer
+  PageContainer,
 } from "./styles";
 import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import api from "../../services/api";
 import ModalHabito from "../../components/ModalContainer/ModalHabit";
 import { useHabitList } from "../../Providers/HabitsList";
 import MenuSide from "../../components/MenuSide";
 import jwt_decode from "jwt-decode";
+import HabitCard from "../../components/HabitCard";
+import { ToastContainer } from "react-toastify";
 
 const Dashboard = () => {
   const { habits, handleList } = useHabitList();
   const [addGoodHabit, setAddGoodHabit] = useState(false);
   const [addBadHabit, setAddBadHabit] = useState(false);
-
+  const [username, setUsername] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [edit, setEdit] = useState(false);
   const getToken = window.localStorage.getItem("token");
   const decodeToken = jwt_decode(getToken);
   const userID = decodeToken.user_id;
+
+  const getUsername = useCallback(() => {
+    setIsLoading(true);
+    api
+      .get(`users/${userID}/`)
+      .then((res) => {
+        setUsername(res.data.username);
+        setIsLoading(false);
+      })
+      .catch((e) => setIsLoading(false));
+  }, [userID]);
 
   const addHowMuchAchieved = (habit) => {
     api
       .patch(
         `/habits/${habit.id}/`,
-        { how_much_achieved: habit.how_much_achieved + 1 },
+        { how_much_achieved: habit.how_much_achieved + 5 },
         {
           headers: { Authorization: `Bearer ${getToken}` },
         }
@@ -46,7 +58,7 @@ const Dashboard = () => {
     api
       .patch(
         `/habits/${habit.id}/`,
-        { how_much_achieved: habit.how_much_achieved - 1 },
+        { how_much_achieved: habit.how_much_achieved - 5 },
         {
           headers: { Authorization: `Bearer ${getToken}` },
         }
@@ -56,6 +68,7 @@ const Dashboard = () => {
       })
       .catch((e) => console.log(e));
   };
+
   const handleButtonCloseGoodHabit = () => {
     setAddGoodHabit(false);
   };
@@ -70,10 +83,13 @@ const Dashboard = () => {
     setAddBadHabit(true);
     setAddGoodHabit(false);
   };
-
+  const handleCloseEditHabit = () => {
+    setEdit(false);
+  };
   useEffect(() => {
     handleList();
-  }, [handleList]);
+    getUsername();
+  }, [handleList, getUsername]);
 
   const handleDeleteHabit = (habit) => {
     api
@@ -83,152 +99,102 @@ const Dashboard = () => {
       .then((res) => handleList())
       .catch((e) => console.log(e));
   };
+
   return (
     <PageContainer>
+      <ToastContainer position="top-center" autoClose={2500} />
+
       <MenuSide />
-    <MainContainer>
-      <HeaderDashboard/>
-      <HabitsContainer>
-        <h2>meus hábitos</h2>
-        <Habits>
-          <TextHabits>
-            <p>hábitos para praticar</p>
-            <StyledButton
-              onClick={handleAddGoodHabit}
-              variant="contained"
-              startIcon={<AddCircleOutlineIcon />}
-            >
-              criar novo
-            </StyledButton>
-          </TextHabits>
-          {addGoodHabit && (
-            <ModalHabito
-              handleButtonClose={handleButtonCloseGoodHabit}
-              userID={userID}
-              getToken={getToken}
-            />
-          )}
-          {habits !== undefined &&
-            habits.map((habit) => {
-              return (
-                <div key={habit.id}>
-                  {habit.category === "Saúde" ? (
-                    <div>
-                      <button onClick={() => handleDeleteHabit(habit)}>
-                        remover
-                      </button>
-                      <RedCard
+      <MainContainer>
+        <HeaderDashboard username={username} />
+        <HabitsContainer>
+          <div className="habits_header">
+            <h2>meus hábitos</h2>
+            <p>crie e pratique!</p>
+          </div>
+          <Habits>
+            <TextHabits>
+              <p>hábitos para praticar</p>
+              <StyledButton
+                onClick={handleAddGoodHabit}
+                variant="contained"
+                startIcon={<AddCircleOutlineIcon />}
+              >
+                criar novo
+              </StyledButton>
+            </TextHabits>
+            {addGoodHabit && (
+              <ModalHabito
+                handleButtonClose={handleButtonCloseGoodHabit}
+                userID={userID}
+                getToken={getToken}
+              />
+            )}
+            {habits !== undefined &&
+              habits.map((habit) => {
+                if (
+                  habit.category === "Saúde" ||
+                  habit.category === "Alimentação" ||
+                  habit.category === "Estudo"
+                ) {
+                  return (
+                    <>
+                      <HabitCard
+                        key={habit.id}
                         habit={habit}
                         addHowMuchAchieved={addHowMuchAchieved}
+                        handleDeleteHabit={handleDeleteHabit}
+                        addBadHabit={addBadHabit}
                       />
-                      {habit.how_much_achieved % 100 === 0 &&
-                        habit.how_much_achieved !== 0 &&
-                        `Parabéns! Você praticou esse hábito ${habit.how_much_achieved} vezes!`}
-                    </div>
-                  ) : habit.category === "Estudo" ? (
-                    <div>
-                      <button onClick={() => handleDeleteHabit(habit)}>
-                        remover
-                      </button>
-                      <BlueCard
-                        habit={habit}
-                        addHowMuchAchieved={addHowMuchAchieved}
-                      />
-                      {habit.how_much_achieved % 100 === 0 &&
-                        habit.how_much_achieved !== 0 &&
-                        `Parabéns! Você praticou esse hábito ${habit.how_much_achieved} vezes!`}
-                    </div>
-                  ) : (
-                    habit.category === "Alimentação" && (
-                      <div>
-                        <button onClick={() => handleDeleteHabit(habit)}>
-                          remover
-                        </button>
-                        <PastelCard
-                          habit={habit}
-                          addHowMuchAchieved={addHowMuchAchieved}
-                        />
-                        {habit.how_much_achieved % 100 === 0 &&
-                          habit.how_much_achieved !== 0 &&
-                          `Parabéns! Você praticou esse hábito ${habit.how_much_achieved} vezes!`}
-                      </div>
-                    )
-                  )}
-                </div>
-              );
-            })}
-        </Habits>
-        <Habits>
-          <TextHabits>
-            <p>hábitos para eliminar</p>
-            <StyledPinkButton
-              onClick={handleAddBadHabit}
-              variant="contained"
-              startIcon={<AddCircleOutlineIcon />}
-            >
-              criar novo
-            </StyledPinkButton>
-          </TextHabits>
-          {addBadHabit && (
-            <ModalHabito
-              handleButtonClose={handleButtonCloseBadHabit}
-              addBadHabit={addBadHabit}
-              userID={userID}
-              getToken={getToken}
-            />
-          )}
-          {habits !== undefined &&
-            habits.map((habit) => {
-              return (
-                <div key={habit.id}>
-                  {habit.category === "NãoSaúde" ? (
-                    <div>
-                      <button onClick={() => handleDeleteHabit(habit)}>
-                        remover
-                      </button>
-                      <RedCard
-                        habit={habit}
-                        subHowMuchAchieved={subHowMuchAchieved}
-                      />
-                      {habit.how_much_achieved % 100 === 0 &&
-                        habit.how_much_achieved !== 0 &&
-                        `Parabéns! Você deixou de praticar esse hábito ${-habit.how_much_achieved} vezes!`}
-                    </div>
-                  ) : habit.category === "NãoEstudo" ? (
-                    <div>
-                      <button onClick={() => handleDeleteHabit(habit)}>
-                        remover
-                      </button>
-                      <BlueCard
-                        habit={habit}
-                        subHowMuchAchieved={subHowMuchAchieved}
-                      />
-                      {habit.how_much_achieved % 100 === 0 &&
-                        habit.how_much_achieved !== 0 &&
-                        `Parabéns! Você deixou de praticar esse hábito ${-habit.how_much_achieved} vezes!`}
-                    </div>
-                  ) : (
-                    habit.category === "NãoAlimentação" && (
-                      <div>
-                        <button onClick={() => handleDeleteHabit(habit)}>
-                          remover
-                        </button>
-                        <PastelCard
-                          habit={habit}
-                          subHowMuchAchieved={subHowMuchAchieved}
-                        />
-                        {habit.how_much_achieved % 100 === 0 &&
-                          habit.how_much_achieved !== 0 &&
-                          `Parabéns! Você deixou de praticar esse hábito ${-habit.how_much_achieved} vezes!`}
-                      </div>
-                    )
-                  )}
-                </div>
-              );
-            })}
-        </Habits>
-      </HabitsContainer>
-    </MainContainer>
+                    </>
+                  );
+                }
+
+                return <></>;
+              })}
+          </Habits>
+          <Habits>
+            <TextHabits>
+              <p>hábitos para eliminar</p>
+              <StyledPinkButton
+                onClick={handleAddBadHabit}
+                variant="contained"
+                startIcon={<AddCircleOutlineIcon />}
+              >
+                criar novo
+              </StyledPinkButton>
+            </TextHabits>
+            {addBadHabit && (
+              <ModalHabito
+                handleButtonClose={handleButtonCloseBadHabit}
+                addBadHabit={addBadHabit}
+                userID={userID}
+                getToken={getToken}
+              />
+            )}
+            {habits !== undefined &&
+              habits.map((habit) => {
+                if (
+                  habit.category === "NãoSaúde" ||
+                  habit.category === "NãoAlimentação" ||
+                  habit.category === "NãoEstudo"
+                ) {
+                  return (
+                    <HabitCard
+                      key={`${habit.id}bad`}
+                      habit={habit}
+                      subHowMuchAchieved={subHowMuchAchieved}
+                      handleDeleteHabit={handleDeleteHabit}
+                      addBadHabit={addBadHabit}
+                    />
+                  );
+                }
+
+                return <></>;
+              })}
+          </Habits>
+        </HabitsContainer>
+      </MainContainer>
     </PageContainer>
   );
 };
