@@ -9,11 +9,8 @@ import LandingPage from "../pages/LandingPage";
 const Routes = () => {
   return (
     <Switch>
-      <Route path='/landingpage'>
+      <Route exact path='/'>
         <LandingPage/>
-      </Route>
-      <Route exact path="/">
-        <Home />
       </Route>
       <Route path='/login'>
         <Login/>

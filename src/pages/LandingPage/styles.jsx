@@ -3,7 +3,6 @@ import styled from 'styled-components';
 export const Main = styled.div`
     && {
         width: 100vw;
-        height: 100vh;
     }
 `;
 
@@ -23,34 +22,52 @@ export const Header = styled.header`
     && svg{
         cursor: pointer;
         font-size: 2.5vw;
+        margin-right: 20px;
     }
     && svg:hover{
         filter: contrast(70%);
     }
+    @media (max-width: 768px){
+        && {
+            padding: 20px;
+        }
+        && h1{
+            font-size: 5vw;
+        }
+        && svg{
+            font-size: 7vw;
+        }
+    }
 `;
 
-export const Container = styled.div`
+export const TopContainer = styled.div`
     && {
         display: flex;
         align-items: center;
-        justify-content: space-between
-        height: 70vh;
+        justify-content: space-between;
+        height: 80vh;
         width: 100vw;
         padding: 10px;
-        background-color: ${props => props.uncolored ? 'white' : '#E0F2F1'};
+        background-color: 'white';
     }
-    && img{
-        width: 50%;
-        margin: 0 auto;
-        }
-    && div {
+    && .content-box, .image-box {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
         width: 50%;
         height: 80vh;
-    } 
+    }    
+    && .title{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: fit-content;
+        align-items: flex-end;
+    }
+    && .start-button{
+        max-width: 300px;
+    }
     && h1 {
         font-size: 5vw;
         font-family: 'Arvo', sans-serif;
@@ -62,21 +79,206 @@ export const Container = styled.div`
     && h4{
         font-size: 1.3vw;
         font-weight: lighter;
-        margin: 0 0 20px 200px;
         color: RGB(0, 96, 100, 0.5);
     }
-    && button{
-        background: rgb(113,165,187);
-        background: linear-gradient(90deg, rgba(113,165,187,1) 0%, rgba(55,184,83,0.21332282913165268) 100%);
-        border: none;
-        border-radius: 40px;
-        padding: 30px;
-        color: white;
-        font-size: 36px;
-        box-shadow: -19px 21px 8px -6px rgba(253,216,53,0.71);
-        -webkit-box-shadow: -19px 21px 8px -6px rgba(253,216,53,0.71);
-        -moz-box-shadow: -19px 21px 8px -6px rgba(253,216,53,0.71);
-    } 
+    && img{
+        width: 80%;
+        max-width: 500px;
+    }
+    @media (max-width: 768px){
+        && {
+            flex-direction: column;
+        }
+        && h1{
+            font-size: 10vw;
+        }
+        && h4{
+            font-size: 4.5vw;
+        }
+        && .start-button{
+            margin-top: 30px;
+            width: 50%;
+        }
+        && .content-box{
+          width: 100%;
+        }
+        && .image-box{
+          display: none;
+        }
+    }
+`;
+export const TopMidContainer = styled.div`
+&& {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 80vh;
+    width: 100vw;
+    padding: 10px;
+    background-color: #D8E5D4;
+}
+&& .content-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 80vh;
+}
+&& h2{
+    color: #006064;
+    font-size: 3vw;
+    margin-bottom: 50px;
+} 
+&& p{
+    color: #006064;
+    font-size: 3vw;
+    padding: 40px;
+    font-weight: 350;
+}
+&& span{
+    color: RGB(0, 96, 100, 0.5)
+}
+&& img{
+    width: 80%;
+    max-width: 500px;
+}
+@media (max-width: 768px){
+    && {
+        flex-direction: column;
+    }
+    && .content-box{
+        width: 100%;
+        justify-content: center;
+    }
+    && img{
+        width: 60%;
+        max-width: 500px;
+    }
+    && h2{
+        font-size: 6vw;
+        margin: 20px 0 20px 0;
+    }
+    && p{
+        text-align: center;
+        font-size: 4.5vw;
+        padding: 0;
+    }
+}
+`;
+export const LastMidContainer = styled.div`
+&& {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 80vh;
+    width: 100vw;
+    padding: 10px;
+    background-color: 'white';
+}
+&& .content-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 80vh;
+}
+&& .groups{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 33%;
+}
+&& .content-box-groups{
+    display: flex;
+    height: 80vh;
+    width: 100%;
+}
+&& .groups img{
+    width: 80%;
+    max-width: 300px;
+}
+&& h3{
+    color: #006064;
+    font-size: 2.2vw;
+    text-align: center;
+    padding: 0 100px 50px 100px;
+    font-weight: 350;
+}
+}
+@media (max-width: 768px){
+    && {
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        min-height: 100vh;
+        height: 100vw;
+    }
+    && .content-box{
+      width: 100%;
+    }
+    && h2{
+        margin: 30px 0 20px 0;
+        font-size: 7vw;
+    }
+    && img{
+        width: 70%;
+    }        
+    && .content-box-groups{
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+    }
+    && .groups{
+        width: 100%;
+        height: 33%;
+    }
+    && h3{
+        margin: 20px 0 20px 0;
+        font-size: 3.5vw;
+        padding: 0;
+    }
+    && .groups img{
+        width: 40%;
+    }
+}
+`;
+export const LastContainer = styled.div`
+&& {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 80vh;
+    width: 100vw;
+    padding: 10px;
+    background-color: #D8E5D4;
+}
+&& .content-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 80vh;
+} 
+&& .last-box{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+}
+&& img{
+    width: 80%;
+    max-width: 700px;
+}
+@media (max-width: 768px){
+    && {
+        display: none;
+    }
+}
 `;
 
 export const Footer = styled.footer`
@@ -93,5 +295,17 @@ export const Footer = styled.footer`
     }
     && svg{
         font-size: 36px;
+        margin-right: 10px;
+    }
+    @media (max-width: 768px){
+        && {
+            padding: 20px;
+        }
+        && p{
+            font-size: 16px;
+        }
+        && svg{
+            font-size: 24px;
+        }
     }
 `;
