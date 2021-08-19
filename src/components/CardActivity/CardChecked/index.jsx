@@ -15,13 +15,13 @@ const GreyCheckbox = withStyles({
   checked: {},
 })((props) => <Checkbox color="default" {...props} />);
 
-const CardActivity = ({title, date, handleDelete, handleEdit, achieved}) => {
+const CardActivity = ({title, date, handleDelete, handleEdit, achieved, activity}) => {
   const [check, setCheck] = useState(false);
 
   const handleCheck = () => {
     setCheck(!check);
   }
-  //cores aleatorias para passar por props depois (martelinho de ouro pro final);
+  
 
   return (
     <>
@@ -32,12 +32,12 @@ const CardActivity = ({title, date, handleDelete, handleEdit, achieved}) => {
 
         <div className="text">
           <span>{title}</span>
-          <p>data: {date}</p>
+          <p>data: {new Date(date).toLocaleDateString("pt-BR")}</p>
         </div>
 
         <div className="icons">
           <CreateOutlinedIcon />
-          <button>X</button>
+          <button onClick={() => handleDelete(activity)}>X</button>
         </div>
       </CardMarked>
     </>

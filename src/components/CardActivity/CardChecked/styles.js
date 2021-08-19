@@ -2,10 +2,14 @@ import styled from "styled-components";
 
 export const CardMarked = styled.div`
   border: 1px solid black;
-  height: 64px;
+  height: 100px;
   width: 80vw;
-  max-width: 380px;
+  max-width: 360px;
   display: flex;
+  margin: 0.5rem;
+  @media(min-width: 340px){
+    height: 64px;
+  }
   
   .check {
     background-color: #f8bbd0;

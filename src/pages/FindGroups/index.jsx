@@ -13,14 +13,22 @@ import MobileHeader from "../../components/MobileHeader";
 import SearchGroup from "../SearchGroupPage";
 import { useState } from "react";
 import ModalGroup from "../../components/ModalContainer/ModalGroup";
+import { useSpecificGroup } from "../../Providers/SpecificGroup";
+import MySpecificGroup from "../../components/MySpecificGroup";
 
 const FindGroups = () => {
+  const { specificGroup } = useSpecificGroup();
   const [createGroup, setCreateGroup] = useState(false);
   const handleButtonClose = () => {
     setCreateGroup(false);
   };
 
   const desktop = useMediaQuery({ query: "(min-width: 769px)" });
+  if(specificGroup !== ""){
+    return (
+      <MySpecificGroup />
+    )
+  }
   return (
     <PageContainer>
       {desktop && <MenuSide />}

@@ -9,11 +9,35 @@ import { useGetGroupActivities } from "../../Providers/GetGroupActivities";
 import { useDelete } from "../../Providers/Delete";
 import { useMyGroupsList } from "../../Providers/MyGroupsList";
 import { useSubscribeGroup } from "../../Providers/SubscribeGroup";
-import { ButtonAddGroup } from "../MyGroupsHeader/styles";
-import ModalEditGroup from "../ModalContainer/ModalEditGroup";
-import jwt_decode from "jwt-decode";
+import CardActivity from "../CardActivity/CardChecked";
+import { 
+        PageContainer,
+        ContainerText, 
+        MainContainer, 
+        ContainerHeader, 
+        ContentContainer, 
+        ContainerTitle, 
+        SubscribeGroupButton, 
+        Button, 
+        Container,
+        CardsContainer 
+      } from "./styles";
+import MenuSide from "../MenuSide";
+import { useMediaQuery } from "react-responsive"; 
+import FitnessCenterIcon from '@material-ui/icons/FitnessCenter';
+import FastfoodIcon from '@material-ui/icons/Fastfood';
+import MenuBookIcon from '@material-ui/icons/MenuBook';
+import NaturePeopleIcon from '@material-ui/icons/NaturePeople'; 
+import ControlPointIcon from "@material-ui/icons/ControlPoint";
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import CreateIcon from '@material-ui/icons/Create';
+import GoalCard from "../GoalCard";
+import MenuFooter from "../MenuFooter";
+import MobileHeader from "../MobileHeader";
 
 const MySpecificGroup = () => {
+  const desktop = useMediaQuery({ query: "(min-width: 769px)" });
+  const mobileLarge = useMediaQuery({ query: "(min-width: 560px)" });
   const { specificGroup, setSpecificGroup } = useSpecificGroup();
   const {
     handleGoal,
@@ -58,107 +82,120 @@ const MySpecificGroup = () => {
     handleGoal();
     handleActivities();
   }, [handleGoal, handleActivities]);
-
+  
+  console.log(enterGroup);
   return (
     <>
       <ToastContainer position="top-center" autoClose={2500} />
-      <h1>{specificGroup.name}</h1>
-      {enterGroup || register ? (
-        <button disabled>Entrar no grupo</button>
-      ) : (
-        <button
-          onClick={() => {
-            handleMyGroupsList();
-            handleSubscribeGroup(specificGroup);
-          }}
-        >
-          Entrar no grupo
-        </button>
-      )}
-      <button onClick={() => setSpecificGroup("")}>Voltar</button>
-      <button onClick={() => setCreateGoal(true)}>Criar objetivo</button>
-      {createGoal && (
-        <ModalGoal
-          handleButtonClose={handleButtonClose}
-          setCreateGoal={setCreateGoal}
-        />
-      )}
-      {specificGroup.creator.id === userID ? (
-        <button onClick={() => setEditGroup(true)}>Editar grupo</button>
-      ) : (
-        <button disabled>Editar grupo</button>
-      )}
-      {editGroup && (
-        <ModalEditGroup
-          handleButtonClose={handleButtonCloseEditGroup}
-          setEditGroup={setEditGroup}
-        />
-      )}
-      <div>
-        <h2>OBJETIVOS</h2>
-        {goals.map((goal) => (
-          <div
-            key={goal.id}
-            style={{
-              margin: "20px",
-              border: "2px solid red",
-              width: "200px",
-            }}
-          >
-            <div>Título do objetivo: {goal.title}</div>
-            <div>Dificuldade: {goal.difficulty}</div>
-            <button onClick={() => handleDeleteGoal(goal)}>Remover</button>
-          </div>
-        ))}
-        {previousGoalsPage !== null && (
-          <button onClick={() => setCount(count - 1)}>Voltar</button>
-        )}
-        {nextGoalsPage !== null && (
-          <button onClick={() => setCount(count + 1)}>Próxima</button>
-        )}
-      </div>
-      <div>
-        <h2>Atividades</h2>
-        <button onClick={() => setCreateActivities(true)}>
-          Criar atividade
-        </button>
-        {createActivities && (
-          <ModalActivity
-            handleButtonCloseActivities={handleButtonCloseActivities}
-            setCreateActivities={setCreateActivities}
-          />
-        )}
-
-        {activities.map((activity) => (
-          <div
-            key={activity.id}
-            style={{
-              margin: "20px",
-              border: "2px solid red",
-              width: "200px",
-            }}
-          >
-            <div>Título: {activity.title}</div>
-            <div>
-              Data limite de realização:{" "}
-              {new Date(activity.realization_time).toLocaleDateString("pt-BR")}
-            </div>
-            <button onClick={() => handleDeleteActivity(activity)}>
-              Remover
-            </button>
-          </div>
-        ))}
-        {previousActivitiesPage !== null && (
-          <button onClick={() => setCountActivities(countActivities - 1)}>
-            Voltar
-          </button>
-        )}
-        {nextActivitiesPage !== null && (
-          <button onClick={() => setCountActivities(countActivities + 1)}>
-            Próxima
-          </button>
-        )}
-      </div>
+      <PageContainer>
+        {desktop && <MenuSide />}
+        {!desktop && <MobileHeader />}
+        <MainContainer>
+          <ContainerHeader>
+            <ContainerTitle>
+              {    specificGroup.category === "Saude" ?       <FitnessCenterIcon style={{color: "#802727"}}/>
+                : (specificGroup.category === "Alimentação" ? <FastfoodIcon      style={{color: "#1A237E"}}/>
+                : (specificGroup.category === "Estudo" ?      <MenuBookIcon      style={{color: "#275a29"}}/>
+                :                                             <NaturePeopleIcon  style={{color: "#26A69A"}}/>)) 
+              }
+              <div>
+                <h1>{specificGroup.name} <CreateIcon /></h1>
+                <p>{specificGroup.description}</p>
+              </div>
+            </ContainerTitle>
+                <div className="buttons">
+                {enterGroup || register ? (
+                  <SubscribeGroupButton disabled><ControlPointIcon /> {mobileLarge && <span>entrar no grupo</span>}</SubscribeGroupButton>
+                ) : (
+                  <SubscribeGroupButton
+                    onClick={() => {
+                      handleMyGroupsList();
+                      handleSubscribeGroup(specificGroup);
+                    }}
+                  >
+                    Entrar no grupo
+                  </SubscribeGroupButton>
+                )}
+                <Button onClick={() => setSpecificGroup("")}><ArrowBackIcon />{mobileLarge && <span>voltar</span>}</Button>
+                </div>
+            </ContainerHeader>
+            
+            {createGoal && (
+              <ModalGoal
+                handleButtonClose={handleButtonClose}
+                setCreateGoal={setCreateGoal}
+              />
+            )}
+            <Container>
+              <div className="header">
+                <h2>objetivos ativos do grupo</h2>
+                <p>edite, crie e pratique em equipe!</p>
+              </div>
+              <ContentContainer>
+                <ContainerText>
+                  <p>objetivos para conquistar!</p>
+                  <Button onClick={() => setCreateGoal(true)}><ControlPointIcon /> {mobileLarge && <span>criar objetivo</span>}</Button>
+                </ContainerText>
+                <CardsContainer>
+                  {
+                    goals.map((goal) => (
+                                        <GoalCard key={goal.id} goal={goal} handleDeleteGoal={handleDeleteGoal}/>
+                    ))
+                  }
+                </CardsContainer>
+                {previousGoalsPage !== null && (
+                  <Button onClick={() => setCount(count - 1)}>voltar</Button>
+                )}
+                {nextGoalsPage !== null && (
+                  <Button onClick={() => setCount(count + 1)}>próxima</Button>
+                )}
+              </ContentContainer>
+            </Container>
+            <Container>
+              <div className="header">
+                <h2>atividades ativas do grupo</h2>
+                <p>edite, crie e pratique em equipe!</p>
+              </div>
+              <ContentContainer>
+                <ContainerText>
+                  <p>crie uma nova atividade!</p>
+                  <Button color="#E65100"onClick={() => setCreateActivities(true)}>
+                    <ControlPointIcon />
+                    {mobileLarge && <span>criar atividade</span>}
+                  </Button>
+                </ContainerText>
+                {createActivities && (
+                  <ModalActivity
+                    handleButtonCloseActivities={handleButtonCloseActivities}
+                    setCreateActivities={setCreateActivities}
+                  />
+                )}
+                <CardsContainer>
+                </CardsContainer>
+                {activities.map((activity) => (
+                  <CardActivity 
+                                key={activity.id} 
+                                title={activity.title} 
+                                date={activity.realization_time} 
+                                handleDelete={handleDeleteActivity}
+                                activity={activity}
+                              />
+                  ))}
+                {previousActivitiesPage !== null && (
+                  <Button onClick={() => setCountActivities(countActivities - 1)}>
+                    voltar
+                  </Button>
+                )}
+                {nextActivitiesPage !== null && (
+                  <Button onClick={() => setCountActivities(countActivities + 1)}>
+                    próxima
+                  </Button>
+                )}
+              </ContentContainer>
+            </Container>
+        </MainContainer>
+        {!desktop && <MenuFooter />}
+      </PageContainer>
     </>
   );
 };

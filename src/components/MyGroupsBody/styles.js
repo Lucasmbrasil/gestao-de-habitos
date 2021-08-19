@@ -18,7 +18,7 @@ export const ContainerBody = styled.div`
 `;
 
 export const ContainerGroups = styled.div`
-min-width: 270px;
+  min-width: 270px;
   width: 80%;
   margin: 1rem auto;
   display: flex;
@@ -53,7 +53,7 @@ min-width: 270px;
   }
 
   @media screen and (min-width: 900px) {
-    width: 48%;
+    width: 100%;
     background-color: #fff;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
