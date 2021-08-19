@@ -14,6 +14,7 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import { cyan } from "@material-ui/core/colors";
 import ExpandLessIcon from '@material-ui/icons/ExpandLess';
+import {useHistory} from 'react-router-dom';
 
 const drawerWidth = 210;
 
@@ -53,6 +54,7 @@ const useStyles = makeStyles((theme) => ({
 const MenuSide = () => {
   const classes = useStyles();
   const [appear, setAppear] = useState(false);
+  const history = useHistory();
 
   const ShowGroups = () => {
     setAppear(!appear)
@@ -70,18 +72,14 @@ const MenuSide = () => {
         <TitleBar>procrastinare</TitleBar>
         <Divider />
         <List>    
-            <ListItem button>
+            <ListItem button onClick={() => history.push('/dashboard')}>
               <ListItemIcon><MenuIcon style={{color: "#ffffff"}} /></ListItemIcon>
               <ListItemMenu>dashboard</ListItemMenu>
             </ListItem>
-            <ListItem button>
+            <ListItem button  onClick={() => history.push('/user')}>
               <ListItemIcon><InsertEmoticonIcon style={{color: "#ffffff"}} /></ListItemIcon>
               <ListItemMenu>perfil</ListItemMenu>
-            </ListItem> 
-            <ListItem button>
-              <ListItemIcon><LineStyleIcon style={{color: "#ffffff"}} /></ListItemIcon>
-              <ListItemMenu>dashboard</ListItemMenu>
-            </ListItem> 
+            </ListItem>
             <ListItem button onClick={ShowGroups}>
               <ListItemIcon><GroupIcon style={{color: "#ffffff"}} /></ListItemIcon>
               <ListItemMenu>grupos</ListItemMenu>
@@ -96,14 +94,11 @@ const MenuSide = () => {
             {
               appear && 
               <List className={classes.list}>
-                <ListItem button className={classes.list}>
+                <ListItem button className={classes.list} onClick={() => history.push('/groups/mygroups')}>
                     <ListItemMenuGroup>meus grupos</ListItemMenuGroup>
                 </ListItem>
-                <ListItem button className={classes.list}>
+                <ListItem button className={classes.list} onClick={() => history.push('/groups/find')}>
                     <ListItemMenuGroup>encontrar grupos</ListItemMenuGroup>
-                </ListItem>
-                <ListItem button className={classes.list}>
-                    <ListItemMenuGroup>criar novo grupo</ListItemMenuGroup>
                 </ListItem>
               </List>
             }
