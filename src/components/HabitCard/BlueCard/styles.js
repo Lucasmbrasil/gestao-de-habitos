@@ -38,18 +38,18 @@ export const HabitCardBlue = styled.div`
     margin-left: 0.4rem;
 
     button {
-    border-radius: 50%;
-    border: 1px solid black;
-    width: 18px;
-    font-weight: bold;
-    box-shadow: 0 1px 2px #000000;
-    background-color: #fff;
+      border-radius: 50%;
+      border: 1px solid black;
+      width: 18px;
+      font-weight: bold;
+      box-shadow: 0 1px 2px #000000;
+      background-color: #fff;
     }
 
     button:active {
-    position: relative;
-    top: 1px;
-    box-shadow: none;
+      position: relative;
+      top: 1px;
+      box-shadow: none;
     }
   }
   .title {
@@ -74,13 +74,12 @@ export const HabitCardBlue = styled.div`
     font-size: 0.875rem;
     justify-content: space-evenly;
     align-items: center;
-
     .pen {
       text-align: end;
     }
 
     button {
-      background-color: #B71C1C;
+      background-color: #b71c1c;
       color: #fff;
       font-family: "Karla", sans-serif;
       font-weight: bold;
@@ -95,6 +94,17 @@ export const HabitCardBlue = styled.div`
   .text2 div {
     margin-right: 10px;
   }
+  #buttons {
+    svg {
+      cursor: pointer;
+    }
+    width: 50px;
+    margin-right: 0px;
+    height: 25px;
+    align-items: flex-end;
+    justify-content: space-between;
+    display: flex;
+  }
   .category {
     background-color: #bbdefb;
     border-radius: 5px;
@@ -105,5 +115,4 @@ export const HabitCardBlue = styled.div`
     padding: 2px;
     width: 100%;
   }
-  
 `;

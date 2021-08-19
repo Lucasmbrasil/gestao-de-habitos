@@ -19,7 +19,6 @@ export const CreateActivityProvider = ({ children }) => {
       realization_time: `${data.realization_time}T23:59:59Z`,
       group: Number(specificGroup.id),
     };
-    console.log(newData);
     api
       .post(`/activities/`, newData, {
         headers: { Authorization: `Bearer ${getToken}` },

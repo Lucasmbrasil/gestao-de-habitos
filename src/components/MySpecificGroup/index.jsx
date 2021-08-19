@@ -47,7 +47,6 @@ const MySpecificGroup = () => {
     handleGoal();
     handleActivities();
   }, [handleGoal, handleActivities]);
-  console.log(enterGroup);
   return (
     <>
       <ToastContainer position="top-center" autoClose={2500} />
