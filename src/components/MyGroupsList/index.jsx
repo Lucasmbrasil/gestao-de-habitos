@@ -2,6 +2,7 @@ import { useEffect } from "react";
 // import { useHistory } from "react-router-dom";
 import { useMyGroupsList } from "../../Providers/MyGroupsList";
 import { useSpecificGroup } from "../../Providers/SpecificGroup";
+import CardGroup from "../CardsGroupsPage/CardGroup";
 
 const MyGroupsList = () => {
   const { handleMyGroupsList, myGroups } = useMyGroupsList();
@@ -12,16 +13,17 @@ const MyGroupsList = () => {
   }, [handleMyGroupsList]);
 
   return (
-    <div>
+    <div style={{ overflow: "scroll", height: "70%", maxHeight: "400px" }}>
       {myGroups.map((group) => (
-        <div
+        <CardGroup
+          pointer={true}
+          handleSpecificGroup={handleSpecificGroup}
           key={group.id}
-          style={{ margin: "20px", cursor: "pointer" }}
-          onClick={() => handleSpecificGroup(group.id)}
-        >
-          <div>{group.name}</div>
-          <div> {group.description}</div>
-        </div>
+          id={group.id}
+          name={group.name}
+          description={group.description}
+          category={group.category}
+        />
       ))}
     </div>
   );

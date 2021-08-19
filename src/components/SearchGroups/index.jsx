@@ -1,6 +1,6 @@
 import { useState, useContext } from "react";
 import { GroupListContext } from "../../Providers/GroupList";
-import { Card, Container, BackgroundDiv, PaperDiv, InputPaper } from "./styles";
+import { Container, BackgroundDiv, PaperDiv, InputPaper } from "./styles";
 import SearchIcon from "@material-ui/icons/Search";
 import { cyan } from "@material-ui/core/colors";
 import { InputBase } from "@material-ui/core";

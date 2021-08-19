@@ -4,8 +4,13 @@ import { BodyPage, HorizontalLine } from "./styles";
 import MenuSide from "../../components/MenuSide";
 import { useSpecificGroup } from "../../Providers/SpecificGroup";
 import MySpecificGroup from "../../components/MySpecificGroup";
+import { PageContainer } from "../Dashboard/styles";
+import { useMediaQuery } from "react-responsive";
+import MenuFooter from "../../components/MenuFooter";
+import MobileHeader from "../../components/MobileHeader";
 
 const MyGroups = () => {
+  const desktop = useMediaQuery({ query: "(min-width: 769px)" });
   const { specificGroup } = useSpecificGroup();
 
   return (
@@ -16,12 +21,16 @@ const MyGroups = () => {
         </>
       ) : (
         <>
-          <MenuSide />
-          <BodyPage>
-            <MyGroupsHeader />
-            <HorizontalLine />
-            <MyGroupsBody />
-          </BodyPage>
+          <PageContainer>
+            {desktop && <MenuSide />}
+            {!desktop && <MobileHeader />}
+            <BodyPage>
+              <MyGroupsHeader />
+              <HorizontalLine />
+              <MyGroupsBody />
+            </BodyPage>
+            {!desktop && <MenuFooter />}
+          </PageContainer>
         </>
       )}
     </>
