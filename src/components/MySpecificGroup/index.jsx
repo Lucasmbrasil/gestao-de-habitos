@@ -2,10 +2,13 @@ import { useEffect, useState } from "react";
 import { useSpecificGroup } from "../../Providers/SpecificGroup";
 import ModalGoal from "../ModalContainer/ModalGoal";
 import ModalActivity from "../ModalContainer/ModalActivity";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { useGetGroupGoals } from "../../Providers/GetGroupGoals";
 import { useGetGroupActivities } from "../../Providers/GetGroupActivities";
 import { useDelete } from "../../Providers/Delete";
 import { useMyGroupsList } from "../../Providers/MyGroupsList";
+import { useSubscribeGroup } from "../../Providers/SubscribeGroup";
 
 const MySpecificGroup = () => {
   const { specificGroup, setSpecificGroup } = useSpecificGroup();
@@ -26,12 +29,12 @@ const MySpecificGroup = () => {
     nextActivitiesPage,
   } = useGetGroupActivities();
   const { handleDeleteGoal, handleDeleteActivity } = useDelete();
-  const { myGroups } = useMyGroupsList();
+  const { handleSubscribeGroup } = useSubscribeGroup();
+  const { myGroups, handleMyGroupsList } = useMyGroupsList();
   const [createGoal, setCreateGoal] = useState(false);
   const [createActivities, setCreateActivities] = useState(false);
   const myGroupsId = myGroups.map((group) => group.id);
   const enterGroup = myGroupsId.includes(specificGroup.id);
-  // console.log(enterGroup);
   const handleButtonClose = () => {
     setCreateGoal(false);
   };
@@ -46,11 +49,19 @@ const MySpecificGroup = () => {
 
   return (
     <>
+      <ToastContainer position="top-center" autoClose={2500} />
       <h1>{specificGroup.name}</h1>
       {enterGroup ? (
         <button disabled>Entrar no grupo</button>
       ) : (
-        <button disabled>Entrar no grupo</button>
+        <button
+          onClick={() => {
+            handleSubscribeGroup(specificGroup);
+            setTimeout(() => handleMyGroupsList(), 4000);
+          }}
+        >
+          Entrar no grupo
+        </button>
       )}
       <button onClick={() => setSpecificGroup("")}>Voltar</button>
       <button onClick={() => setCreateGoal(true)}>Criar objetivo</button>

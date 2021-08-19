@@ -1,83 +1,72 @@
-import styled from 'styled-components';
-import { Grid, Paper } from '@material-ui/core';
-
+import styled from "styled-components";
+import { Grid, Paper } from "@material-ui/core";
 
 export const Container = styled(Grid)`
-&& {
+  && {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 10px;
-    width: 95%;
-    margin: 0 auto;
-}
+    width: 100%;
+    height: 100vh;
+  }
 `;
 
 export const BackgroundDiv = styled(Grid)`
-    && {
-        background-color: RGB(225, 190, 231, 0.25);
-        padding: 15px;
-        margin: 10px;
-        width: 100%;
-        height: 70vh;
-        max-height: 600px;
-        /* overflow: hidden; */
-    }
+  && {
+    background-color: RGB(225, 190, 231, 0.25);
+    padding: 15px;
+    margin: 30px;
+    width: 100%;
+    height: 100%;
+  }
 `;
 
 export const PaperDiv = styled(Paper)`
-    && {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-evenly;
-        padding: 10px;
-        background: #ECEFF1;
-        height: 65vh;
-        max-height: 580px;
-        overflow: scroll;
-    }
+  && {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    padding: 10px;
+    background: #eceff1;
+    height: 100%;
+  }
 `;
 
 export const InputPaper = styled(Paper)`
-    && {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        border: 2px solid #757575;
-        border-radius: 10px;
-        box-shadow: 0px 10px 15px -8px rgba(0,0,0,0.75);
-        padding: 10px;
-        @media(max-width: 768px){
-            margin-top: 60px;
-            margin-bottom: 0;
-        }
-        margin: 30px;
-        min-width: 250px;
-        width: 50%;
-    }
-    && input{
-        
-        width: 95%;
-    }
-    && svg{
-        width: 30px;
-        height: 30px;
-    }
+  && {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 2px solid #757575;
+    border-radius: 10px;
+    box-shadow: 0px 10px 15px -8px rgba(0, 0, 0, 0.75);
+    padding: 10px;
+    margin: 30px;
+    width: 50%;
+  }
+  && input {
+    width: 95%;
+  }
+  && SearchIcon {
+    width: 5%;
+    heigth: 95%;
+  }
 `;
 
 export const Card = styled.div`
-    display: flex;
-    flex-direction: column;
-    margin: 10px;
-    background-color: white;
-    width: 32%;
-    height: 100px;
-
-    h3{
-        font-size: 0.5rem;
-    }
-    p{
-        font-size: 0.5rem;
-    }
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  background-color: white;
+  width: 32%;
+  height: 100px;
+  cursor: pointer;
+  h3 {
+    font-size: 0.5rem;
+  }
+  p {
+    font-size: 0.5rem;
+  }
 `;

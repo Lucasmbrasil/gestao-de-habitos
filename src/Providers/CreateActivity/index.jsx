@@ -11,7 +11,7 @@ export const CreateActivityProvider = ({ children }) => {
   const { specificGroup } = useSpecificGroup();
   const { handleActivities } = useGetGroupActivities();
 
-  const handleCreateActivities = (data, setCreateActivities) => {
+  const handleCreateActivities = (data) => {
     console.log(specificGroup.id);
     const getToken = window.localStorage.getItem("token");
     const newData = {
@@ -28,7 +28,6 @@ export const CreateActivityProvider = ({ children }) => {
         toast.success("Atividade criada com sucesso!", {
           onClose: () => {
             handleActivities();
-            setCreateActivities(false);
           },
         })
       )

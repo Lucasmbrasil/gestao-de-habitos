@@ -8,19 +8,25 @@ export const GroupListContext = createContext();
 
 export const GroupListProvider = ({ children }) => {
   const [group, setGroup] = useState([]);
+  const [count, setCount] = useState(1);
+  const [previousPage, setPreviousPage] = useState();
+  const [nextPage, setNextPage] = useState();
 
   useEffect(() => {
     api
-      .get(`/groups/`)
+      .get(`/groups/?page=${count}`)
       .then((response) => {
-        // console.log(response.data.results)
+        setPreviousPage(response.data.previous);
+        setNextPage(response.data.next);
         setGroup(response.data.results);
       })
       .catch((e) => console.log(e));
-  }, []);
+  }, [count]);
 
   return (
-    <GroupListContext.Provider value={{ group }}>
+    <GroupListContext.Provider
+      value={{ group, count, setCount, previousPage, nextPage }}
+    >
       {children}
     </GroupListContext.Provider>
   );
