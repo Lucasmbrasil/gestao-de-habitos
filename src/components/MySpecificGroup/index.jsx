@@ -34,6 +34,7 @@ import CreateIcon from '@material-ui/icons/Create';
 import GoalCard from "../GoalCard";
 import MenuFooter from "../MenuFooter";
 import MobileHeader from "../MobileHeader";
+import jwt_decode from "jwt-decode";;
 
 const MySpecificGroup = () => {
   const desktop = useMediaQuery({ query: "(min-width: 769px)" });
