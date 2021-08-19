@@ -5,17 +5,15 @@ export const GroupsContainer = styled.div`
     height: 60%;
     max-height: 450px;
     width: 90%;
-    -ms-overflow-style: none; /* for Internet Explorer, Edge */
-    scrollbar-width: none; /* for Firefox */
-    overflow-y: scroll;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    -ms-overflow-style: none; /* for Internet Explorer, Edge */
+    scrollbar-width: none; /* for Firefox */
+    overflow-y: scroll;
     ::-webkit-scrollbar {
         display: none; /* for Chrome, Safari, and Opera */
     }
-
-
 }
  width: 90%;
 `
