@@ -2,12 +2,16 @@ import styled from "styled-components";
 import { Button } from "@material-ui/core";
 
 export const PageContainer = styled.div`
-  display: flex;
+  @media(min-width: 769px){
+    display: flex;
+  }
 `
 
 export const MainContainer = styled.div`
   background-color: #e0f2f1;
-  width: calc(100vw - 210px);
+  @media(min-width: 769px){
+    width: calc(100vw - 210px);
+  }
   min-height: 100vh;
 `;
 
@@ -60,7 +64,6 @@ export const Habits = styled.section`
     margin: 1rem auto;
   }
 `;
-
 export const TextHabits = styled.div`
   width: 100%;
   border: 1px solid black;

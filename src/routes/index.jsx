@@ -4,7 +4,7 @@ import Home from "../pages/Home";
 import Register from "../pages/Register";
 import Login from "../pages/Login";
 import MyGroups from "../pages/MyGroups";
-import SearchGroup from "../pages/SearchGroup";
+import FindGroups from "../pages/FindGroups";
 
 const Routes = () => {
   return (
@@ -21,11 +21,11 @@ const Routes = () => {
       <Route path="/dashboard">
         <Dashboard />
       </Route>
-      <Route path="/mygroups">
+      <Route path="/groups/mygroups">
         <MyGroups />
       </Route>
-      <Route path="/searchgroup">
-        <SearchGroup />
+      <Route path="/groups/find">
+        <FindGroups />
       </Route>
     </Switch>
   );

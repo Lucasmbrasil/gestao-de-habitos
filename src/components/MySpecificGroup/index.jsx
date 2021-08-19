@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { useSpecificGroup } from "../../Providers/SpecificGroup";
 import ModalGoal from "../ModalContainer/ModalGoal";
 import ModalActivity from "../ModalContainer/ModalActivity";
-
 import { useGetGroupGoals } from "../../Providers/GetGroupGoals";
 import { useGetGroupActivities } from "../../Providers/GetGroupActivities";
 import { useDelete } from "../../Providers/Delete";
@@ -32,7 +31,7 @@ const MySpecificGroup = () => {
   const [createActivities, setCreateActivities] = useState(false);
   const myGroupsId = myGroups.map((group) => group.id);
   const enterGroup = myGroupsId.includes(specificGroup.id);
-  console.log(enterGroup);
+  // console.log(enterGroup);
   const handleButtonClose = () => {
     setCreateGoal(false);
   };
