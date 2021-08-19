@@ -5,7 +5,7 @@ const MySuggestedGroups = () => {
   const { group } = useGroupList();
   const shortGroup = group.slice(0, 4);
   return (
-    <div style={{overflow: "scroll", height: "60%"}}>
+    <div style={{overflow: "scroll", height: "60%", maxHeight: "400px"}}>
       {shortGroup.map((group) => (
         <CardGroup 
                   key={group.id} 

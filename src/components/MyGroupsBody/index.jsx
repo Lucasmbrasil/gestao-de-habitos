@@ -8,7 +8,17 @@ import SearchIcon from "@material-ui/icons/Search";
 import MyGroupsList from "../MyGroupsList";
 import MySuggestedGroups from "../MySuggestedGroups";
 import { Link } from "react-router-dom";
+import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
+import ModalGroup from "../ModalContainer/ModalGroup";
+import { useState } from "react";
+
 const MyGroupsBody = () => {
+  const [createGroup, setCreateGroup] = useState(false);
+
+  const handleButtonClose = () => {
+    setCreateGroup(false);
+  };
+  
   return (
     <ContainerBody>
       <ContainerGroups>
@@ -21,7 +31,7 @@ const MyGroupsBody = () => {
         <MySuggestedGroups />
         <SearchPlace>
           <p>deseja ver mais? busque novos grupos</p>
-          <Link to="/searchgroup">
+          <Link to="/groups/find">
             <SearchBar>
               buscar novos grupos <SearchIcon />
             </SearchBar>
