@@ -75,6 +75,7 @@ export const Habits = styled.section`
   @media (max-width: 980px) {
     width: 80%;
     margin: 1rem auto;
+    height: 90vh;
   }
 `;
 

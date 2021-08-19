@@ -1,21 +1,26 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 320px;
-    width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 320px;
+  width: 100%;
 
-    textarea {
-        height: 70px;
-        border: 1px solid #424242;
-        border-radius: 0.5rem;
-        width: 100%;
-        opacity: 87%;
-        padding-left: 1rem;
-        font-family: "Karla", sans-serif;
-    }
+  @media (max-width: 768px) {
+    height: 313px;
+    width: 89%;
+  }
+
+  textarea {
+    height: 70px;
+    border: 1px solid #424242;
+    border-radius: 0.5rem;
+    width: 100%;
+    opacity: 87%;
+    padding-left: 1rem;
+    font-family: "Karla", sans-serif;
+  }
 
   textarea {
     height: 70px;

@@ -105,4 +105,16 @@ export const Container = styled.form`
       bottom: 1rem;
     }
   }
+  @media (max-width: 768px) {
+    width: 85vw;
+    .inferior {
+      border-bottom-left-radius: 16px;
+      border-bottom-right-radius: 16px;
+      button {
+        position: relative;
+        left: 150px;
+        bottom: 1rem;
+      }
+    }
+  }
 `;

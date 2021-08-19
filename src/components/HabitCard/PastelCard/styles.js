@@ -7,4 +7,14 @@ export const HabitCardYellow = styled(HabitCardBlue)`
   .category {
     background-color: #ffffa8;
   }
+
+  @media (max-width: 768px) {
+    .filled {
+      width: 100%;
+    }
+
+    .filled2 {
+      margin-left: 0;
+    }
+  }
 `;
