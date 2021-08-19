@@ -91,6 +91,13 @@ export const ContainerTitle = styled.div`
         font-family: "Arvo", serif;
         padding: 10px 0;
         font-size: 1.2rem;
+
+        svg {
+          display: unset;
+          cursor: pointer;
+          width: 20px;
+          height: 20px;
+        }
     }
     
     @media (min-width: 769px){
