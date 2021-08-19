@@ -3,8 +3,8 @@ import styled from "styled-components";
 export const Button = styled.button`
   display: flex;
   align-items: center;
-  justify-content: space-around;
-  background-color: #ec407a;
+  justify-content: space-evenly;
+  background-color: ${(props) => props.color ? props.color : "#ec407a"};
   border: 2px solid rgba(0, 0, 0, 0.5);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   color: #fff;
@@ -16,10 +16,11 @@ export const Button = styled.button`
   height: 35px;
   span {
     padding-left: 0.2rem;
+    font-weight: bold;
   }
 
   :hover {
-    background-color: #e91e63;
+    background-color: ${(props) => props.color ? props.color : "#ec407a"};
   }
 `;
 
@@ -40,20 +41,32 @@ export const MainContainer = styled.main`
 `;
 
 export const ContainerHeader = styled.div`
-    display: none;
-    
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: rgba(255, 253, 231, 0.5);
+    padding: 10px;
+    margin: 50px auto;
+    height: 130px;
+    border-bottom: 4px solid lightgray; 
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     @media screen and (min-width: 768px){
-        width: 90%;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-evenly;
-        align-items: center;
-        background-color: rgba(255, 253, 231, 0.5);
-        padding: 20px;
         margin: 10px auto;
-        height: 130px;
-        border-bottom: 4px solid lightgray; 
-        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        padding: 20px;
+    }
+
+    .buttons {
+      display: flex;
+      flex-direction: column;
+
+      /* width: 15%; */
+      height: 90%;
+      justify-content: space-around;
+      @media screen and (min-width: 768px){
+        flex-direction: column;
+    }
     }
 `;
 
@@ -65,20 +78,37 @@ export const ContainerTitle = styled.div`
     width: 70%;   
     color: #212121; 
     font-family: "Karla", sans-serif;
-    
+
     svg{
-        width: 75px;
-        height: 75px;
+        width: 35px;
+        height: 35px;
+        @media (max-width: 560px){
+          display: none;
+        }
     }
 
     h1{
         font-family: "Arvo", serif;
         padding: 10px 0;
+        font-size: 1.2rem;
+    }
+    
+    @media (min-width: 769px){
+      width: 70%; 
+
+      svg{
+        width: 75px;
+        height: 75px;
+    }
+
+    h1{
+        padding: 10px 0;
+     }
     }
 `;
 
 export const SubscribeGroupButton = styled.button`
-      background-color: ${(props) => props.disabled ? "#" : "#00695C"};
+      background-color: ${(props) => props.disabled ? "#E0E0E0" : "#00695C"};
       border: none;
       color: ${(props) => props.disabled ? "#212121" : "#fff"};
       font-weight: 700;
@@ -94,6 +124,11 @@ export const SubscribeGroupButton = styled.button`
       box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
       span {
         padding-left: 0.5rem;
+      }
+      @media(max-width: 768px){
+        width: 100%;
+        color: ${(props) => props.disabled ? "#212121" : "#fff"};
+        background-color: ${(props) => props.disabled ? "#E0E0E0" : "#00695C"};
       } 
 `
 
@@ -110,7 +145,7 @@ export const Container = styled.section`
   background: rgba(225, 190, 231, 0.25);
   width: 95%;
   margin: 2.5rem auto;
-  min-height: 75%;
+  min-height: 600px;
 
   .header {
     padding: 8px;
@@ -147,7 +182,7 @@ export const ContainerText = styled.div`
   font-size: 16px;
 `;
 
-export const GoalsContainer = styled.section`
+export const ContentContainer = styled.section`
   width: 80%;
   height: 460px;
   background-color: #ffffff;
@@ -163,3 +198,10 @@ export const GoalsContainer = styled.section`
     margin: 1rem auto;
   }
 `;
+
+export const CardsContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  width: 100%;
+`

@@ -10,6 +10,7 @@ export const Header = styled.div`
     top: 0px;
     background-color: #006064;
     text-align: center;
+    z-index: 2000;
     h2 {
         margin-top: 0.5rem;
     }
