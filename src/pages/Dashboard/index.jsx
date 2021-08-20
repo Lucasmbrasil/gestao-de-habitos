@@ -19,10 +19,10 @@ import { useHabitList } from "../../Providers/HabitsList";
 import MenuSide from "../../components/MenuSide";
 import jwt_decode from "jwt-decode";
 import HabitCard from "../../components/HabitCard";
-
-import { CircularProgress } from "@material-ui/core";
-import ModalEditHabit from "../../components/ModalContainer/ModalEditHabit";
 import { ToastContainer } from "react-toastify";
+import { useMediaQuery } from "react-responsive"; 
+import MenuFooter from "../../components/MenuFooter";
+import MobileHeader from "../../components/MobileHeader";
 
 const Dashboard = () => {
   const desktop = useMediaQuery({ query: "(min-width:769px)" });
@@ -133,7 +133,7 @@ const Dashboard = () => {
                 variant="contained"
                 startIcon={<AddCircleOutlineIcon />}
               >
-                criar novo
+                {mobileBreak && <>criar novo</>}
               </StyledButton>
             </TextHabits>
             {addGoodHabit && (
@@ -162,7 +162,6 @@ const Dashboard = () => {
                     </>
                   );
                 }
-
                 return <></>;
               })}
           </Habits>
@@ -174,7 +173,7 @@ const Dashboard = () => {
                 variant="contained"
                 startIcon={<AddCircleOutlineIcon />}
               >
-                criar novo
+                {mobileBreak && <>criar novo</>}
               </StyledPinkButton>
             </TextHabits>
             {addBadHabit && (
@@ -209,6 +208,7 @@ const Dashboard = () => {
         </HabitsContainer>
         {mobileComponents && <MenuFooter />}
       </MainContainer>
+      {!desktop && <MenuFooter />}
     </PageContainer>
   );
 };

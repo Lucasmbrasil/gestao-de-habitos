@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useMyGroupsList } from "../../Providers/MyGroupsList";
 import { useSpecificGroup } from "../../Providers/SpecificGroup";
 import CardGroup from "../CardsGroupsPage/CardGroup";
-
+import { GroupsContainer } from "./styles";
 const MyGroupsList = () => {
   const { handleMyGroupsList, myGroups } = useMyGroupsList();
   const { handleSpecificGroup } = useSpecificGroup();
@@ -13,7 +13,7 @@ const MyGroupsList = () => {
   }, [handleMyGroupsList]);
 
   return (
-    <div style={{ overflow: "scroll", height: "70%", maxHeight: "400px" }}>
+    <GroupsContainer>
       {myGroups.map((group) => (
         <CardGroup
           pointer={true}
@@ -25,7 +25,7 @@ const MyGroupsList = () => {
           category={group.category}
         />
       ))}
-    </div>
+    </GroupsContainer>
   );
 };
 export default MyGroupsList;

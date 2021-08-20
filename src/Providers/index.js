@@ -9,6 +9,7 @@ import { DeleteProvider } from "./Delete";
 import { CreateActivityProvider } from "./CreateActivity";
 import { SubscribeGroupProvider } from "./SubscribeGroup";
 import { SearchGroupProvider } from "./SearchGroup";
+import { EditGroupProvider } from "./EditGroup";
 
 const Providers = ({ children }) => {
   return (
@@ -20,13 +21,15 @@ const Providers = ({ children }) => {
               <GroupListProvider>
                 <GetGroupGoalsProvider>
                   <GetGroupActivitiesProvider>
-                    <DeleteProvider>
-                      <CreateGroupProvider>
-                        <CreateActivityProvider>
-                          {children}
-                        </CreateActivityProvider>
-                      </CreateGroupProvider>
-                    </DeleteProvider>
+                    <EditGroupProvider>
+                      <DeleteProvider>
+                        <CreateGroupProvider>
+                          <CreateActivityProvider>
+                            {children}
+                          </CreateActivityProvider>
+                        </CreateGroupProvider>
+                      </DeleteProvider>
+                    </EditGroupProvider>
                   </GetGroupActivitiesProvider>
                 </GetGroupGoalsProvider>
               </GroupListProvider>

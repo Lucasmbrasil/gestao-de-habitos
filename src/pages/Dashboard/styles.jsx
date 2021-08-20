@@ -57,6 +57,10 @@ export const HabitsContainer = styled.main`
     p {
       font-family: "Karla", sans-serif;
     }
+    
+  }
+  @media(max-width: 768px){
+    margin-bottom: 50px;
   }
 `;
 
@@ -105,6 +109,19 @@ export const StyledButton = styled(Button)`
     border: 2px solid rgba(0, 0, 0, 0.5);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 8px;
+    @media (max-width: 480px){
+      justify-content: center;
+      padding: 5px;
+      width: 30px;
+      margin-right: 0.2rem;
+      min-width: 35px;
+      display: flex;
+      justify-content: center;
+      text-align: center;
+      .MuiButton-startIcon{
+        margin: 0;
+      }
+    }
   }
   &&:hover {
     background-color: #d68801;

@@ -7,7 +7,6 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useCreateGroup } from "../../../Providers/CreateGroup";
 import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 
 const ModalGrupo = ({ handleButtonClose, setCreateGroup }) => {
   const { handleCreateGroup } = useCreateGroup();

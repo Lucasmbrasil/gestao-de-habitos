@@ -1,16 +1,17 @@
 import { Route, Switch } from "react-router-dom";
 import Dashboard from "../pages/Dashboard";
-import Home from "../pages/Home";
+import Contact from "../pages/Contact";
 import Register from "../pages/Register";
 import Login from "../pages/Login";
 import MyGroups from "../pages/MyGroups";
+import LandingPage from "../pages/LandingPage";
 import FindGroups from "../pages/FindGroups";
 
 const Routes = () => {
   return (
     <Switch>
       <Route exact path="/">
-        <Home />
+        <LandingPage />
       </Route>
       <Route path="/login">
         <Login />
@@ -26,6 +27,9 @@ const Routes = () => {
       </Route>
       <Route path="/groups/find">
         <FindGroups />
+      </Route>
+      <Route path='/contact'>
+        <Contact/>
       </Route>
     </Switch>
   );

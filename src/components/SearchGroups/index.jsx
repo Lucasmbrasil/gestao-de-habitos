@@ -5,11 +5,8 @@ import {
   BackgroundDiv,
   PaperDiv,
   InputPaper,
-  Card,
-  Button,
   ButtonNext,
   ButtonPrevious,
-  ButtonContainer,
 } from "./styles";
 import SearchIcon from "@material-ui/icons/Search";
 import { cyan } from "@material-ui/core/colors";

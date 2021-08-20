@@ -34,6 +34,14 @@ export const PaperDiv = styled(Paper)`
     padding: 10px;
     background: #eceff1;
     height: 100%;
+    width: 100%;
+    max-height: 60vh;
+    -ms-overflow-style: none; /* for Internet Explorer, Edge */
+    scrollbar-width: none; /* for Firefox */
+    overflow-y: scroll;
+    ::-webkit-scrollbar {
+        display: none; /* for Chrome, Safari, and Opera */
+    }
   }
 `;
 
@@ -54,9 +62,14 @@ export const InputPaper = styled(Paper)`
   && input {
     width: 95%;
   }
-  && SearchIcon {
+  && svg {
     width: 5%;
-    heigth: 95%;
+    height: 95%;
+    cursor: pointer;
+    @media(max-width: 768px){
+      width: 20px;
+      height: 20px;
+    }
   }
 `;
 

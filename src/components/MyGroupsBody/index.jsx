@@ -7,7 +7,6 @@ import {
 } from "./styles";
 import SearchIcon from "@material-ui/icons/Search";
 import MyGroupsList from "../MyGroupsList";
-import MySuggestedGroups from "../MySuggestedGroups";
 import { Link } from "react-router-dom";
 import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
 import ModalGroup from "../ModalContainer/ModalGroup";

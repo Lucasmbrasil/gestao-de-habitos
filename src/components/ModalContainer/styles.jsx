@@ -35,7 +35,7 @@ export const InputContainer = styled.div`
 `;
 
 export const Container = styled.form`
-  position: absolute;
+  position: fixed;
   z-index: 20;
   top: 50%;
   left: 50%;
@@ -58,7 +58,7 @@ export const Container = styled.form`
 
   ::before {
     z-index: -1;
-    position: absolute;
+    position: fixed;
     content: "";
     width: 100vw;
     height: 100vh;
@@ -108,6 +108,9 @@ export const Container = styled.form`
       position: relative;
       left: 250px;
       bottom: 1rem;
+      @media (max-width: 390px){
+        left: 190px;
+      }
     }
   }
 
