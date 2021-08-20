@@ -20,7 +20,7 @@ import MenuSide from "../../components/MenuSide";
 import jwt_decode from "jwt-decode";
 import HabitCard from "../../components/HabitCard";
 import { toast, ToastContainer } from "react-toastify";
-
+import { motion } from "framer-motion";
 import MobileHeader from "../../components/MobileHeader";
 
 const Dashboard = () => {
@@ -115,6 +115,12 @@ const Dashboard = () => {
   };
 
   return (
+    <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: .3 }}
+        >
     <PageContainer>
       <ToastContainer position="top-center" autoClose={2500} />
 
@@ -216,6 +222,7 @@ const Dashboard = () => {
       </MainContainer>
       {!desktop && <MenuFooter />}
     </PageContainer>
+    </motion.div>
   );
 };
 export default Dashboard;

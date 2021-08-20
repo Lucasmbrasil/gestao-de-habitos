@@ -8,6 +8,8 @@ import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
+import InfoIcon from "@material-ui/icons/Info";
+
 const StyledMenu = withStyles({
   paper: {
     border: "1px solid black",
@@ -68,7 +70,6 @@ const MenuFooter = () => {
     <>
       <Footer>
         <MenuIcon className="icons" onClick={DashboardFunction} />
-        <SentimentVerySatisfiedIcon className="icons" />
         <div>
           <GroupIcon className="icons" onClick={handleClick} />
 
@@ -97,6 +98,10 @@ const MenuFooter = () => {
             </StyledMenuItem>
           </StyledMenu>
         </div>
+        <InfoIcon className="icons" onClick={() => {
+                handleClose();
+                history.push("/contact");
+              }} />
         <ExitToAppIcon className="icons" onClick={Logout} />
       </Footer>
     </>

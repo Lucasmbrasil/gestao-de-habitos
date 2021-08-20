@@ -5,7 +5,7 @@ export const GridDiv = styled(Grid)`
   && {
     width: 100%;
     @media (max-width: 768px) {
-      margin-top: 35px;
+      margin-top: 42px;
     }
   }
 `;

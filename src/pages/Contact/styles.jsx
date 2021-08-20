@@ -72,6 +72,11 @@ export const Main = styled.div`
     padding: 10px;
     background-color: "white";
   }
+  && h2 {
+    color: #212121;
+    font-family: "Karla", sans-serif;
+  }
+
   && h1 {
     width: 60%;
     margin: 20px auto 20px auto;

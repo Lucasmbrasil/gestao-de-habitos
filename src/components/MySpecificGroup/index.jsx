@@ -36,6 +36,7 @@ import MenuFooter from "../MenuFooter";
 import MobileHeader from "../MobileHeader";
 import jwt_decode from "jwt-decode";
 import ModalEditActivity from "../ModalContainer/ModalEditActivity";
+import { motion } from "framer-motion"; 
 
 const MySpecificGroup = () => {
   const desktop = useMediaQuery({ query: "(min-width: 769px)" });
@@ -89,6 +90,12 @@ const MySpecificGroup = () => {
   console.log(enterGroup);
   return (
     <>
+    <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: .3 }}
+        >
       <ToastContainer position="top-center" autoClose={2500} />
       <PageContainer>
         {desktop && <MenuSide />}
@@ -221,6 +228,7 @@ const MySpecificGroup = () => {
         </MainContainer>
         {!desktop && <MenuFooter />}
       </PageContainer>
+      </motion.div>
     </>
   );
 };

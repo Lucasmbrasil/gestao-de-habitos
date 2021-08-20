@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 export const Title = styled.h3`
   font-family: "Arvo", serif;

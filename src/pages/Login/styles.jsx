@@ -1,5 +1,27 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { Paper, Button } from "@material-ui/core";
+
+const appearFromRight = keyframes`
+from {
+    opacity: 0;
+    transform: translateX(150px);
+}
+
+to {
+    opacity: 1;
+    transform: translateX(0px);
+}
+`;
+
+const appear = keyframes`
+from {
+    opacity: 0;
+}
+
+to {
+    opacity: 1;
+}
+`;
 
 export const Main = styled.div`
   && {
@@ -27,8 +49,10 @@ export const StyledPaper = styled(Paper)`
     background-color: #006064;
     padding: 40px;
     border-radius: 10px;
+    animation: ${appearFromRight} .7s;
     @media (max-width: 768px) {
       width: 400px;
+      animation: ${appear} .5s;
       background: #006064; /* fallback for old browsers */
       background: -webkit-linear-gradient(
         to right,

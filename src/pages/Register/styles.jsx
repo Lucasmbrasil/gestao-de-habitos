@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 export const ContainerRight = styled.div`
   @media (min-width: 768px) {

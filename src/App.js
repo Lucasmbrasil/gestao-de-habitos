@@ -1,13 +1,15 @@
 import Routes from "./routes";
 import GlobalStyle from "./styles/global";
-// import SearchGroup from "./components/SearchGroups";
+import { AnimatePresence } from "framer-motion";
 
 function App() {
   return (
     <>
-      {/* <SearchGroup/> */}
+      
       <GlobalStyle />
-      <Routes />
+      <AnimatePresence>
+        <Routes />
+      </AnimatePresence>
     </>
   );
 }
