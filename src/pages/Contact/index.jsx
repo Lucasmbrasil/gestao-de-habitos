@@ -56,7 +56,7 @@ const Contact = () => {
                 </div>
                 <div className="person-card">
                     <div className="dev">
-                        <h1>project owner</h1>
+                        <h1>product owner</h1>
                         <img src={imgIasmim} alt="Iasmim Oliveira"/>
                     </div>
                     <div className="contact">
