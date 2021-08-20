@@ -17,8 +17,13 @@ import MenuSide from "../../components/MenuSide";
 import jwt_decode from "jwt-decode";
 import HabitCard from "../../components/HabitCard";
 import { ToastContainer } from "react-toastify";
+import { useMediaQuery } from "react-responsive"; 
+import MenuFooter from "../../components/MenuFooter";
+import MobileHeader from "../../components/MobileHeader";
 
 const Dashboard = () => {
+  const desktop = useMediaQuery({ query: "(min-width: 769px)" });
+  const mobileBreak = useMediaQuery({ query: "(min-width: 480px)" });
   const { habits, handleList } = useHabitList();
   const [addGoodHabit, setAddGoodHabit] = useState(false);
   const [addBadHabit, setAddBadHabit] = useState(false);
@@ -104,7 +109,8 @@ const Dashboard = () => {
     <PageContainer>
       <ToastContainer position="top-center" autoClose={2500} />
 
-      <MenuSide />
+      {desktop && <MenuSide />}
+      {!desktop && <MobileHeader />}
       <MainContainer>
         <HeaderDashboard username={username} />
         <HabitsContainer>
@@ -120,7 +126,7 @@ const Dashboard = () => {
                 variant="contained"
                 startIcon={<AddCircleOutlineIcon />}
               >
-                criar novo
+                {mobileBreak && <>criar novo</>}
               </StyledButton>
             </TextHabits>
             {addGoodHabit && (
@@ -160,7 +166,7 @@ const Dashboard = () => {
                 variant="contained"
                 startIcon={<AddCircleOutlineIcon />}
               >
-                criar novo
+                {mobileBreak && <>criar novo</>}
               </StyledPinkButton>
             </TextHabits>
             {addBadHabit && (
@@ -194,6 +200,7 @@ const Dashboard = () => {
           </Habits>
         </HabitsContainer>
       </MainContainer>
+      {!desktop && <MenuFooter />}
     </PageContainer>
   );
 };

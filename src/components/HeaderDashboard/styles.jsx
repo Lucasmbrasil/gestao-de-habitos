@@ -4,6 +4,9 @@ import {Grid, Paper} from '@material-ui/core';
 export const GridDiv = styled(Grid)`
     && {
         width: 100%;
+        @media (max-width: 768px){
+        margin-top: 35px
+        }
     }
 `;
 
@@ -30,7 +33,7 @@ export const Container = styled.div`
     && {
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
+        justify-content: space-evenly;
         padding: 5px;
         width: 70%;
         font-family: 'Arvo', sans-serif;
@@ -38,8 +41,18 @@ export const Container = styled.div`
     && h1{
         font-size: 2rem;
         font-weight: lighter;
+        span {
+            font-weight: bold;
+        }
+        @media (max-width: 768px){
+        font-size: 1.2rem;
+        }
     }
     && p{
         font-size: 1.2rem;
+        font-style: italic;
+        @media (max-width: 768px){
+            font-size: 1rem;
+        }
     }
 `;
