@@ -2,8 +2,9 @@ import { Container, DeleteButton, AddButton, ButtonsContainer } from "./styles";
 import Rating from "@material-ui/lab/Rating";
 import { makeStyles } from "@material-ui/core/styles";
 import { Add } from "@material-ui/icons";
-import DeleteForeverIcon from '@material-ui/icons/DeleteForever'; 
-import BookmarksIcon from '@material-ui/icons/Bookmarks';
+import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
+import BookmarksIcon from "@material-ui/icons/Bookmarks";
+import ModalEditGoal from "../ModalContainer/ModalEditGoal";
 const useStyles = makeStyles({
   box: {
     display: "flex",
@@ -18,7 +19,7 @@ const GoalCard = ({ goal, handleDeleteGoal }) => {
     <>
       <Container>
         <div className="filled">
-          <BookmarksIcon/>
+          <BookmarksIcon />
         </div>
         <div className="text">
           <h3 className="title">{goal.title}</h3>
@@ -34,8 +35,9 @@ const GoalCard = ({ goal, handleDeleteGoal }) => {
         </div>
 
         <ButtonsContainer>
-            <DeleteButton onClick={() => handleDeleteGoal(goal)}><DeleteForeverIcon style={{color: "#fff"}}/></DeleteButton>  
-            {/* <AddButton onClick={() => addHowMuchAchieved(goal)}><Add /></AddButton>             */}
+          <DeleteButton onClick={() => handleDeleteGoal(goal)}>
+            <DeleteForeverIcon style={{ color: "#fff" }} />
+          </DeleteButton>
         </ButtonsContainer>
       </Container>
     </>

@@ -37,7 +37,6 @@ const ModalAtividade = ({
       realization_time: `${data.realization_time}T23:59:59Z`,
       group: Number(specificGroup.id),
     };
-    console.log(newData);
     api
       .post(`/activities/`, newData, {
         headers: { Authorization: `Bearer ${getToken}` },
@@ -69,6 +68,7 @@ const ModalAtividade = ({
             placeholder="nome da atividade"
             {...register("title")}
           />
+          <p>{errors.title?.message}</p>
         </InputContainer>
         <InputContainer>
           <div className="legenda">
