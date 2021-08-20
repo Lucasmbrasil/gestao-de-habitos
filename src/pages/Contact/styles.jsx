@@ -12,7 +12,17 @@ export const Container = styled.div`
 
 export const Header = styled.header`
   && {
-    background-color: #006064;
+    background: -webkit-linear-gradient(
+      to right,
+      #006064,
+      #159957
+    ); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(
+      to right,
+      #006064,
+      #159957
+    ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -156,7 +166,17 @@ export const Footer = styled.footer`
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #006064;
+    background: -webkit-linear-gradient(
+      to right,
+      #006064,
+      #159957
+    ); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(
+      to right,
+      #006064,
+      #159957
+    ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
     color: white;
     height: 90px;
   }
