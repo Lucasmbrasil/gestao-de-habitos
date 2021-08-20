@@ -8,14 +8,26 @@ export const HabitCardBlue = styled.div`
   margin-bottom: 10px;
   font-family: "Karla", sans-serif;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
 
+  @media(max-width: 480px){
+    flex-wrap: wrap;
+    height: 160px;
+    width: 95%;
+    margin: 10px auto;
+    border: 2px solid rgba(0, 0, 0, 0.6);
+  }
   .filled {
     background-color: #bbdefb;
     width: 50px;
     height: 100%;
+    max-height: 80px;
     display: flex;
     justify-content: center;
     align-items: center;
+    @media(max-width: 480px){
+      width: 30%;
+    }
     svg {
       font-size: 30px;
     }
@@ -36,15 +48,20 @@ export const HabitCardBlue = styled.div`
     justify-content: space-evenly;
     align-items: center;
     margin-left: 0.4rem;
+    max-height: 80px;
+    @media(max-width: 480px){
+      margin-left: 0;
+      width: 30%;
+  }
 
-    /* button {
+    button {
       border-radius: 50%;
       border: 1px solid black;
       width: 18px;
       font-weight: bold;
       box-shadow: 0 1px 2px #000000;
       background-color: #fff;
-    } */
+    }
 
     button:active {
       position: relative;
@@ -64,6 +81,10 @@ export const HabitCardBlue = styled.div`
     font-size: 0.875rem;
     flex-direction: column;
     width: 170px;
+    max-height: 80px;
+    @media(max-width: 480px){
+      width: 70%;
+    }
   }
   .text div {
     margin-left: 10px;
@@ -74,6 +95,10 @@ export const HabitCardBlue = styled.div`
     font-size: 0.875rem;
     justify-content: space-evenly;
     align-items: center;
+    max-height: 80px;
+    @media(max-width: 480px){
+      width: 70%;
+    }
     .pen {
       text-align: end;
     }

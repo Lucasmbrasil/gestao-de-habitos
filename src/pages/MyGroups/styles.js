@@ -4,13 +4,15 @@ export const BodyPage = styled.div`
   background-color: #e0f2f1;
   height: 100%;
   min-height: 100vh;
-  max-width: 1440px;
   padding: 20px;
   margin: 0 auto;
   /* DISPLAY FLEX ADICIONADO PARA MELHOR VISUALIZAÇÃO DE TESTE */
 
   display: flex;
   flex-direction: column;
+  @media(min-width: 769px){
+    width: calc(100vw - 210px);
+  }
 
   /* ------------------------ */
 `;

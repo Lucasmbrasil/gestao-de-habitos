@@ -15,5 +15,8 @@ export const GroupsContainer = styled.div`
         display: none; /* for Chrome, Safari, and Opera */
     }
 }
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
  width: 90%;
 `

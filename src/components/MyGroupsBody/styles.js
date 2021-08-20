@@ -64,24 +64,17 @@ export const ContainerGroups = styled.div`
 `;
 
 export const SearchPlace = styled.div`
-
-  @media screen and (min-width: 768px) {
-    width: 100%;
-    height: 100px;
     display: flex;
     flex-direction: column;
     align-items: center;
+  @media screen and (min-width: 768px) {
+    width: 100%;
+    height: 100px;
     font-family: "Karla", sans-serif;
     font-weight: bold;
     font-size: 18px;
     text-align: center;
     }
-
-    /* COMENTADO PARA MELHOR VISUALIZAÇÃO DE TESTE */
-
-    /* position: absolute; */
-
-    /* --------------------------------------------- */
     bottom: 100px;
 
     p {
