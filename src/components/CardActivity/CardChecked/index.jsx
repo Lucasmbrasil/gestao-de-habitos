@@ -4,7 +4,8 @@ import Checkbox from "@material-ui/core/Checkbox";
 import { grey } from "@material-ui/core/colors";
 import { withStyles } from "@material-ui/core/styles";
 import { useState } from "react";
-import ModalEditActivity from "../../ModalContainer/ModalEditActivity";
+import DeleteIcon from "@material-ui/icons/Delete"; 
+import CreateIcon from "@material-ui/icons/Create"; 
 
 const GreyCheckbox = withStyles({
   root: {
@@ -41,8 +42,8 @@ const CardActivity = ({
           <p>data: {new Date(date).toLocaleDateString("pt-BR")}</p>
         </div>
         <div className="icons">
-          <CreateOutlinedIcon onClick={() => setEditActivity(true)} />
-          <button onClick={() => handleDelete(activity)}>X</button>
+          <CreateIcon />
+          <DeleteIcon onClick={() => handleDelete(activity)} />
         </div>
         {editActivity && (
           <ModalEditActivity

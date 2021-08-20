@@ -103,6 +103,9 @@ export const Container = styled.form`
       position: relative;
       left: 250px;
       bottom: 1rem;
+      @media (max-width: 390px){
+        left: 190px;
+      }
     }
   }
 `;
