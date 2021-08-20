@@ -10,7 +10,7 @@ import {
 } from "./styles";
 import { ToastContainer, toast } from "react-toastify";
 import { yupResolver } from "@hookform/resolvers/yup";
-// import loginFigure from "../../assets/login.svg";
+import loginFigure from "../../assets/login.svg";
 import "react-toastify/dist/ReactToastify.css";
 import { useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";
@@ -73,7 +73,7 @@ const Login = () => {
     <Main>
       <DivFigure>
         <h1 onClick={() => history.push("/")}>procrastinare</h1>
-        {/* <img src={loginFigure} alt="Login" /> */}
+        <img src={loginFigure} alt="Login" />
       </DivFigure>
       <Container>
         <Grid

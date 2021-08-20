@@ -19,7 +19,7 @@ import { useHabitList } from "../../Providers/HabitsList";
 import MenuSide from "../../components/MenuSide";
 import jwt_decode from "jwt-decode";
 import HabitCard from "../../components/HabitCard";
-import { ToastContainer } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 
 import MobileHeader from "../../components/MobileHeader";
 
@@ -104,7 +104,13 @@ const Dashboard = () => {
       .delete(`/habits/${habit.id}/`, {
         headers: { Authorization: `Bearer ${getToken}` },
       })
-      .then((res) => handleList())
+      .then((res) => {
+        toast.success("Hábito apagado com sucesso!", {
+          onClose: () => {
+            handleList();
+          },
+        });
+      })
       .catch((e) => console.log(e));
   };
 
