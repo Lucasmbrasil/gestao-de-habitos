@@ -7,7 +7,7 @@ import { withStyles } from "@material-ui/core/styles";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import { useState } from "react";
-
+import { useHistory } from "react-router-dom";
 const StyledMenu = withStyles({
   paper: {
     border: "1px solid black",
@@ -15,7 +15,6 @@ const StyledMenu = withStyles({
     color: "#ffffff",
     fontFamily: "Arvo",
     fontWeight: "bold",
-
   },
 })((props) => (
   <Menu
@@ -48,6 +47,15 @@ const StyledMenuItem = withStyles((theme) => ({
 const MenuFooter = () => {
   const [anchorEl, setAnchorEl] = useState(null);
 
+  const history = useHistory();
+  const Logout = () => {
+    history.push("/");
+    localStorage.clear();
+  };
+
+  const DashboardFunction = () => {
+    history.push("/dashboard");
+  };
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -55,10 +63,11 @@ const MenuFooter = () => {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
   return (
     <>
       <Footer>
-        <MenuIcon className="icons" />
+        <MenuIcon className="icons" onClick={DashboardFunction} />
         <SentimentVerySatisfiedIcon className="icons" />
         <div>
           <GroupIcon className="icons" onClick={handleClick} />
@@ -70,12 +79,25 @@ const MenuFooter = () => {
             open={Boolean(anchorEl)}
             onClose={handleClose}
           >
-            <StyledMenuItem onClick={handleClose}>meus grupos</StyledMenuItem>
-            <StyledMenuItem onClick={handleClose}>encontrar</StyledMenuItem>
-            <StyledMenuItem onClick={handleClose}>criar grupo</StyledMenuItem>
+            <StyledMenuItem
+              onClick={() => {
+                handleClose();
+                history.push("/groups/mygroups");
+              }}
+            >
+              meus grupos
+            </StyledMenuItem>
+            <StyledMenuItem
+              onClick={() => {
+                handleClose();
+                history.push("/groups/find");
+              }}
+            >
+              encontrar novos grupos
+            </StyledMenuItem>
           </StyledMenu>
         </div>
-        <ExitToAppIcon className="icons" />
+        <ExitToAppIcon className="icons" onClick={Logout} />
       </Footer>
     </>
   );
