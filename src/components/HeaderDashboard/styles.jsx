@@ -52,7 +52,7 @@ export const Container = styled.div`
         font-size: 1.2rem;
         font-style: italic;
         @media (max-width: 768px){
-            font-size: 1rem;
+            font-size: 0.9rem;
         }
     }
 `;
