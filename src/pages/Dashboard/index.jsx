@@ -1,4 +1,7 @@
 import HeaderDashboard from "../../components/HeaderDashboard";
+import { useMediaQuery } from "react-responsive";
+import MenuFooter from "../../components/MenuFooter";
+
 import {
   Habits,
   HabitsContainer,
@@ -22,8 +25,9 @@ import MenuFooter from "../../components/MenuFooter";
 import MobileHeader from "../../components/MobileHeader";
 
 const Dashboard = () => {
-  const desktop = useMediaQuery({ query: "(min-width: 769px)" });
-  const mobileBreak = useMediaQuery({ query: "(min-width: 480px)" });
+  const desktop = useMediaQuery({ query: "(min-width:769px)" });
+  const mobileComponents = useMediaQuery({ query: "(max-width:768px)" });
+
   const { habits, handleList } = useHabitList();
   const [addGoodHabit, setAddGoodHabit] = useState(false);
   const [addBadHabit, setAddBadHabit] = useState(false);
@@ -110,8 +114,11 @@ const Dashboard = () => {
       <ToastContainer position="top-center" autoClose={2500} />
 
       {desktop && <MenuSide />}
-      {!desktop && <MobileHeader />}
       <MainContainer>
+        {mobileComponents && (
+          <header className="MobileHeader">procrastinare</header>
+        )}
+
         <HeaderDashboard username={username} />
         <HabitsContainer>
           <div className="habits_header">
@@ -199,6 +206,7 @@ const Dashboard = () => {
               })}
           </Habits>
         </HabitsContainer>
+        {mobileComponents && <MenuFooter />}
       </MainContainer>
       {!desktop && <MenuFooter />}
     </PageContainer>

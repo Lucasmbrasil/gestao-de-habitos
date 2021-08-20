@@ -49,6 +49,11 @@ export const Container = styled.form`
   background-color: ${(props) => props.color};
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
+  @media (max-width: 768px) {
+    height: 313px;
+    width: 89%;
+  }
+
   /* AJEITAR Z-INDEX DO BEFORE */
 
   ::before {
@@ -105,6 +110,19 @@ export const Container = styled.form`
       bottom: 1rem;
       @media (max-width: 390px){
         left: 190px;
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    width: 85vw;
+    .inferior {
+      border-bottom-left-radius: 16px;
+      border-bottom-right-radius: 16px;
+      button {
+        position: relative;
+        left: 150px;
+        bottom: 1rem;
       }
     }
   }
