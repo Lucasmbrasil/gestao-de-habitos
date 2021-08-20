@@ -19,7 +19,7 @@ const GoalCard = ({ goal, handleDeleteGoal }) => {
     <>
       <Container>
         <div className="filled">
-          <BookmarksIcon/>
+          <BookmarksIcon />
         </div>
         <div className="text">
           <h3 className="title">{goal.title}</h3>

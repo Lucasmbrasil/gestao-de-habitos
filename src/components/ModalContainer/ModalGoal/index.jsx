@@ -101,11 +101,6 @@ const ModalObjetivo = ({ handleButtonClose, setCreateGoal }) => {
           <p>{errors.difficulty?.message}</p>
         </InputContainer>
       </Container>
-      <ToastContainer
-        className="toast"
-        autoClose={2000}
-        position="top-center"
-      />
     </ModalContainer>
   );
 };
