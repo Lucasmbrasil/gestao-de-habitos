@@ -1,4 +1,11 @@
+import MenuSide from "../../components/MenuSide";
+
 const Home = () => {
-  return <div>a</div>;
+  return (
+    <div style={{ display: "flex" }}>
+      <MenuSide />
+      <div>Olá</div>
+    </div>
+  );
 };
 export default Home;
