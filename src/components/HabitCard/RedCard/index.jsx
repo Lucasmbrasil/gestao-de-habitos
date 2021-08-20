@@ -76,7 +76,6 @@ const RedCard = ({
         <div className="filled2">
           {habit.category === "Saúde" ? (
             <div className="filled2">
-              <button onClick={() => addHowMuchAchieved(habit)}>+</button>
               <Box position="relative" display="inline-flex">
                 <CircularProgress
                   variant="determinate"
@@ -97,14 +96,13 @@ const RedCard = ({
                     component="span"
                     color="textSecondary"
                   >
-                    {habit.how_much_achieved}
+                    <button onClick={() => addHowMuchAchieved(habit)}>+</button>
                   </Typography>
                 </Box>
               </Box>
             </div>
           ) : (
             <div className="filled2">
-              <button onClick={() => subHowMuchAchieved(habit)}>-</button>
               <Box position="relative" display="inline-flex">
                 <CircularProgress
                   variant="determinate"
@@ -125,7 +123,7 @@ const RedCard = ({
                     component="div"
                     color="textSecondary"
                   >
-                    {habit.how_much_achieved}
+                    <button onClick={() => subHowMuchAchieved(habit)}>-</button>
                   </Typography>
                 </Box>
               </Box>

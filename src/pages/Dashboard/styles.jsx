@@ -13,7 +13,7 @@ export const MainContainer = styled.div`
     width: calc(100vw - 210px);
   }
   min-height: 100vh;
-  .MobileHeader {
+  /* .MobileHeader {
     background-color: rgba(0, 96, 100, 0.5);
     font-family: "Arvo", sans-serif;
     color: white;
@@ -26,7 +26,7 @@ export const MainContainer = styled.div`
 
   @media (max-width: 768px) {
     width: 100%;
-  }
+  } */
 `;
 
 export const HabitsContainer = styled.main`
@@ -39,7 +39,7 @@ export const HabitsContainer = styled.main`
   flex-direction: column;
   justify-content: space-evenly;
   background: rgba(255, 253, 231, 0.5);
-  width: 95%;
+  /* width: 95%; */
   margin: 0 auto;
   min-height: 75%;
 
@@ -57,9 +57,8 @@ export const HabitsContainer = styled.main`
     p {
       font-family: "Karla", sans-serif;
     }
-    
   }
-  @media(max-width: 768px){
+  @media (max-width: 768px) {
     margin-bottom: 50px;
   }
 `;
@@ -76,14 +75,29 @@ export const Habits = styled.section`
   padding: 1rem;
   margin-bottom: 1rem;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  section {
+    width: 100%;
+    height: 360px;
+    -ms-overflow-style: none; /* for Internet Explorer, Edge */
+    scrollbar-width: none; /* for Firefox */
+    overflow-y: scroll;
+    ::-webkit-scrollbar {
+      display: none; /* for Chrome, Safari, and Opera */
+    }
+  }
   @media (max-width: 980px) {
-    width: 80%;
+    width: 90%;
     margin: 1rem auto;
-    height: 90vh;
+    /* height: 90vh; */
   }
 `;
+
 export const TextHabits = styled.div`
-  width: 100%;
+  width: 95%;
+  @media (min-width: 480px) {
+    width: 100%;
+  }
+
   border: 1px solid black;
   text-align: center;
   padding: 15px 0;
@@ -109,7 +123,7 @@ export const StyledButton = styled(Button)`
     border: 2px solid rgba(0, 0, 0, 0.5);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 8px;
-    @media (max-width: 480px){
+    @media (max-width: 480px) {
       justify-content: center;
       padding: 5px;
       width: 30px;
@@ -118,7 +132,7 @@ export const StyledButton = styled(Button)`
       display: flex;
       justify-content: center;
       text-align: center;
-      .MuiButton-startIcon{
+      .MuiButton-startIcon {
         margin: 0;
       }
     }

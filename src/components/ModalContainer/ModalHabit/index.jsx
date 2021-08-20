@@ -11,6 +11,7 @@ import * as yup from "yup";
 import { RadioGroup } from "@material-ui/core";
 import api from "../../../services/api";
 import { useHabitList } from "../../../Providers/HabitsList";
+import { toast } from "react-toastify";
 const labels = {
   1: "Fácil",
   2: "Normal",
@@ -55,10 +56,15 @@ const ModalHabito = ({ handleButtonClose, addBadHabit, userID, getToken }) => {
       .post("/habits/", newData, {
         headers: { Authorization: `Bearer ${getToken}` },
       })
-      .then((res) => handleList())
+      .then((res) => {
+        handleList();
+        toast.success("Hábito criado com sucesso!", {
+          onClose: () => {
+            handleButtonClose();
+          },
+        });
+      })
       .catch((e) => console.log(e));
-
-    handleButtonClose();
   };
 
   return (

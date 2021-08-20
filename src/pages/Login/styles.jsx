@@ -27,6 +27,23 @@ export const StyledPaper = styled(Paper)`
     background-color: #006064;
     padding: 40px;
     border-radius: 10px;
+    @media (max-width: 768px) {
+      width: 400px;
+      background: #006064; /* fallback for old browsers */
+      background: -webkit-linear-gradient(
+        to right,
+        #006064,
+        #159957
+      ); /* Chrome 10-25, Safari 5.1-6 */
+      background: linear-gradient(
+        to right,
+        #006064,
+        #159957
+      ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    }
+    @media (max-width: 576px) {
+      width: 320px;
+    }
   }
 `;
 

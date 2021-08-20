@@ -20,13 +20,12 @@ import MenuSide from "../../components/MenuSide";
 import jwt_decode from "jwt-decode";
 import HabitCard from "../../components/HabitCard";
 import { ToastContainer } from "react-toastify";
-import { useMediaQuery } from "react-responsive"; 
-import MenuFooter from "../../components/MenuFooter";
+
 import MobileHeader from "../../components/MobileHeader";
 
 const Dashboard = () => {
-  const desktop = useMediaQuery({ query: "(min-width:769px)" });
-  const mobileComponents = useMediaQuery({ query: "(max-width:768px)" });
+  const desktop = useMediaQuery({ query: "(min-width: 769px)" });
+  const mobileBreak = useMediaQuery({ query: "(min-width: 480px)" });
 
   const { habits, handleList } = useHabitList();
   const [addGoodHabit, setAddGoodHabit] = useState(false);
@@ -114,11 +113,9 @@ const Dashboard = () => {
       <ToastContainer position="top-center" autoClose={2500} />
 
       {desktop && <MenuSide />}
-      <MainContainer>
-        {mobileComponents && (
-          <header className="MobileHeader">procrastinare</header>
-        )}
+      {!desktop && <MobileHeader />}
 
+      <MainContainer>
         <HeaderDashboard username={username} />
         <HabitsContainer>
           <div className="habits_header">
@@ -143,27 +140,29 @@ const Dashboard = () => {
                 getToken={getToken}
               />
             )}
-            {habits !== undefined &&
-              habits.map((habit) => {
-                if (
-                  habit.category === "Saúde" ||
-                  habit.category === "Alimentação" ||
-                  habit.category === "Estudo"
-                ) {
-                  return (
-                    <>
-                      <HabitCard
-                        key={habit.id}
-                        habit={habit}
-                        addHowMuchAchieved={addHowMuchAchieved}
-                        handleDeleteHabit={handleDeleteHabit}
-                        addBadHabit={addBadHabit}
-                      />
-                    </>
-                  );
-                }
-                return <></>;
-              })}
+            <section>
+              {habits !== undefined &&
+                habits.map((habit) => {
+                  if (
+                    habit.category === "Saúde" ||
+                    habit.category === "Alimentação" ||
+                    habit.category === "Estudo"
+                  ) {
+                    return (
+                      <>
+                        <HabitCard
+                          key={habit.id}
+                          habit={habit}
+                          addHowMuchAchieved={addHowMuchAchieved}
+                          handleDeleteHabit={handleDeleteHabit}
+                          addBadHabit={addBadHabit}
+                        />
+                      </>
+                    );
+                  }
+                  return <></>;
+                })}
+            </section>
           </Habits>
           <Habits>
             <TextHabits>
@@ -184,29 +183,30 @@ const Dashboard = () => {
                 getToken={getToken}
               />
             )}
-            {habits !== undefined &&
-              habits.map((habit) => {
-                if (
-                  habit.category === "NãoSaúde" ||
-                  habit.category === "NãoAlimentação" ||
-                  habit.category === "NãoEstudo"
-                ) {
-                  return (
-                    <HabitCard
-                      key={`${habit.id}bad`}
-                      habit={habit}
-                      subHowMuchAchieved={subHowMuchAchieved}
-                      handleDeleteHabit={handleDeleteHabit}
-                      addBadHabit={addBadHabit}
-                    />
-                  );
-                }
+            <section>
+              {habits !== undefined &&
+                habits.map((habit) => {
+                  if (
+                    habit.category === "NãoSaúde" ||
+                    habit.category === "NãoAlimentação" ||
+                    habit.category === "NãoEstudo"
+                  ) {
+                    return (
+                      <HabitCard
+                        key={`${habit.id}bad`}
+                        habit={habit}
+                        subHowMuchAchieved={subHowMuchAchieved}
+                        handleDeleteHabit={handleDeleteHabit}
+                        addBadHabit={addBadHabit}
+                      />
+                    );
+                  }
 
-                return <></>;
-              })}
+                  return <></>;
+                })}
+            </section>
           </Habits>
         </HabitsContainer>
-        {mobileComponents && <MenuFooter />}
       </MainContainer>
       {!desktop && <MenuFooter />}
     </PageContainer>

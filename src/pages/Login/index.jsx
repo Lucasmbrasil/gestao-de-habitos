@@ -29,11 +29,11 @@ const Login = () => {
     username: yup
       .string()
       .required("Campo obrigatório")
-      .min(6, "Login incorreto"),
+      .min(6, "Mínimo de 6 caracteres"),
     password: yup
       .string()
       .required("Campo obrigatório")
-      .min(8, "Senha incorreta")
+      .min(8, "Mínimo de 8 caracteres")
       .matches(
         /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{0,}$/,
         "Deve conter Pelo menos uma letra e um número"

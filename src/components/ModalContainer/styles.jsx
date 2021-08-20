@@ -49,10 +49,10 @@ export const Container = styled.form`
   background-color: ${(props) => props.color};
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
-  @media (max-width: 768px) {
+  /* @media (max-width: 768px) {
     height: 313px;
     width: 89%;
-  }
+  } */
 
   /* AJEITAR Z-INDEX DO BEFORE */
 
@@ -108,13 +108,13 @@ export const Container = styled.form`
       position: relative;
       left: 250px;
       bottom: 1rem;
-      @media (max-width: 390px){
+      @media (max-width: 390px) {
         left: 190px;
       }
     }
   }
 
-  @media (max-width: 768px) {
+  /* @media (max-width: 768px) {
     width: 85vw;
     .inferior {
       border-bottom-left-radius: 16px;
@@ -125,5 +125,5 @@ export const Container = styled.form`
         bottom: 1rem;
       }
     }
-  }
+  } */
 `;

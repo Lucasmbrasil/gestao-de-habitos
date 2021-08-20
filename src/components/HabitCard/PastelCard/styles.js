@@ -8,7 +8,7 @@ export const HabitCardYellow = styled(HabitCardBlue)`
     background-color: #ffffa8;
   }
 
-  @media (max-width: 768px) {
+  /* @media (max-width: 768px) {
     flex-direction: column;
     .filled {
       width: 100%;
@@ -17,5 +17,5 @@ export const HabitCardYellow = styled(HabitCardBlue)`
     .filled2 {
       margin-left: 0;
     }
-  }
+  } */
 `;
