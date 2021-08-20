@@ -23,7 +23,7 @@ const ModalEditActivity = ({ setEditActivity, activity }) => {
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) });
 
-  const handleButtonCloseEditActivities = () => {
+  const handleCloseEditActivities = () => {
     setEditActivity(false);
   };
   const handleEditActivities = (data) => {
@@ -51,7 +51,7 @@ const ModalEditActivity = ({ setEditActivity, activity }) => {
     <ModalContainer
       color="#8BC34A"
       onSubmit={handleSubmit(handleEditActivities)}
-      handleButtonClose={handleButtonCloseEditActivities}
+      handleButtonClose={handleCloseEditActivities}
     >
       <Container>
         <Title>editar atividade:</Title>
