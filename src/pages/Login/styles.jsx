@@ -114,6 +114,7 @@ export const DivFigure = styled.div`
       font-family: "Arvo", sans-serif;
       font-weight: normal;
       color: white;
+      cursor: pointer;
     }
     && img {
       max-width: 400px;

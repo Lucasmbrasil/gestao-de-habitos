@@ -72,7 +72,7 @@ const Login = () => {
   return (
     <Main>
       <DivFigure>
-        <h1>Procrastinare</h1>
+        <h1 onClick={() => history.push("/")}>procrastinare</h1>
         <img src={loginFigure} alt="Login" />
       </DivFigure>
       <Container>

@@ -8,7 +8,7 @@ const Register = () => {
     <RegisterContainer>
       <FormRegister />
       <ContainerRight>
-        <h1>Procrastinare</h1>
+        <h1>procrastinare</h1>
         <img src={registerImage} alt="registerImage" />
       </ContainerRight>
     </RegisterContainer>
