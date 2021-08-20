@@ -12,7 +12,7 @@ import { ToastContainer, toast } from "react-toastify";
 import { yupResolver } from "@hookform/resolvers/yup";
 import loginFigure from "../../assets/login.svg";
 import "react-toastify/dist/ReactToastify.css";
-import { useHistory } from "react-router-dom";
+import { useHistory, Redirect } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { Grid } from "@material-ui/core";
 import api from "../../services/api";
@@ -69,6 +69,7 @@ const Login = () => {
         console.log(err);
       });
   };
+
   return (
     <Main>
       <DivFigure>

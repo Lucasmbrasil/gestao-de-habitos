@@ -17,16 +17,20 @@ import MenuSide from "../../components/MenuSide";
 import jwt_decode from "jwt-decode";
 import HabitCard from "../../components/HabitCard";
 import { ToastContainer } from "react-toastify";
-
+import { useHistory } from "react-router-dom";
 const Dashboard = () => {
+  const history = useHistory();
   const { habits, handleList } = useHabitList();
   const [addGoodHabit, setAddGoodHabit] = useState(false);
   const [addBadHabit, setAddBadHabit] = useState(false);
   const [username, setUsername] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [edit, setEdit] = useState(false);
+
   const getToken = window.localStorage.getItem("token");
+
   const decodeToken = jwt_decode(getToken);
+
   const userID = decodeToken.user_id;
 
   const getUsername = useCallback(() => {
@@ -99,7 +103,6 @@ const Dashboard = () => {
       .then((res) => handleList())
       .catch((e) => console.log(e));
   };
-
   return (
     <PageContainer>
       <ToastContainer position="top-center" autoClose={2500} />
