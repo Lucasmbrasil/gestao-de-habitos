@@ -59,6 +59,11 @@ const MenuSide = () => {
     setAppear(!appear);
   };
 
+  const handleLogout = () => {
+    localStorage.clear(); 
+    window.location.href = '/'; 
+  }
+
   return (
     <Drawer
       className={classes.drawer}
@@ -116,7 +121,7 @@ const MenuSide = () => {
       </ListItem>
 
       <LogoutDiv>
-        <ListItem key="7" button>
+        <ListItem key="7" button onClick={() => handleLogout()}>
           <ListItemIcon>
             <ExitToAppIcon style={{ color: "#ffffff" }} />
           </ListItemIcon>
