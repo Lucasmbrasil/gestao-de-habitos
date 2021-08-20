@@ -13,12 +13,18 @@ import MobileHeader from "../../components/MobileHeader";
 import SearchGroup from "../SearchGroupPage";
 import { useState } from "react";
 import ModalGroup from "../../components/ModalContainer/ModalGroup";
+import { useHistory } from "react-router-dom";
 
 const FindGroups = () => {
+  const history = useHistory();
   const [createGroup, setCreateGroup] = useState(false);
   const handleButtonClose = () => {
     setCreateGroup(false);
   };
+
+  if (localStorage.length === 0) {
+    history.push("/");
+  }
 
   const desktop = useMediaQuery({ query: "(min-width: 769px)" });
   return (

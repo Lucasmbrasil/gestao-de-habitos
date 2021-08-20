@@ -69,7 +69,9 @@ const Login = () => {
         console.log(err);
       });
   };
-
+  if (localStorage.length !== 0) {
+    history.push("/dashboard");
+  }
   return (
     <Main>
       <DivFigure>

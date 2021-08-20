@@ -10,10 +10,15 @@ import MenuFooter from "../../components/MenuFooter";
 import MobileHeader from "../../components/MobileHeader";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+import { useHistory } from "react-router-dom";
 const MyGroups = () => {
   const desktop = useMediaQuery({ query: "(min-width: 769px)" });
   const { specificGroup } = useSpecificGroup();
+
+  const history = useHistory();
+  if (localStorage.length === 0) {
+    history.push("/");
+  }
 
   return (
     <>

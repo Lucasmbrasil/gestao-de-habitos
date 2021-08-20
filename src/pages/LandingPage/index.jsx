@@ -21,6 +21,9 @@ import { useHistory, Redirect } from "react-router-dom";
 const LandingPage = () => {
   const history = useHistory();
 
+  if (localStorage.length !== 0) {
+    history.push("/dashboard");
+  }
   return (
     <Main>
       <Header>

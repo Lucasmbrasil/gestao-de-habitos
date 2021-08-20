@@ -18,6 +18,7 @@ import jwt_decode from "jwt-decode";
 import HabitCard from "../../components/HabitCard";
 import { ToastContainer } from "react-toastify";
 import { useHistory } from "react-router-dom";
+import { set } from "react-hook-form";
 const Dashboard = () => {
   const history = useHistory();
   const { habits, handleList } = useHabitList();
@@ -29,7 +30,8 @@ const Dashboard = () => {
 
   const getToken = window.localStorage.getItem("token");
 
-  const decodeToken = jwt_decode(getToken);
+  let decodeToken = jwt_decode(getToken);
+  console.log(decodeToken.message);
 
   const userID = decodeToken.user_id;
 

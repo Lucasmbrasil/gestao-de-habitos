@@ -65,6 +65,10 @@ const MenuSide = () => {
     localStorage.clear();
   };
 
+  if (localStorage.length === 0) {
+    history.push("/");
+  }
+
   return (
     <Drawer
       className={classes.drawer}
