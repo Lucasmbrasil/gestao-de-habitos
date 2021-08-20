@@ -4,6 +4,8 @@ import Checkbox from '@material-ui/core/Checkbox';
 import { grey } from "@material-ui/core/colors";
 import { withStyles } from '@material-ui/core/styles';
 import { useState } from "react";
+import DeleteIcon from "@material-ui/icons/Delete"; 
+import CreateIcon from "@material-ui/icons/Create"; 
 
 const GreyCheckbox = withStyles({
   root: {
@@ -36,8 +38,8 @@ const CardActivity = ({title, date, handleDelete, handleEdit, achieved, activity
         </div>
 
         <div className="icons">
-          <CreateOutlinedIcon />
-          <button onClick={() => handleDelete(activity)}>X</button>
+          <CreateIcon />
+          <DeleteIcon onClick={() => handleDelete(activity)} />
         </div>
       </CardMarked>
     </>
