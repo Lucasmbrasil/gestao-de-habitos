@@ -1,6 +1,27 @@
 import { Button, Input, CircularProgress } from "@material-ui/core";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
+const appearFromLeft = keyframes`
+from {
+    opacity: 0;
+    transform: translateX(-150px);
+}
+
+to {
+    opacity: 1;
+    transform: translateX(0px);
+}
+`;
+
+const appear = keyframes`
+from {
+    opacity: 0;
+}
+
+to {
+    opacity: 1;
+}
+`;
 export const ContainerLeft = styled.div`
   height: 100vh;
   display: flex;
@@ -9,6 +30,7 @@ export const ContainerLeft = styled.div`
   align-items: center;
   background-color: #e0f2f1;
   font-family: "Karla", sans-serif;
+  animation: ${appear} .7s;
 
   && h2 {
     font-family: "Arvo", sans-serif;
@@ -25,6 +47,7 @@ export const ContainerLeft = styled.div`
   width: 100vw;
   @media (min-width: 768px) {
     width: 50vw;
+    animation: ${appearFromLeft} .7s;
   }
 `;
 export const FormContainer = styled.div`
