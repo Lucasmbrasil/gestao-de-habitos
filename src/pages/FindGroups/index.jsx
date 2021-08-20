@@ -15,6 +15,7 @@ import { useState } from "react";
 import ModalGroup from "../../components/ModalContainer/ModalGroup";
 import { useSpecificGroup } from "../../Providers/SpecificGroup";
 import MySpecificGroup from "../../components/MySpecificGroup";
+import { motion } from "framer-motion"; 
 
 const FindGroups = () => {
   const { specificGroup } = useSpecificGroup();
@@ -30,6 +31,12 @@ const FindGroups = () => {
     )
   }
   return (
+    <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: .3 }}
+        >
     <PageContainer>
       {desktop && <MenuSide />}
       {!desktop && <MobileHeader />}
@@ -59,6 +66,7 @@ const FindGroups = () => {
       </MainContainer>
       {!desktop && <MenuFooter />}
     </PageContainer>
+    </motion.div>
   );
 };
 

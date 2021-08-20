@@ -9,14 +9,21 @@ import imgLucas from '../../assets/lucas.jpeg';
 import gitlab from '../../assets/gitlab.svg';
 import linkedin from '../../assets/linkedin.svg';
 import { useHistory } from 'react-router-dom';
+import { motion } from "framer-motion"; 
 
 const Contact = () => {
     const history = useHistory();
     return (
+        <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: .3 }}
+        >
         <Container>
             <Header>
                 <h1 onClick={() => history.push('/')}>procrastinare</h1>
-                <AccountCircleOutlinedIcon onClick={() => history.push('/login')}/>
+                <AccountCircleOutlinedIcon onClick={() => history.push('/dashboard')}/>
             </Header>
             <Main>
                 <h1>conheça mais sobre os devs do <strong>procrastinare</strong></h1>
@@ -93,6 +100,7 @@ const Contact = () => {
                 <p>copyright</p>
             </Footer>
         </Container>
+    </motion.div>
     )
 }
 

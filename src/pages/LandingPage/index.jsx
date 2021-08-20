@@ -9,10 +9,17 @@ import img4 from '../../assets/LandingPage4.svg';
 import buttonLandingPage from '../../assets/ButtonLandingPage.svg';
 import {Main, Header, TopContainer, TopMidContainer, LastMidContainer, LastContainer, Footer} from './styles.jsx';
 import { useHistory } from 'react-router-dom';
+import { motion } from "framer-motion";
 
 const LandingPage = () => {
     const history = useHistory();
     return (
+        <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: .3 }}
+        >
         <Main>
             <Header>
                 <h1>procrastinare</h1>
@@ -66,6 +73,7 @@ const LandingPage = () => {
                 <p onClick={() => history.push('/contact')}>copyright</p>
             </Footer>
         </Main>
+    </motion.div>
     )
 }
 

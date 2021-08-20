@@ -10,6 +10,7 @@ import MenuFooter from "../../components/MenuFooter";
 import MobileHeader from "../../components/MobileHeader";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { motion } from "framer-motion"; 
 
 const MyGroups = () => {
   const desktop = useMediaQuery({ query: "(min-width: 769px)" });
@@ -20,11 +21,23 @@ const MyGroups = () => {
       <ToastContainer position="top-center" autoClose={2500} />
 
       {specificGroup !== "" ? (
-        <>
+        <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: .3 }}
+        >
           <MySpecificGroup />
-        </>
+        </motion.div>
+        
       ) : (
         <>
+        <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: .3 }}
+        >
           <PageContainer>
             {desktop && <MenuSide />}
             {!desktop && <MobileHeader />}
@@ -35,6 +48,7 @@ const MyGroups = () => {
             </BodyPage>
             {!desktop && <MenuFooter />}
           </PageContainer>
+          </motion.div>
         </>
       )}
     </>
