@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { createContext } from "react";
+import { toast } from "react-toastify";
 import api from "../../services/api";
 
 const EditGroupContext = createContext();
@@ -12,7 +13,9 @@ export const EditGroupProvider = ({ children }) => {
         headers: { Authorization: `Bearer ${getToken}` },
       })
       .then((response) => console.log(response))
-      .catch((e) => console.log(e));
+      .catch((e) =>
+        toast.error("Você não tem permissão para editar esse grupo!")
+      );
   };
 
   return (

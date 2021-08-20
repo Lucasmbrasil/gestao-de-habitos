@@ -10,9 +10,10 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useEditGroup } from "../../../Providers/EditGroup";
 import { useSpecificGroup } from "../../../Providers/SpecificGroup";
+import api from "../../../services/api";
 
 const ModalEditGroup = ({ handleButtonClose, setEditGroup }) => {
-  const { handleEditGroup } = useEditGroup();
+  // const { handleEditGroup } = useEditGroup();
   const { specificGroup, handleSpecificGroup } = useSpecificGroup();
   console.log(specificGroup);
 
@@ -21,18 +22,32 @@ const ModalEditGroup = ({ handleButtonClose, setEditGroup }) => {
     category: yup.string().min(1, "Campo obrigatório"),
     description: yup.string().required("Campo obrigatório"),
   });
-  const onCloseToast = () => {
-    toast.success("Grupo editado com sucesso!", {
-      onClose: () => {
-        handleSpecificGroup(specificGroup.id);
-        setEditGroup(false);
-      },
-    });
+  const handleEditGroup = (data) => {
+    const getToken = window.localStorage.getItem("token");
+    api
+      .patch(`/groups/${specificGroup.id}/`, data, {
+        headers: { Authorization: `Bearer ${getToken}` },
+      })
+      .then((response) =>
+        toast.success("Grupo editado com sucesso!", {
+          onClose: () => {
+            handleSpecificGroup(specificGroup.id);
+            setEditGroup(false);
+          },
+        })
+      )
+      .catch((e) => {
+        toast.error("Você não tem permissão para editar esse grupo!", {
+          onClose: () => {
+            setEditGroup(false);
+          },
+        });
+      });
   };
-  const newEdit = (data) => {
-    handleEditGroup(data, specificGroup);
-    onCloseToast();
-  };
+  // const newEdit = (data) => {
+  //   handleEditGroup(data, specificGroup);
+  //   onCloseToast();
+  // };
   const {
     register,
     handleSubmit,
@@ -41,7 +56,7 @@ const ModalEditGroup = ({ handleButtonClose, setEditGroup }) => {
   return (
     <ModalContainer
       color="#00BCD4"
-      onSubmit={handleSubmit(newEdit)}
+      onSubmit={handleSubmit(handleEditGroup)}
       handleButtonClose={handleButtonClose}
     >
       <Container>
