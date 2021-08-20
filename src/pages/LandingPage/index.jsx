@@ -15,7 +15,7 @@ const LandingPage = () => {
     return (
         <Main>
             <Header>
-                <h1>Procrastinare</h1>
+                <h1>procrastinare</h1>
                 <AccountCircleOutlinedIcon onClick={() => history.push('/login')}/>
             </Header>
             <TopContainer>
@@ -63,7 +63,7 @@ const LandingPage = () => {
             </LastContainer>
             <Footer>
                 <CopyrightIcon/>
-                <p>copyright</p>
+                <p onClick={() => history.push('/contact')}>copyright</p>
             </Footer>
         </Main>
     )

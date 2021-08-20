@@ -292,6 +292,7 @@ export const Footer = styled.footer`
     }
     && p{
         font-size: 24px;
+        cursor: pointer;
     }
     && svg{
         font-size: 36px;
